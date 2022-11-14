@@ -1,2 +1,2 @@
-import './style.css';
-import {} from "./gameLogic.js";
+import "./style.css";
+import { Ship } from "./gameLogic.js";
