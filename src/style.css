@@ -1,0 +1,20 @@
+.gameboard {
+	display: flex;
+	margin: 1rem;
+}
+
+.column {
+  text-align: center;
+}
+
+.square {
+	font-size: 2rem;
+}
+
+.water {
+  background-color: blue;
+}
+
+.ship {
+	background-color:brown;
+}
