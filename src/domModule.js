@@ -1,19 +1,28 @@
-function showBoard(player) {
-	const gameboardDiv = document.createElement("div");
-	gameboardDiv.classList.add("gameboard");
+import { attack } from "./index.js";
 
-  for (let i = 0; i < player.gameboard.board.length; i++) {
+function showBoard(board, receivedHitsPlayer) {
+  const gameboardDiv = document.createElement("div");
+  gameboardDiv.classList.add("gameboard");
+  console.log(board);
+  for (let i = 0; i < board.length; i++) {
     const columnDiv = document.createElement("div");
     columnDiv.classList.add("column");
-    for (let j = 0; j < player.gameboard.board[i].length; j++) {
+    for (let j = 0; j < board[i].length; j++) {
       const square = document.createElement("div");
       square.classList.add("square");
-      if (player.gameboard.board[i][j] === null) {
-				square.textContent = "W";
-				square.classList.add("water");
+      if (board[i][j] === null) {
+        square.textContent = "A";
+        square.classList.add("water");
+      } else if (board[i][j] === false) {
+        square.textContent = "?";
+        square.classList.add("notAttacked");
+        square.dataset.x = i;
+        square.dataset.y = j;
+        square.dataset.player = receivedHitsPlayer;
+        square.addEventListener("click", attack);
       } else {
-				square.textContent = "S";
-				square.classList.add("ship");
+        square.textContent = "B";
+        square.classList.add("ship");
       }
       columnDiv.appendChild(square);
     }
@@ -22,4 +31,21 @@ function showBoard(player) {
   document.querySelector("body").appendChild(gameboardDiv);
 }
 
-export { showBoard };
+function showAttack(result) {
+  if (result === "¡Agua!") {
+    this.classList.add("water");
+    this.textContent = "A";
+  } else if (result === "¡Barco tocado!") {
+    this.classList.add("ship");
+    this.textContent = "B";
+  } else if (result === "¡Barco hundido!") {
+    this.classList.add("sunkenShip");
+    this.textContent = "X";
+  } else if (result === "¡Todos los barcos han sido hundidos!") {
+		this.classList.add("sunkenShip");
+		this.textContent = "X";
+		alert(result);
+	}
+}
+
+export { showBoard, showAttack };

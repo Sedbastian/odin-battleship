@@ -73,22 +73,24 @@ function Gameboard(boardSize) {
 
   function receiveAttack(x, y) {
     if (this.receivedHits[x][y]) {
-      return "Position already attacked!";
+      return "¡Esa posición ya ha sido atacada!";
     } else {
       this.receivedHits[x][y] = true;
     }
     if (this.board[x][y] === null) {
-      return "Water!";
+      return "¡Agua!";
     } else {
       this.board[x][y].hit();
       if (this.board[x][y].isSunk()) {
         this.shipsLeft--;
         if (this.shipsLeft === 0) {
-          return "All ships sunk!";
+          return "¡Todos los barcos han sido hundidos!";
+        } else {
+          return "¡Barco hundido!";
         }
       }
+      return "¡Barco tocado!";
     }
-    return this.board[x][y];
   }
 
   return { board, receivedHits, shipsLeft, placeShip, receiveAttack };

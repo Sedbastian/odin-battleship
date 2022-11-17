@@ -92,8 +92,7 @@ test("gameboard doesn't place a ship where a previous one exists", () => {
 test("gameboard.receiveAttack functionalities", () => {
   const gameboard = Gameboard(10);
   const ship = gameboard.placeShip(6, true, 4, 0);
-  const attacked = gameboard.receiveAttack(4, 0);
-  expect(attacked).toEqual(ship);
+  gameboard.receiveAttack(4, 0);
   expect(ship.timesHit).toBe(1);
   gameboard.receiveAttack(4, 1);
   gameboard.receiveAttack(4, 2);
@@ -102,7 +101,7 @@ test("gameboard.receiveAttack functionalities", () => {
   expect(ship.isSunk()).toBe(false);
   gameboard.receiveAttack(4, 5);
   expect(ship.isSunk()).toBe(true);
-  expect(gameboard.receiveAttack(4, 4)).toBe("Position already attacked!");
+  expect(gameboard.receiveAttack(4, 4)).toBe("¡Esa posición ya ha sido atacada!");
 });
 
 test("gameboard.receiveAttack: All ships sunk", () => {
@@ -113,11 +112,11 @@ test("gameboard.receiveAttack: All ships sunk", () => {
   gameboard.receiveAttack(3, 4);
   gameboard.receiveAttack(3, 5);
   gameboard.receiveAttack(3, 6);
-  expect(gameboard.receiveAttack(3, 7)).toEqual(gameboard.board[3][7]);
+  gameboard.receiveAttack(3, 7);
   gameboard.receiveAttack(4, 4);
   gameboard.receiveAttack(5, 4);
   gameboard.receiveAttack(6, 4);
-  expect(gameboard.receiveAttack(7, 4)).toBe("All ships sunk!");
+  expect(gameboard.receiveAttack(7, 4)).toBe("¡Todos los barcos han sido hundidos!");
 });
 
 test("gameboard.receiveAttack: no-hit Attack: Water", () => {
@@ -125,10 +124,7 @@ test("gameboard.receiveAttack: no-hit Attack: Water", () => {
   gameboard.placeShip(3, false, 3, 3);
 
   // No ship in [5, 5];
-  expect(gameboard.receiveAttack(5, 5)).toBe("Water!");
-
-  // Ship hit in [4, 3]; so the ship object that is being attacked is returned.
-  expect(gameboard.receiveAttack(4, 3)).toEqual(gameboard.board[4][3]);
+  expect(gameboard.receiveAttack(5, 5)).toBe("¡Agua!");
 });
 
 test("Player factory", () => {
