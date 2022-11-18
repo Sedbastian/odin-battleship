@@ -1,6 +1,10 @@
 import "./style.css";
 import { Player, Gameboard } from "./gameLogic.js";
-import { showBoard, showAttack } from "./domModule.js";
+import {
+  showBoard,
+  showAttackEnemyBoard,
+  showAttackOwnBoard
+} from "./domModule.js";
 
 let boardSize = 10;
 const player1 = Player(true, "Rinzai", Gameboard(boardSize));
@@ -18,9 +22,13 @@ player2.gameboard.placeShip(3, false, 0, 4);
 player2.gameboard.placeShip(2, false, 0, 6);
 player2.gameboard.placeShip(1, false, 0, 8);
 
-showBoard(player1.gameboard.board);
-showBoard(player2.gameboard.receivedHits, "player2");
-showBoard(player2.gameboard.board);
+showBoard(player1.gameboard.board, "player1", "ownBoard");
+showBoard(player2.gameboard.receivedHits, "player2", "enemyBoard");
+
+showBoard(player2.gameboard.board, "player2", "ownBoard");
+showBoard(player1.gameboard.receivedHits, "player1", "enemyBoard");
+
+let turn = "player1";
 
 function attack() {
   if (this.dataset.player === "player2") {
@@ -29,8 +37,27 @@ function attack() {
       this.dataset.y
     );
     console.log(result);
-    showAttack.call(this, result);
+    showAttackEnemyBoard.call(this, result);
+    showAttackOwnBoard.call(this, result);
+  } else if (this.dataset.player === "player1") {
+    const result = player1.gameboard.receiveAttack(
+      this.dataset.x,
+      this.dataset.y
+    );
+    console.log(result);
+    showAttackEnemyBoard.call(this, result);
+    showAttackOwnBoard.call(this, result);
   }
 }
 
-export { attack };
+function computerMove() {
+  let x;
+  let y;
+  do {
+    x = Math.floor(Math.random() * boardSize);
+    y = Math.floor(Math.random() * boardSize);
+  } while (player1.gameboard.receivedHits[x][y] === true);
+  player1.gameboard.receiveAttack(x, y);
+}
+
+export { attack, boardSize };
