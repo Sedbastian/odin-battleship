@@ -48,7 +48,7 @@ function attack() {
 
   showAttackEnemyBoard.call(this, result);
 	showAttackOwnBoard.call(this, result);
-	hideBoards(player);
+	togleBoards(player);
 
 }
 
