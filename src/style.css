@@ -1,11 +1,15 @@
 html {
-  background-color: black;
+	background-color: black;
 }
 
 .gameboard {
   display: flex;
   margin: 1rem;
   cursor: crosshair;
+}
+
+.gameboard.hidden {
+	display: none;
 }
 
 .square {

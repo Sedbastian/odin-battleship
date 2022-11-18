@@ -3,7 +3,8 @@ import { Player, Gameboard } from "./gameLogic.js";
 import {
   showBoard,
   showAttackEnemyBoard,
-  showAttackOwnBoard
+  showAttackOwnBoard,
+  toggleBoards
 } from "./domModule.js";
 
 let boardSize = 10;
@@ -22,32 +23,33 @@ player2.gameboard.placeShip(3, false, 0, 4);
 player2.gameboard.placeShip(2, false, 0, 6);
 player2.gameboard.placeShip(1, false, 0, 8);
 
-showBoard(player1.gameboard.board, "player1", "ownBoard");
-showBoard(player2.gameboard.receivedHits, "player2", "enemyBoard");
+showBoard(player1.gameboard.board, "player1", "ownBoard", false);
+showBoard(player2.gameboard.receivedHits, "player2", "enemyBoard", false);
 
-showBoard(player2.gameboard.board, "player2", "ownBoard");
-showBoard(player1.gameboard.receivedHits, "player1", "enemyBoard");
-
-let turn = "player1";
+showBoard(player2.gameboard.board, "player2", "ownBoard", true);
+showBoard(player1.gameboard.receivedHits, "player1", "enemyBoard", true);
 
 function attack() {
-  if (this.dataset.player === "player2") {
-    const result = player2.gameboard.receiveAttack(
-      this.dataset.x,
-      this.dataset.y
-    );
-    console.log(result);
-    showAttackEnemyBoard.call(this, result);
-    showAttackOwnBoard.call(this, result);
-  } else if (this.dataset.player === "player1") {
-    const result = player1.gameboard.receiveAttack(
-      this.dataset.x,
-      this.dataset.y
-    );
-    console.log(result);
-    showAttackEnemyBoard.call(this, result);
-    showAttackOwnBoard.call(this, result);
+  let player;
+  if (this.dataset.player === "player1") {
+    player = "player2";
+  } else {
+    player = "player1";
   }
+
+  let result;
+  if (this.dataset.player === "player2") {
+    result = player2.gameboard.receiveAttack(this.dataset.x, this.dataset.y);
+    console.log(result);
+  } else if (this.dataset.player === "player1") {
+    result = player1.gameboard.receiveAttack(this.dataset.x, this.dataset.y);
+    console.log(result);
+  }
+
+  showAttackEnemyBoard.call(this, result);
+	showAttackOwnBoard.call(this, result);
+	hideBoards(player);
+
 }
 
 function computerMove() {
