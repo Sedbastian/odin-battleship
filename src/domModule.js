@@ -1,4 +1,4 @@
-import { attack } from "./index.js";
+import { attack, player1, player2 } from "./index.js";
 
 function createToggleButton(player, hide) {
   const button = document.createElement("button");
@@ -73,16 +73,20 @@ function showAttackOwnBoard(result) {
 }
 
 function toggleBoards() {
-	const player = this.dataset.player;
-	console.log(player);
+  const player = this.dataset.player;
+  console.log(player);
 
   let otherPlayer;
+  let playerName;
   if (player === "player1") {
     otherPlayer = "player2";
+    playerName = player1.name;
   } else {
     otherPlayer = "player1";
+    playerName = player2.name;
   }
 
+  // Hide:
   const ownBoardToHide = document.querySelector(
     `.gameboard.${player}.ownBoard`
   );
@@ -98,20 +102,31 @@ function toggleBoards() {
   );
   toggleButtonToHide.classList.toggle("hidden");
 
-  const ownBoardToShow = document.querySelector(
-    `.gameboard.${otherPlayer}.ownBoard`
-  );
-  ownBoardToShow.classList.toggle("hidden");
+  // Show:
+	const showButton = document.createElement("button");
+	showButton.classList.add("showHiddenBoards");
+  showButton.textContent = `Mostrar tableros de ${playerName}`;
+  showButton.addEventListener("click", showHiddenBoards);
+  document.querySelector("body").appendChild(showButton);
 
-  const enemyBoardToShow = document.querySelector(
-    `.gameboard.${player}.enemyBoard`
-  );
-  enemyBoardToShow.classList.toggle("hidden");
+  function showHiddenBoards() {
+    const ownBoardToShow = document.querySelector(
+      `.gameboard.${otherPlayer}.ownBoard`
+    );
+    ownBoardToShow.classList.toggle("hidden");
 
-  const toggleButtonToShow = document.querySelector(
-    `button[data-player="${otherPlayer}"]`
-  );
-  toggleButtonToShow.classList.toggle("hidden");
+    const enemyBoardToShow = document.querySelector(
+      `.gameboard.${player}.enemyBoard`
+    );
+    enemyBoardToShow.classList.toggle("hidden");
+
+    const toggleButtonToShow = document.querySelector(
+      `button[data-player="${otherPlayer}"]`
+    );
+		toggleButtonToShow.classList.toggle("hidden");
+		
+		showButton.classList.toggle("hidden");
+  }
 }
 
 export {

@@ -71,4 +71,4 @@ function populatePredefinedShips() {
   player2.gameboard.placeShip(1, false, 0, 8);
 }
 
-export { attack, boardSize };
+export { player1, player2, attack, boardSize };

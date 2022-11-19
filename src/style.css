@@ -58,3 +58,13 @@ button.toggleBoards {
 	border-style: none;
 	padding: 1rem;
 }
+
+button.showHiddenBoards {
+	font-size: 1.5rem;
+	text-align: center;
+	background-color: orangered;
+	border-radius: 1rem;
+	border-width: 1rem;
+	border-style: none;
+	padding: 1rem;
+}
