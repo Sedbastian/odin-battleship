@@ -1,13 +1,25 @@
 import { attack } from "./index.js";
 
+function createToggleButton(player, hide) {
+  const button = document.createElement("button");
+  button.classList.add("toggleBoards");
+  if (hide) {
+    button.classList.add("hidden");
+  }
+  button.dataset.player = player;
+  button.textContent = "Esconder tableros y cambiar turno";
+  button.addEventListener("click", toggleBoards);
+  document.querySelector("body").appendChild(button);
+}
+
 function showBoard(board, playerBoard, kindOfBoard, isHidden) {
   const gameboardDiv = document.createElement("div");
   gameboardDiv.classList.add("gameboard");
   gameboardDiv.classList.add(playerBoard);
-	gameboardDiv.classList.add(kindOfBoard);
-	if (isHidden) {
-		gameboardDiv.classList.add("hidden");
-	}
+  gameboardDiv.classList.add(kindOfBoard);
+  if (isHidden) {
+    gameboardDiv.classList.add("hidden");
+  }
   for (let i = 0; i < board.length; i++) {
     const columnDiv = document.createElement("div");
     columnDiv.classList.add("column");
@@ -60,34 +72,52 @@ function showAttackOwnBoard(result) {
   attackedSquare.classList.add("attacked");
 }
 
-function toggleBoards(player) {
+function toggleBoards() {
+	const player = this.dataset.player;
+	console.log(player);
+
   let otherPlayer;
   if (player === "player1") {
     otherPlayer = "player2";
   } else {
     otherPlayer = "player1";
-	}
-	
-	const ownBoardToHide = document.querySelector(
+  }
+
+  const ownBoardToHide = document.querySelector(
     `.gameboard.${player}.ownBoard`
   );
-	ownBoardToHide.classList.toggle("hidden");
-	
+  ownBoardToHide.classList.toggle("hidden");
+
   const enemyBoardToHide = document.querySelector(
     `.gameboard.${otherPlayer}.enemyBoard`
   );
-	enemyBoardToHide.classList.toggle("hidden");
+  enemyBoardToHide.classList.toggle("hidden");
 
-	const ownBoardToShow = document.querySelector(
+  const toggleButtonToHide = document.querySelector(
+    `button[data-player="${player}"]`
+  );
+  toggleButtonToHide.classList.toggle("hidden");
+
+  const ownBoardToShow = document.querySelector(
     `.gameboard.${otherPlayer}.ownBoard`
   );
-	ownBoardToShow.classList.toggle("hidden");
+  ownBoardToShow.classList.toggle("hidden");
 
-		const enemyBoardToShow = document.querySelector(
-			`.gameboard.${player}.enemyBoard`
-		);
-		enemyBoardToShow.classList.toggle("hidden");
-	
+  const enemyBoardToShow = document.querySelector(
+    `.gameboard.${player}.enemyBoard`
+  );
+  enemyBoardToShow.classList.toggle("hidden");
+
+  const toggleButtonToShow = document.querySelector(
+    `button[data-player="${otherPlayer}"]`
+  );
+  toggleButtonToShow.classList.toggle("hidden");
 }
 
-export { showBoard, showAttackEnemyBoard, showAttackOwnBoard, toggleBoards };
+export {
+  createToggleButton,
+  showBoard,
+  showAttackEnemyBoard,
+  showAttackOwnBoard,
+  toggleBoards
+};

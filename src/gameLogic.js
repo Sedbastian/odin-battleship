@@ -98,9 +98,8 @@ function Gameboard(boardSize) {
   return { board, receivedHits, shipsLeft, placeShip, receiveAttack };
 }
 
-function Player(isFirstPlayer, name, gameboard) {
+function Player(name, gameboard) {
   return {
-    isFirstPlayer,
     name,
     gameboard
   };
