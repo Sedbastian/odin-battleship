@@ -74,7 +74,6 @@ function showAttackOwnBoard(result) {
 
 function toggleBoards() {
   const player = this.dataset.player;
-  console.log(player);
 
   let otherPlayer;
   let playerName;
@@ -103,8 +102,8 @@ function toggleBoards() {
   toggleButtonToHide.classList.toggle("hidden");
 
   // Show:
-	const showButton = document.createElement("button");
-	showButton.classList.add("showHiddenBoards");
+  const showButton = document.createElement("button");
+  showButton.classList.add("showHiddenBoards");
   showButton.textContent = `Mostrar tableros de ${playerName}`;
   showButton.addEventListener("click", showHiddenBoards);
   document.querySelector("body").appendChild(showButton);
@@ -123,16 +122,27 @@ function toggleBoards() {
     const toggleButtonToShow = document.querySelector(
       `button[data-player="${otherPlayer}"]`
     );
-		toggleButtonToShow.classList.toggle("hidden");
-		
-		showButton.classList.toggle("hidden");
+    toggleButtonToShow.classList.toggle("hidden");
+
+    showButton.classList.toggle("hidden");
   }
+}
+
+function showNotYourTurn(whoPlays) {
+  let playerName;
+  if (whoPlays === "player1") {
+    playerName = player1.name;
+  } else if (whoPlays === "player2") {
+    playerName = player2.name;
+  }
+
+  const alertDiv = document.createElement("div");
+  alertDiv.textContent = `¡Es el turno de ${playerName}!`;
 }
 
 export {
   createToggleButton,
   showBoard,
   showAttackEnemyBoard,
-  showAttackOwnBoard,
-  toggleBoards
+  showAttackOwnBoard
 };

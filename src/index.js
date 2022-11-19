@@ -4,8 +4,7 @@ import {
   createToggleButton,
   showBoard,
   showAttackEnemyBoard,
-  showAttackOwnBoard,
-  toggleBoards
+  showAttackOwnBoard
 } from "./domModule.js";
 
 let boardSize = 10;
@@ -14,8 +13,6 @@ const player2 = Player("Computer", Gameboard(boardSize));
 let whoPlays = "player1";
 
 populatePredefinedShips();
-
-
 
 showBoard(player1.gameboard.board, "player1", "ownBoard", false);
 showBoard(player2.gameboard.receivedHits, "player2", "enemyBoard", false);
@@ -26,11 +23,8 @@ showBoard(player1.gameboard.receivedHits, "player1", "enemyBoard", true);
 createToggleButton("player2", "hide");
 
 function attack() {
-  let player;
-  if (this.dataset.player === "player1") {
-    player = "player2";
-  } else {
-    player = "player1";
+  if (this.dataset.player === whoPlays) {
+    return;
   }
 
   let result;
@@ -42,9 +36,14 @@ function attack() {
     console.log(result);
   }
 
+  if (whoPlays === "player1") {
+    whoPlays = "player2";
+  } else if (whoPlays === "player2") {
+    whoPlays = "player1";
+  }
+
   showAttackEnemyBoard.call(this, result);
   showAttackOwnBoard.call(this, result);
-  
 }
 
 function computerMove() {
