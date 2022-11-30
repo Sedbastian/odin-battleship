@@ -1,4 +1,4 @@
-import { attack, player1, player2 } from "./index.js";
+import { attack, player1, player2, whoPlays } from "./index.js";
 
 function createToggleButton(player, hide) {
   const button = document.createElement("button");
@@ -9,7 +9,7 @@ function createToggleButton(player, hide) {
   button.dataset.player = player;
   button.textContent = "Esconder tableros y cambiar turno";
   button.addEventListener("click", toggleBoards);
-  document.querySelector("body").appendChild(button);
+  document.querySelector("main").appendChild(button);
 }
 
 function showBoard(board, playerBoard, kindOfBoard, isHidden) {
@@ -44,7 +44,7 @@ function showBoard(board, playerBoard, kindOfBoard, isHidden) {
     }
     gameboardDiv.appendChild(columnDiv);
   }
-  document.querySelector("body").appendChild(gameboardDiv);
+  document.querySelector("main").appendChild(gameboardDiv);
 }
 
 function showAttackEnemyBoard(result) {
@@ -73,17 +73,26 @@ function showAttackOwnBoard(result) {
 }
 
 function toggleBoards() {
-  const player = this.dataset.player;
-
+	const player = this.dataset.player;
+	
   let otherPlayer;
-  let playerName;
+	let playerName;
+	let otherPlayerName;
+
   if (player === "player1") {
     otherPlayer = "player2";
-    playerName = player1.name;
+		playerName = player1.name;
+		otherPlayerName = player2.name;
   } else {
     otherPlayer = "player1";
-    playerName = player2.name;
-  }
+		playerName = player2.name;
+		otherPlayerName = player1.name;
+	}
+	
+	if (player === whoPlays) {
+		showMakeYourMove(whoPlays);
+		return;
+	}
 
   // Hide:
   const ownBoardToHide = document.querySelector(
@@ -104,11 +113,16 @@ function toggleBoards() {
   // Show:
   const showButton = document.createElement("button");
   showButton.classList.add("showHiddenBoards");
-  showButton.textContent = `Mostrar tableros de ${playerName}`;
+  showButton.textContent = `Mostrar tableros de ${otherPlayerName}`;
   showButton.addEventListener("click", showHiddenBoards);
-  document.querySelector("body").appendChild(showButton);
+  document.querySelector("main").appendChild(showButton);
+
+	function showMakeYourMove() {
+		alert(`¡Todavía no hiciste tu jugada, ${playerName}!`);
+	}
 
   function showHiddenBoards() {
+		
     const ownBoardToShow = document.querySelector(
       `.gameboard.${otherPlayer}.ownBoard`
     );
@@ -126,18 +140,6 @@ function toggleBoards() {
 
     showButton.classList.toggle("hidden");
   }
-}
-
-function showNotYourTurn(whoPlays) {
-  let playerName;
-  if (whoPlays === "player1") {
-    playerName = player1.name;
-  } else if (whoPlays === "player2") {
-    playerName = player2.name;
-  }
-
-  const alertDiv = document.createElement("div");
-  alertDiv.textContent = `¡Es el turno de ${playerName}!`;
 }
 
 export {

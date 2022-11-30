@@ -2,10 +2,17 @@ html {
 	background-color: black;
 }
 
+main {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 2fr 2fr 0.5fr;
+	justify-items: center;
+}
+
 .gameboard {
-  display: flex;
-  margin: 1rem;
-  cursor: crosshair;
+	display: flex;
+	margin: 1rem;
+	cursor: crosshair;
 }
 
 .hidden {
@@ -16,9 +23,9 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2.5rem;
-  width: 2.5rem;
-  font-size: 2rem;
+  height: 7vw;
+  width: 7vw;
+  font-size: 5vh;
   border-style: solid;
 	border-color: black;
 	border-radius: 0.5rem;
