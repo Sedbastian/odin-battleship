@@ -9,7 +9,7 @@ function createToggleButton(player, hide) {
   button.dataset.player = player;
   button.textContent = "Esconder tableros y cambiar turno";
   button.addEventListener("click", toggleBoards);
-  document.querySelector("main").appendChild(button);
+  document.querySelector("body").appendChild(button);
 }
 
 function showBoard(board, playerBoard, kindOfBoard, isHidden) {
@@ -60,11 +60,10 @@ function showAttackEnemyBoard(result) {
   } else if (result === "¡Todos los barcos han sido hundidos!") {
     this.classList.add("sunkenShip");
     this.textContent = "X";
-    alert(result);
   }
 }
 
-function showAttackOwnBoard(result) {
+function showAttackOwnBoard() {
   const attackedSquare = document.querySelector(
     `:not(.notAttacked)[data-player="${this.dataset.player}"][data-x="${this.dataset.x}"][data-y="${this.dataset.y}"]`
   );
@@ -73,26 +72,26 @@ function showAttackOwnBoard(result) {
 }
 
 function toggleBoards() {
-	const player = this.dataset.player;
-	
+  const player = this.dataset.player;
+
   let otherPlayer;
-	let playerName;
-	let otherPlayerName;
+  let playerName;
+  let otherPlayerName;
 
   if (player === "player1") {
     otherPlayer = "player2";
-		playerName = player1.name;
-		otherPlayerName = player2.name;
+    playerName = player1.name;
+    otherPlayerName = player2.name;
   } else {
     otherPlayer = "player1";
-		playerName = player2.name;
-		otherPlayerName = player1.name;
-	}
-	
-	if (player === whoPlays) {
-		showMakeYourMove(whoPlays);
-		return;
-	}
+    playerName = player2.name;
+    otherPlayerName = player1.name;
+  }
+
+  if (player === whoPlays) {
+    showMakeYourMove(whoPlays);
+    return;
+  }
 
   // Hide:
   const ownBoardToHide = document.querySelector(
@@ -117,12 +116,11 @@ function toggleBoards() {
   showButton.addEventListener("click", showHiddenBoards);
   document.querySelector("main").appendChild(showButton);
 
-	function showMakeYourMove() {
-		alert(`¡Todavía no hiciste tu jugada, ${playerName}!`);
-	}
+  function showMakeYourMove() {
+    alert(`¡Todavía no hiciste tu jugada, ${playerName}!`);
+  }
 
   function showHiddenBoards() {
-		
     const ownBoardToShow = document.querySelector(
       `.gameboard.${otherPlayer}.ownBoard`
     );
@@ -142,9 +140,20 @@ function toggleBoards() {
   }
 }
 
+function winner() {
+  let whoWins;
+  if (whoPlays === "player1") {
+    whoWins = player1.name;
+  } else if (whoPlays === "player2") {
+    whoWins = player2.name;
+  }
+  alert(`Ganó ${whoWins}.  ¡Hundió todos los barcos!`);
+}
+
 export {
   createToggleButton,
   showBoard,
   showAttackEnemyBoard,
-  showAttackOwnBoard
+	showAttackOwnBoard,
+	winner
 };

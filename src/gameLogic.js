@@ -1,5 +1,3 @@
-import { boardSize } from "./index.js";
-
 function Ship(length, isVertical) {
   const timesHit = 0;
   function hit() {
