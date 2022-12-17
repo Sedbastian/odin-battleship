@@ -10,7 +10,7 @@ import {
 
 const boardSize = 10;
 const player1 = Player("Rinzai", Gameboard(boardSize));
-const player2 = Player("nComputadora", Gameboard(boardSize));
+const player2 = Player("Computadora", Gameboard(boardSize));
 let whoPlays = "player1";
 
 populatePredefinedShips();

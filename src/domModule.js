@@ -76,6 +76,7 @@ function showAttackOwnBoard() {
   );
   attackedSquare.textContent = "\u{1F7CF}";
   attackedSquare.classList.add("attacked");
+  attackedSquare.classList.add("lastAttacked");
 }
 
 function toggleBoards() {
@@ -115,6 +116,11 @@ function toggleBoards() {
     `button[data-player="${player}"]`
   );
   toggleButtonToHide.classList.toggle("hidden");
+
+  const lastAttacked = document.querySelector(`[data-player="${player}"].lastAttacked`);
+  if (lastAttacked) {
+    lastAttacked.classList.remove("lastAttacked");
+  }
 
   // Show:
   const showButton = document.createElement("button");
