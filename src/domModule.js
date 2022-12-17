@@ -1,4 +1,4 @@
-import { attack, player1, player2, whoPlays } from "./index.js";
+import { attack, player1, player2, whoPlays, isComputerMove } from "./index.js";
 
 function createToggleButton(player, hide) {
   const button = document.createElement("button");
@@ -49,16 +49,23 @@ function showBoard(board, playerBoard, kindOfBoard, isHidden) {
 
 function showAttackEnemyBoard(result) {
   if (result === "¡Agua!") {
+    this.addEventListener("transitionend", isComputerMove);
     this.classList.add("water");
+    this.classList.add("waterTrans");
     this.textContent = "A";
   } else if (result === "¡Barco tocado!") {
+    this.addEventListener("transitionend", isComputerMove);
     this.classList.add("ship");
+    this.classList.add("shipTrans");
     this.textContent = "B";
   } else if (result === "¡Barco hundido!") {
+    this.addEventListener("transitionend", isComputerMove);
     this.classList.add("sunkenShip");
+    this.classList.add("sunkenShipTrans");
     this.textContent = "X";
   } else if (result === "¡Todos los barcos han sido hundidos!") {
     this.classList.add("sunkenShip");
+    this.classList.add("sunkenShipTrans");
     this.textContent = "X";
   }
 }
@@ -154,6 +161,6 @@ export {
   createToggleButton,
   showBoard,
   showAttackEnemyBoard,
-	showAttackOwnBoard,
-	winner
+  showAttackOwnBoard,
+  winner
 };
