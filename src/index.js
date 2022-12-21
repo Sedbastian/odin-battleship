@@ -41,6 +41,7 @@ function attack() {
 
   if (result === "¡Todos los barcos han sido hundidos!") {
     winner();
+    return;
   }
 
   if (player2.name !== "Computadora") {
@@ -57,6 +58,19 @@ function attack() {
 
 function isComputerMove() {
   if (player2.name === "Computadora") {
+    function transitionEndCallback() {
+      attackedSquare.classList.remove("attackedTrans");
+
+      if (compMoveObject.result === "¡Todos los barcos han sido hundidos!") {
+        whoPlays = "player2";
+        winner();
+      }
+      attackedSquare.removeEventListener(
+        "transitionend",
+        transitionEndCallback
+      );
+    }
+
     const compMoveObject = computerMove();
 
     // Show Computer Move:
@@ -66,27 +80,7 @@ function isComputerMove() {
     attackedSquare.textContent = "\u{1F7CF}";
     attackedSquare.classList.add("attacked");
     attackedSquare.classList.add("attackedTrans");
-    attackedSquare.addEventListener("transitionend", () => {
-      attackedSquare.classList.remove("attackedTrans");
-    });
-    if (compMoveObject.result === "¡Agua!") {
-      attackedSquare.classList.remove("water");
-      attackedSquare.classList.add("water");
-      console.log("here");
-    } else if (compMoveObject.result === "¡Barco tocado!") {
-      attackedSquare.classList.add("ship");
-    } else if (compMoveObject.result === "¡Barco hundido!") {
-      attackedSquare.classList.add("sunkenShip");
-    } else if (
-      compMoveObject.result === "¡Todos los barcos han sido hundidos!"
-    ) {
-      attackedSquare.classList.add("sunkenShip");
-    }
-
-    if (compMoveObject.result === "¡Todos los barcos han sido hundidos!") {
-      whoPlays = "player2";
-      winner();
-    }
+    attackedSquare.addEventListener("transitionend", transitionEndCallback);
   }
 }
 
