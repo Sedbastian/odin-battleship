@@ -1,4 +1,5 @@
-import { attack, player1, player2, whoPlays, isComputerMove } from "./index.js";
+import { attack, player1, player2, whoPlays } from "./index.js";
+import { computerMove } from "./gameLogic.js";
 
 function createToggleButton(player, hide) {
   const button = document.createElement("button");
@@ -12,10 +13,10 @@ function createToggleButton(player, hide) {
   document.querySelector("body").appendChild(button);
 }
 
-function showBoard(board, playerBoard, kindOfBoard, isHidden) {
+function showBoard(board, whoseShips, kindOfBoard, isHidden) {
   const gameboardDiv = document.createElement("div");
   gameboardDiv.classList.add("gameboard");
-  gameboardDiv.classList.add(playerBoard);
+  gameboardDiv.classList.add(whoseShips);
   gameboardDiv.classList.add(kindOfBoard);
   if (isHidden) {
     gameboardDiv.classList.add("hidden");
@@ -26,7 +27,7 @@ function showBoard(board, playerBoard, kindOfBoard, isHidden) {
     for (let j = 0; j < board[i].length; j++) {
       const square = document.createElement("div");
       square.classList.add("square");
-      square.dataset.player = playerBoard;
+      square.dataset.player = whoseShips;
       square.dataset.x = i;
       square.dataset.y = j;
       if (board[i][j] === null) {
@@ -67,6 +68,34 @@ function showAttackEnemyBoard(result) {
     this.classList.add("sunkenShip");
     this.classList.add("sunkenShipTrans");
     this.textContent = "X";
+  }
+
+  function isComputerMove() {
+    if (player2.name === "Computadora") {
+      function transitionEndCallback() {
+        attackedSquare.classList.remove("attackedTrans");
+
+        if (compMoveObject.result === "¡Todos los barcos han sido hundidos!") {
+          whoPlays = "player2";
+          winner();
+        }
+        attackedSquare.removeEventListener(
+          "transitionend",
+          transitionEndCallback
+        );
+      }
+
+      const compMoveObject = computerMove();
+
+      // Show Computer Move:
+      const attackedSquare = document.querySelector(
+        `:not(.notAttacked)[data-player="player1"][data-x="${compMoveObject.x}"][data-y="${compMoveObject.y}"]`
+      );
+      attackedSquare.textContent = "\u{1F7CF}";
+      attackedSquare.classList.add("attacked");
+      attackedSquare.classList.add("attackedTrans");
+      attackedSquare.addEventListener("transitionend", transitionEndCallback);
+    }
   }
 }
 
@@ -117,7 +146,9 @@ function toggleBoards() {
   );
   toggleButtonToHide.classList.toggle("hidden");
 
-  const lastAttacked = document.querySelector(`[data-player="${player}"].lastAttacked`);
+  const lastAttacked = document.querySelector(
+    `[data-player="${player}"].lastAttacked`
+  );
   if (lastAttacked) {
     lastAttacked.classList.remove("lastAttacked");
   }

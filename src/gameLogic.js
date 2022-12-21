@@ -1,3 +1,5 @@
+import { boardSize, player1 } from "./index.js";
+
 function Ship(length, isVertical) {
   const timesHit = 0;
   function hit() {
@@ -103,4 +105,15 @@ function Player(name, gameboard) {
   };
 }
 
-export { Ship, Gameboard, Player };
+function computerMove() {
+  let x;
+  let y;
+  do {
+    x = Math.floor(Math.random() * boardSize);
+    y = Math.floor(Math.random() * boardSize);
+  } while (player1.gameboard.receivedHits[x][y] === true);
+  const result = player1.gameboard.receiveAttack(x, y);
+  return { result, x, y };
+}
+
+export { Ship, Gameboard, Player, computerMove };

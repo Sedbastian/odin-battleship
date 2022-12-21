@@ -56,45 +56,6 @@ function attack() {
   showAttackOwnBoard.call(this, result);
 }
 
-function isComputerMove() {
-  if (player2.name === "Computadora") {
-    function transitionEndCallback() {
-      attackedSquare.classList.remove("attackedTrans");
-
-      if (compMoveObject.result === "¡Todos los barcos han sido hundidos!") {
-        whoPlays = "player2";
-        winner();
-      }
-      attackedSquare.removeEventListener(
-        "transitionend",
-        transitionEndCallback
-      );
-    }
-
-    const compMoveObject = computerMove();
-
-    // Show Computer Move:
-    const attackedSquare = document.querySelector(
-      `:not(.notAttacked)[data-player="player1"][data-x="${compMoveObject.x}"][data-y="${compMoveObject.y}"]`
-    );
-    attackedSquare.textContent = "\u{1F7CF}";
-    attackedSquare.classList.add("attacked");
-    attackedSquare.classList.add("attackedTrans");
-    attackedSquare.addEventListener("transitionend", transitionEndCallback);
-  }
-}
-
-function computerMove() {
-  let x;
-  let y;
-  do {
-    x = Math.floor(Math.random() * boardSize);
-    y = Math.floor(Math.random() * boardSize);
-  } while (player1.gameboard.receivedHits[x][y] === true);
-  const result = player1.gameboard.receiveAttack(x, y);
-  return { result, x, y };
-}
-
 function populatePredefinedShips() {
   player1.gameboard.placeShip(5, true, 0, 0);
   player1.gameboard.placeShip(4, true, 2, 0);
@@ -109,4 +70,4 @@ function populatePredefinedShips() {
   player2.gameboard.placeShip(1, false, 0, 8);
 }
 
-export { player1, player2, whoPlays, attack, boardSize, isComputerMove };
+export { player1, player2, whoPlays, attack, boardSize };
