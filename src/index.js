@@ -24,7 +24,7 @@ shipsToPlace.gameboard.placeShip(5, 1, true, 8, 0);
 showShipsToPlace(
   shipsToPlace.gameboard.board,
   "player1",
-  "shipsToPlace",
+  "verticalShipsToPlace",
   false
 );
 

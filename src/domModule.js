@@ -14,7 +14,11 @@ function createToggleButton(player, hide) {
 }
 
 function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
+  // These variables will be defined by square's onmousedown event
+  let shipID;
   let squareDragged;
+  let shipLength;
+
   const gameboardDiv = document.createElement("div");
   gameboardDiv.classList.add("gameboard");
   gameboardDiv.classList.add(whoseShips);
@@ -28,7 +32,10 @@ function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
     columnDiv.classList.add("column");
     columnDiv.draggable = true;
     columnDiv.addEventListener("dragstart", function(event) {
-      event.dataTransfer.setData("text/plain", `${squareDragged}`);
+      event.dataTransfer.setData(
+        "text/plain",
+        `${shipID}${squareDragged}${shipLength}${typeOfBoard[0]}`
+      );
     });
     for (let j = 0; j < board[i].length; j++) {
       const square = document.createElement("div");
@@ -43,6 +50,7 @@ function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
         square.textContent = "B";
         square.classList.add("ship");
         square.dataset.shipId = board[i][j].shipID;
+        square.dataset.shipLength = board[i][j].length;
 
         if (shipsNumbering[`shipID${board[i][j].shipID}`] === undefined) {
           shipsNumbering[`shipID${board[i][j].shipID}`] = 1;
@@ -52,7 +60,9 @@ function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
         shipsNumbering[`shipID${board[i][j].shipID}`]++;
 
         square.addEventListener("mousedown", function(event) {
+          shipID = event.target.dataset.shipId;
           squareDragged = event.target.dataset.shipSquareNumber;
+          shipLength = event.target.dataset.shipLength;
         });
       }
       columnDiv.appendChild(square);
@@ -91,7 +101,49 @@ function showBoard(board, whoseShips, typeOfBoard, isHidden) {
           event.preventDefault();
         });
         square.addEventListener("drop", function(event) {
-          console.log(event.dataTransfer.getData("text/plain"));
+          const data = event.dataTransfer.getData("text/plain");
+          const shipID = data[0];
+          const squareDropped = data[1];
+          const shipLength = parseInt(data[2], 10);
+          const x = parseInt(event.target.dataset.x, 10);
+          const y = parseInt(event.target.dataset.y, 10);
+
+          let isVertical;
+          let x0 = null;
+          let y0 = null;
+
+          if (data[3] === "v") {
+            isVertical = true;
+            x0 = parseInt(x, 10);
+            y0 = y - squareDropped + 1;
+          } else if (data[3] === "h") {
+            isVertical = false;
+            x0 = x - squareDropped + 1;
+            y0 = parseInt(y, 10);
+          }
+
+          if (whoPlays === "player1") {
+            console.log(
+              player1.gameboard.placeShip(
+                shipID,
+                shipLength,
+                isVertical,
+                x0,
+                y0
+              )
+            );
+            showBoard(player1.gameboard.board, "player1", "ownBoard", false);
+          } else if (whoPlays === "player2") {
+            console.log(
+              player2.gameboard.placeShip(
+                shipID,
+                shipLength,
+                isVertical,
+                x0,
+                y0
+              )
+            );
+          }
         });
       } else if (board[i][j] === false) {
         square.textContent = "?";
