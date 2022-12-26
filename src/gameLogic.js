@@ -1,6 +1,6 @@
 import { boardSize, player1 } from "./index.js";
 
-function Ship(length, isVertical) {
+function Ship(shipID, length, isVertical) {
   const timesHit = 0;
   function hit() {
     this.timesHit++;
@@ -13,6 +13,7 @@ function Ship(length, isVertical) {
     }
   }
   return {
+		shipID,
     length,
     isVertical,
     timesHit,
@@ -43,8 +44,8 @@ function Gameboard(boardSize) {
 
   const shipsLeft = 0;
 
-  function placeShip(length, isVertical, x, y) {
-    const ship = Ship(length, isVertical);
+  function placeShip(shipID, length, isVertical, x, y) {
+    const ship = Ship(shipID, length, isVertical);
 
     if (ship.isVertical && y + ship.length > boardSize) {
       return "Ship is too large!";

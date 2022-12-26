@@ -49,6 +49,11 @@ main {
   background-color: blue;
 }
 
+/* .shipsToPlace .square.water {
+	background-color: black;
+	opacity: 0;
+} */
+
 .waterTrans {
   transform: rotateX(720deg);
   transition: transform 1000ms ease-in-out;

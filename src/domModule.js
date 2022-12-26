@@ -13,14 +13,64 @@ function createToggleButton(player, hide) {
   document.querySelector("body").appendChild(button);
 }
 
-function showBoard(board, whoseShips, kindOfBoard, isHidden) {
+function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
+  let squareDragged;
   const gameboardDiv = document.createElement("div");
   gameboardDiv.classList.add("gameboard");
   gameboardDiv.classList.add(whoseShips);
-  gameboardDiv.classList.add(kindOfBoard);
+  gameboardDiv.classList.add(typeOfBoard);
   if (isHidden) {
     gameboardDiv.classList.add("hidden");
   }
+  let shipsNumbering = {};
+  for (let i = 0; i < board.length; i++) {
+    const columnDiv = document.createElement("div");
+    columnDiv.classList.add("column");
+    columnDiv.draggable = true;
+    columnDiv.addEventListener("dragstart", function(event) {
+      event.dataTransfer.setData("text/plain", `${squareDragged}`);
+    });
+    for (let j = 0; j < board[i].length; j++) {
+      const square = document.createElement("div");
+      square.classList.add("square");
+      square.dataset.player = whoseShips;
+      square.dataset.x = i;
+      square.dataset.y = j;
+      if (board[i][j] === null) {
+        square.style.display = "none";
+        // square.classList.add("water");
+      } else if (typeof board[i][j] === "object") {
+        square.textContent = "B";
+        square.classList.add("ship");
+        square.dataset.shipId = board[i][j].shipID;
+
+        if (shipsNumbering[`shipID${board[i][j].shipID}`] === undefined) {
+          shipsNumbering[`shipID${board[i][j].shipID}`] = 1;
+        }
+        square.dataset.shipSquareNumber =
+          shipsNumbering[`shipID${board[i][j].shipID}`];
+        shipsNumbering[`shipID${board[i][j].shipID}`]++;
+
+        square.addEventListener("mousedown", function(event) {
+          squareDragged = event.target.dataset.shipSquareNumber;
+        });
+      }
+      columnDiv.appendChild(square);
+    }
+    gameboardDiv.appendChild(columnDiv);
+  }
+  document.querySelector("main").appendChild(gameboardDiv);
+}
+
+function showBoard(board, whoseShips, typeOfBoard, isHidden) {
+  const gameboardDiv = document.createElement("div");
+  gameboardDiv.classList.add("gameboard");
+  gameboardDiv.classList.add(whoseShips);
+  gameboardDiv.classList.add(typeOfBoard);
+  if (isHidden) {
+    gameboardDiv.classList.add("hidden");
+  }
+  let shipsNumbering = {};
   for (let i = 0; i < board.length; i++) {
     const columnDiv = document.createElement("div");
     columnDiv.classList.add("column");
@@ -33,6 +83,16 @@ function showBoard(board, whoseShips, kindOfBoard, isHidden) {
       if (board[i][j] === null) {
         square.textContent = "A";
         square.classList.add("water");
+
+        square.addEventListener("dragenter", function(event) {
+          event.preventDefault();
+        });
+        square.addEventListener("dragover", function(event) {
+          event.preventDefault();
+        });
+        square.addEventListener("drop", function(event) {
+          console.log(event.dataTransfer.getData("text/plain"));
+        });
       } else if (board[i][j] === false) {
         square.textContent = "?";
         square.classList.add("notAttacked");
@@ -40,6 +100,14 @@ function showBoard(board, whoseShips, kindOfBoard, isHidden) {
       } else if (typeof board[i][j] === "object") {
         square.textContent = "B";
         square.classList.add("ship");
+        square.dataset.shipId = board[i][j].shipID;
+
+        if (shipsNumbering[`shipID${board[i][j].shipID}`] === undefined) {
+          shipsNumbering[`shipID${board[i][j].shipID}`] = 1;
+        }
+        square.dataset.shipSquareNumber =
+          shipsNumbering[`shipID${board[i][j].shipID}`];
+        shipsNumbering[`shipID${board[i][j].shipID}`]++;
       }
       columnDiv.appendChild(square);
     }
@@ -196,6 +264,7 @@ function winner() {
 
 export {
   createToggleButton,
+  showShipsToPlace,
   showBoard,
   showAttackEnemyBoard,
   showAttackOwnBoard,
