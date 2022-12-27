@@ -9,7 +9,7 @@ body {
 main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(45vmax, 1fr));
-  justify-items: stretch;
+  /* justify-items: stretch; */
 }
 
 .gameboard {
@@ -20,7 +20,18 @@ main {
 
 .column {
   width: 100%;
-  height: 100%;
+}
+
+.gameboardHorizontal {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.row {
+	display: flex;
+	justify-content: space-between;
+	
 }
 
 .hidden {
@@ -34,7 +45,7 @@ main {
   aspect-ratio: 1;
   border-style: solid;
   border-color: black;
-  border-radius: 0.5rem;
+	border-radius: 0.5rem;
 }
 
 .square:hover {

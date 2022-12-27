@@ -13,7 +13,7 @@ function Ship(shipID, length, isVertical) {
     }
   }
   return {
-		shipID,
+    shipID,
     length,
     isVertical,
     timesHit,
@@ -46,6 +46,7 @@ function Gameboard(boardSize) {
 
   function placeShip(shipID, length, isVertical, x, y) {
     const ship = Ship(shipID, length, isVertical);
+    let fullShipCoordinates = [];
 
     if (ship.isVertical && y + ship.length > boardSize) {
       return "Ship is too large!";
@@ -59,18 +60,20 @@ function Gameboard(boardSize) {
       }
       for (let i = 0; i < ship.length; i++) {
         this.board[x][y + i] = ship;
+        fullShipCoordinates.push([x, y + i]);
       }
       this.shipsLeft++;
-      return ship;
+      return fullShipCoordinates;
     } else if (!ship.isVertical && x + ship.length <= boardSize) {
       for (let i = 0; i < ship.length; i++) {
         if (this.board[x + i][y] !== null) return "There's another ship there!";
       }
       for (let i = 0; i < ship.length; i++) {
         this.board[x + i][y] = ship;
+        fullShipCoordinates.push([x + i, y]);
       }
       this.shipsLeft++;
-      return ship;
+      return fullShipCoordinates;
     }
   }
 
@@ -96,7 +99,26 @@ function Gameboard(boardSize) {
     }
   }
 
-  return { board, receivedHits, shipsLeft, placeShip, receiveAttack };
+  function removeShip(shipID) {
+    for (let i = 0; i < this.board.length; i++) {
+      for (let j = 0; j < this.board[i].length; j++) {
+        if (this.board[i][j] !== null) {
+          if (this.board[i][j].shipID === shipID) {
+            this.board[i][j] = null;
+          }
+        }
+      }
+    }
+  }
+
+  return {
+    board,
+    receivedHits,
+    shipsLeft,
+    placeShip,
+    removeShip,
+    receiveAttack
+  };
 }
 
 function Player(name, gameboard) {

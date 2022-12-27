@@ -1,8 +1,8 @@
 import "./style.css";
 import { Player, Gameboard } from "./gameLogic.js";
 import {
-  showShipsToPlace,
-  showBoard,
+	showShipsToPlace,
+	showBoard,
   showAttackEnemyBoard,
   showAttackOwnBoard,
   createToggleButton,
@@ -10,25 +10,33 @@ import {
 } from "./domModule.js";
 
 const boardSize = 10;
-const shipsToPlace = Player("ShipsToPlace", Gameboard(boardSize));
+
 const player1 = Player("Rinzai", Gameboard(boardSize));
 const player2 = Player("Computadora", Gameboard(boardSize));
 let whoPlays = "player1";
 
-shipsToPlace.gameboard.placeShip(1, 5, true, 0, 0);
-shipsToPlace.gameboard.placeShip(2, 4, true, 2, 0);
-shipsToPlace.gameboard.placeShip(3, 3, true, 4, 0);
-shipsToPlace.gameboard.placeShip(4, 2, true, 6, 0);
-shipsToPlace.gameboard.placeShip(5, 1, true, 8, 0);
+const shipsToPlace = Gameboard(boardSize);
+shipsToPlace.placeShip(1, 5, true, 0, 0);
+shipsToPlace.placeShip(2, 4, true, 2, 0);
+shipsToPlace.placeShip(3, 3, true, 4, 0);
+shipsToPlace.placeShip(4, 2, true, 6, 0);
+shipsToPlace.placeShip(5, 1, true, 8, 0);
 
 showShipsToPlace(
-  shipsToPlace.gameboard.board,
+  shipsToPlace.board,
   "player1",
   "verticalShipsToPlace",
   false
 );
 
-showBoard(player1.gameboard.board, "player1", "ownBoard", false);
+showShipsToPlace(
+  shipsToPlace.board,
+  "player1",
+  "horizontalShipsToPlace",
+  false
+);
+
+showBoard(player1.gameboard.board, "player1", "ownBoard", false, true);
 
 // showBoard(player1.gameboard.board, "player1", "ownBoard", false);
 // showBoard(player2.gameboard.receivedHits, "player2", "enemyBoard", false);
@@ -71,4 +79,4 @@ function attack() {
   showAttackOwnBoard.call(this, result);
 }
 
-export { player1, player2, whoPlays, attack, boardSize };
+export { player1, player2, whoPlays, boardSize, shipsToPlace, attack };
