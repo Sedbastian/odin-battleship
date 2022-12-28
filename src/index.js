@@ -33,7 +33,7 @@ showShipsToPlace(
   shipsToPlace.board,
   "player1",
   "horizontalShipsToPlace",
-  false
+  true
 );
 
 showBoard(player1.gameboard.board, "player1", "ownBoard", false, true);

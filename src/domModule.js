@@ -1,10 +1,4 @@
-import {
-	shipsToPlace,
-  attack,
-  player1,
-  player2,
-  whoPlays
-} from "./index.js";
+import { shipsToPlace, attack, player1, player2, whoPlays } from "./index.js";
 import { computerMove } from "./gameLogic.js";
 
 function createToggleButton(player, hide) {
@@ -32,9 +26,6 @@ function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
   }
   gameboardDiv.classList.add(whoseShips);
   gameboardDiv.classList.add(typeOfBoard);
-  if (isHidden) {
-    gameboardDiv.classList.add("hidden");
-  }
 
   let shipsNumbering = {};
 
@@ -88,17 +79,33 @@ function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
     }
     gameboardDiv.appendChild(columnDiv);
   }
+
   const placeShipsDiv = document.createElement("div");
+  if (typeOfBoard === "verticalShipsToPlace") {
+    placeShipsDiv.classList.add("verticalShipsContainer");
+  } else if (typeOfBoard === "horizontalShipsToPlace") {
+    placeShipsDiv.classList.add("horizontalShipsContainer");
+  }
+  if (isHidden) {
+    placeShipsDiv.classList.add("hidden");
+  }
   placeShipsDiv.appendChild(gameboardDiv);
 
   const rotateButton = document.createElement("button");
   rotateButton.textContent = "Rotar Barcos";
   rotateButton.addEventListener("click", rotateShips);
-  const main = document.querySelector("main");
   placeShipsDiv.appendChild(rotateButton);
+
+  const main = document.querySelector("main");
   main.appendChild(placeShipsDiv);
 
-  function rotateShips() {}
+  function rotateShips() {
+    let verticalShips = document.querySelector(".verticalShipsContainer");
+    let horizontalShips = document.querySelector(".horizontalShipsContainer");
+
+    verticalShips.classList.toggle("hidden");
+    horizontalShips.classList.toggle("hidden");
+  }
 }
 
 function showHorizontalShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
@@ -208,62 +215,7 @@ function showBoard(
           square.addEventListener("dragover", function(event) {
             event.preventDefault();
           });
-          square.addEventListener("drop", function(event) {
-            const data = event.dataTransfer.getData("text/plain");
-            const shipID = parseInt(data[0], 10);
-            const squareDropped = data[1];
-            const shipLength = parseInt(data[2], 10);
-            const x = parseInt(event.target.dataset.x, 10);
-            const y = parseInt(event.target.dataset.y, 10);
-
-            let isVertical;
-            let x0 = null;
-            let y0 = null;
-
-            if (data[3] === "v") {
-              isVertical = true;
-              x0 = parseInt(x, 10);
-              y0 = y - squareDropped + 1;
-            } else if (data[3] === "h") {
-              isVertical = false;
-              x0 = x - squareDropped + 1;
-              y0 = parseInt(y, 10);
-            }
-
-            let fullShipCoordinates;
-
-            if (whoPlays === "player1") {
-              fullShipCoordinates = player1.gameboard.placeShip(
-                shipID,
-                shipLength,
-                isVertical,
-                x0,
-                y0
-              );
-              shipsToPlace.removeShip(shipID);
-              showShipsToPlace(
-                shipsToPlace.board,
-                "player1",
-                "verticalShipsToPlace",
-                false
-              );
-              showBoard(
-                player1.gameboard.board,
-                "player1",
-                "ownBoard",
-                false,
-                true
-              );
-            } else if (whoPlays === "player2") {
-              fullShipCoordinates = player2.gameboard.placeShip(
-                shipID,
-                shipLength,
-                isVertical,
-                x0,
-                y0
-              );
-            }
-          });
+          square.addEventListener("drop", onDrop);
         }
       } else if (board[i][j] === false) {
         square.textContent = "?";
@@ -286,6 +238,80 @@ function showBoard(
     gameboardDiv.appendChild(columnDiv);
   }
   document.querySelector("main").appendChild(gameboardDiv);
+
+  function onDrop(event) {
+    const data = event.dataTransfer.getData("text/plain");
+    const shipID = parseInt(data[0], 10);
+    const squareDropped = data[1];
+    const shipLength = parseInt(data[2], 10);
+    const x = parseInt(event.target.dataset.x, 10);
+    const y = parseInt(event.target.dataset.y, 10);
+
+    let isVertical;
+    let x0 = null;
+    let y0 = null;
+
+    if (data[3] === "v") {
+      isVertical = true;
+      x0 = parseInt(x, 10);
+      y0 = y - squareDropped + 1;
+    } else if (data[3] === "h") {
+      isVertical = false;
+      x0 = x - squareDropped + 1;
+      y0 = parseInt(y, 10);
+    }
+
+    let fullShipCoordinates;
+
+    if (whoPlays === "player1") {
+      fullShipCoordinates = player1.gameboard.placeShip(
+        shipID,
+        shipLength,
+        isVertical,
+        x0,
+        y0
+      );
+
+      // showShipsToPlace(
+      //   shipsToPlace.board,
+      //   "player1",
+      //   "verticalShipsToPlace",
+      //   false
+      // );
+      // showBoard(player1.gameboard.board, "player1", "ownBoard", false, true);
+    } else if (whoPlays === "player2") {
+      fullShipCoordinates = player2.gameboard.placeShip(
+        shipID,
+        shipLength,
+        isVertical,
+        x0,
+        y0
+      );
+    }
+    shipsToPlace.removeShip(shipID);
+
+    // Show placed ship on ownBoard
+    const gameboard = document.querySelector(`.gameboard.${whoPlays}.ownBoard`);
+
+    for (let i = 0; i < fullShipCoordinates.length; i++) {
+      const coord = fullShipCoordinates[i];
+      const shipSquare = gameboard.querySelector(
+        `[data-x="${coord[0]}"][data-y="${coord[1]}"]`
+      );
+      shipSquare.classList.remove("water");
+      shipSquare.textContent = "B";
+      shipSquare.classList.add("ship");
+		}
+		
+		// Hide placed ship on shipsToPlace and make it not draggable
+		const verticalShips = document.querySelector(".verticalShipsContainer");
+		const placedShipVertical = verticalShips.querySelectorAll(`[data-ship-id="${shipID}"]`);
+		for (let i = 0; i < placedShipVertical.length; i++) {
+			const square = placedShipVertical[i];
+			square.style.opacity = "0";
+			square.setAttribute.draggable = false;
+		}
+  }
 }
 
 function showAttackEnemyBoard(result) {
