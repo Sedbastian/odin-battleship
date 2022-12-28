@@ -36,9 +36,12 @@ function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
       columnDiv.classList.add("column");
     } else if (typeOfBoard === "horizontalShipsToPlace") {
       columnDiv.classList.add("row");
+		}
+		
+		// Make draggable only even columns
+    if (!((i + 2) % 2)) {
+      columnDiv.draggable = true;
     }
-
-    columnDiv.draggable = true;
     columnDiv.addEventListener("dragstart", function(event) {
       event.dataTransfer.setData(
         "text/plain",
@@ -106,78 +109,6 @@ function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
     verticalShips.classList.toggle("hidden");
     horizontalShips.classList.toggle("hidden");
   }
-}
-
-function showHorizontalShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
-  // These variables will be defined by square's onmousedown event.
-  let shipID;
-  let squareDragged;
-  let shipLength;
-
-  const gameboardDiv = document.createElement("div");
-  gameboardDiv.classList.add("gameboardHorizontal");
-  gameboardDiv.classList.add(whoseShips);
-  gameboardDiv.classList.add(typeOfBoard);
-  if (isHidden) {
-    gameboardDiv.classList.add("hidden");
-  }
-
-  let shipsNumbering = {};
-
-  for (let i = 0; i < board.length; i++) {
-    const columnDiv = document.createElement("div");
-    columnDiv.classList.add("row");
-    columnDiv.draggable = true;
-    columnDiv.addEventListener("dragstart", function(event) {
-      event.dataTransfer.setData(
-        "text/plain",
-        `${shipID}${squareDragged}${shipLength}${typeOfBoard[0]}`
-      );
-    });
-    for (let j = 0; j < board[i].length; j++) {
-      const square = document.createElement("div");
-      square.classList.add("square");
-      square.style.width = "100%";
-      square.dataset.player = whoseShips;
-      square.dataset.x = i;
-      square.dataset.y = j;
-      if (board[i][j] === null) {
-        square.style.opacity = "0";
-      } else {
-        square.textContent = "B";
-        square.classList.add("ship");
-        square.dataset.shipId = board[i][j].shipID;
-        square.dataset.shipLength = board[i][j].length;
-
-        if (shipsNumbering[`shipID${board[i][j].shipID}`] === undefined) {
-          shipsNumbering[`shipID${board[i][j].shipID}`] = 1;
-        }
-        square.dataset.shipSquareNumber =
-          shipsNumbering[`shipID${board[i][j].shipID}`];
-        shipsNumbering[`shipID${board[i][j].shipID}`]++;
-
-        square.addEventListener("mousedown", function(event) {
-          shipID = event.target.dataset.shipId;
-          squareDragged = event.target.dataset.shipSquareNumber;
-          shipLength = event.target.dataset.shipLength;
-        });
-      }
-      columnDiv.appendChild(square);
-    }
-    gameboardDiv.appendChild(columnDiv);
-  }
-
-  const placeShipsDiv = document.createElement("div");
-  placeShipsDiv.appendChild(gameboardDiv);
-
-  const rotateButton = document.createElement("button");
-  rotateButton.textContent = "Rotar Barcos";
-  rotateButton.addEventListener("click", rotateShips);
-  const main = document.querySelector("main");
-  placeShipsDiv.appendChild(rotateButton);
-  main.appendChild(placeShipsDiv);
-
-  function rotateShips() {}
 }
 
 function showBoard(
@@ -271,14 +202,6 @@ function showBoard(
         x0,
         y0
       );
-
-      // showShipsToPlace(
-      //   shipsToPlace.board,
-      //   "player1",
-      //   "verticalShipsToPlace",
-      //   false
-      // );
-      // showBoard(player1.gameboard.board, "player1", "ownBoard", false, true);
     } else if (whoPlays === "player2") {
       fullShipCoordinates = player2.gameboard.placeShip(
         shipID,
@@ -301,16 +224,28 @@ function showBoard(
       shipSquare.classList.remove("water");
       shipSquare.textContent = "B";
       shipSquare.classList.add("ship");
-		}
-		
-		// Hide placed ship on shipsToPlace and make it not draggable
-		const verticalShips = document.querySelector(".verticalShipsContainer");
-		const placedShipVertical = verticalShips.querySelectorAll(`[data-ship-id="${shipID}"]`);
-		for (let i = 0; i < placedShipVertical.length; i++) {
-			const square = placedShipVertical[i];
-			square.style.opacity = "0";
-			square.setAttribute.draggable = false;
-		}
+    }
+
+    // Hide placed ship on shipsToPlace and make it not draggable
+    const verticalShips = document.querySelector(".verticalShipsContainer");
+    const placedShipVertical = verticalShips.querySelectorAll(
+      `[data-ship-id="${shipID}"]`
+    );
+    for (let i = 0; i < placedShipVertical.length; i++) {
+      const square = placedShipVertical[i];
+      square.style.opacity = "0";
+      square.setAttribute.draggable = false;
+    }
+
+    const horizontalShips = document.querySelector(".horizontalShipsContainer");
+    const placedShipHorizontal = horizontalShips.querySelectorAll(
+      `[data-ship-id="${shipID}"]`
+    );
+    for (let i = 0; i < placedShipHorizontal.length; i++) {
+      const square = placedShipHorizontal[i];
+      square.style.opacity = "0";
+      square.setAttribute.draggable = false;
+    }
   }
 }
 
