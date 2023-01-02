@@ -1,7 +1,7 @@
-import { shipsToPlace, attack, player1, player2, whoPlays } from "./index.js";
-import { computerMove } from "./gameLogic.js";
+import { whoPlays, placeShips, battleBegins, attack } from "./index.js";
+import { Gameboard, computerMove } from "./gameLogic.js";
 
-function createToggleButton(player, hide) {
+function createToggleButton(player, player1name, player2name, hide) {
   const button = document.createElement("button");
   button.classList.add("toggleBoards");
   if (hide) {
@@ -11,10 +11,86 @@ function createToggleButton(player, hide) {
   button.textContent = "Esconder tableros y cambiar turno";
   button.addEventListener("click", toggleBoards);
   document.querySelector("body").appendChild(button);
+
+  function toggleBoards() {
+    const player = this.dataset.player;
+
+    let otherPlayer;
+    let playerName;
+    let otherPlayerName;
+
+    if (player === "player1") {
+      otherPlayer = "player2";
+      playerName = player1name;
+      otherPlayerName = player2name;
+    } else {
+      otherPlayer = "player1";
+      playerName = player2name;
+      otherPlayerName = player1name;
+    }
+
+    if (player === whoPlays) {
+      showMakeYourMove(whoPlays);
+      return;
+    }
+
+    // Hide:
+    const ownBoardToHide = document.querySelector(
+      `.gameboard.${player}.ownBoard`
+    );
+    ownBoardToHide.classList.toggle("hidden");
+
+    const enemyBoardToHide = document.querySelector(
+      `.gameboard.${otherPlayer}.enemyBoard`
+    );
+    enemyBoardToHide.classList.toggle("hidden");
+
+    const toggleButtonToHide = document.querySelector(
+      `button[data-player="${player}"]`
+    );
+    toggleButtonToHide.classList.toggle("hidden");
+
+    const lastAttacked = document.querySelector(
+      `[data-player="${player}"].lastAttacked`
+    );
+    if (lastAttacked) {
+      lastAttacked.classList.remove("lastAttacked");
+    }
+
+    // Show:
+    const showButton = document.createElement("button");
+    showButton.classList.add("showHiddenBoards");
+    showButton.textContent = `Mostrar tableros de ${otherPlayerName}`;
+    showButton.addEventListener("click", showHiddenBoards);
+    document.querySelector("main").appendChild(showButton);
+
+    function showMakeYourMove() {
+      alert(`¡Todavía no hiciste tu jugada, ${playerName}!`);
+    }
+
+    function showHiddenBoards() {
+      const ownBoardToShow = document.querySelector(
+        `.gameboard.${otherPlayer}.ownBoard`
+      );
+      ownBoardToShow.classList.toggle("hidden");
+
+      const enemyBoardToShow = document.querySelector(
+        `.gameboard.${player}.enemyBoard`
+      );
+      enemyBoardToShow.classList.toggle("hidden");
+
+      const toggleButtonToShow = document.querySelector(
+        `button[data-player="${otherPlayer}"]`
+      );
+      toggleButtonToShow.classList.toggle("hidden");
+
+      showButton.classList.toggle("hidden");
+    }
+  }
 }
 
-function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
-  // These variables will be defined by square's onmousedown event.
+function showShipsToPlace(board, playerTurn, typeOfBoard, isHidden) {
+  // These variables will be defined by square's onmousedown event callback
   let shipID;
   let squareDragged;
   let shipLength;
@@ -24,7 +100,7 @@ function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
   if (typeOfBoard === "horizontalShipsToPlace") {
     gameboardDiv.style.flexDirection = "column";
   }
-  gameboardDiv.classList.add(whoseShips);
+  gameboardDiv.classList.add(playerTurn);
   gameboardDiv.classList.add(typeOfBoard);
 
   let shipsNumbering = {};
@@ -36,9 +112,9 @@ function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
       columnDiv.classList.add("column");
     } else if (typeOfBoard === "horizontalShipsToPlace") {
       columnDiv.classList.add("row");
-		}
-		
-		// Make draggable only even columns
+    }
+
+    // Make draggable only even columns
     if (!((i + 2) % 2)) {
       columnDiv.draggable = true;
     }
@@ -54,7 +130,7 @@ function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
       if (typeOfBoard === "horizontalShipsToPlace") {
         square.style.width = "100%";
       }
-      square.dataset.player = whoseShips;
+      square.dataset.player = playerTurn;
       square.dataset.x = i;
       square.dataset.y = j;
       if (board[i][j] === null) {
@@ -112,27 +188,48 @@ function showShipsToPlace(board, whoseShips, typeOfBoard, isHidden) {
 }
 
 function showBoard(
-  board,
-  whoseShips,
+  player1,
+  player2,
+  playerTurn,
   typeOfBoard,
   isHidden,
-  isForPlacingShips
+  isForPlacingShips,
+  numberOfShipsToPlace,
+  shipsToPlace,
+  player2name,
+  boardSize
 ) {
   const gameboardDiv = document.createElement("div");
   gameboardDiv.classList.add("gameboard");
-  gameboardDiv.classList.add(whoseShips);
+  gameboardDiv.classList.add(playerTurn);
   gameboardDiv.classList.add(typeOfBoard);
   if (isHidden) {
     gameboardDiv.classList.add("hidden");
   }
   let shipsNumbering = {};
+
+  let board;
+  if (playerTurn === "player1") {
+    if (typeOfBoard === "ownBoard") {
+      board = player1.gameboard.board;
+    } else if (typeOfBoard === "enemyBoard") {
+      board = player1.gameboard.receivedHits;
+    }
+  } else if (playerTurn === "player2") {
+    if (typeOfBoard === "ownBoard") {
+      board = player2.gameboard.board;
+    } else if (typeOfBoard === "enemyBoard") {
+      board = player2.gameboard.receivedHits;
+    }
+  }
+
   for (let i = 0; i < board.length; i++) {
     const columnDiv = document.createElement("div");
     columnDiv.classList.add("column");
     for (let j = 0; j < board[i].length; j++) {
       const square = document.createElement("div");
       square.classList.add("square");
-      square.dataset.player = whoseShips;
+      square.dataset.player = playerTurn;
       square.dataset.x = i;
       square.dataset.y = j;
       if (board[i][j] === null) {
@@ -151,7 +248,7 @@ function showBoard(
       } else if (board[i][j] === false) {
         square.textContent = "?";
         square.classList.add("notAttacked");
-        square.addEventListener("click", attack);
+        square.addEventListener("click", callAttack);
       } else {
         square.textContent = "B";
         square.classList.add("ship");
@@ -170,10 +267,15 @@ function showBoard(
   }
   document.querySelector("main").appendChild(gameboardDiv);
 
+  function callAttack() {
+    attack.call(this, player1, player2);
+  }
+
+  let numberOfPlacedShips = 0;
   function onDrop(event) {
     const data = event.dataTransfer.getData("text/plain");
     const shipID = parseInt(data[0], 10);
-    const squareDropped = data[1];
+    const squareDropped = parseInt(data[1], 10);
     const shipLength = parseInt(data[2], 10);
     const x = parseInt(event.target.dataset.x, 10);
     const y = parseInt(event.target.dataset.y, 10);
@@ -192,9 +294,9 @@ function showBoard(
       y0 = parseInt(y, 10);
     }
 
+    // placeShip & remove it from shipsToPlace
     let fullShipCoordinates;
-
-    if (whoPlays === "player1") {
+    if (playerTurn === "player1") {
       fullShipCoordinates = player1.gameboard.placeShip(
         shipID,
         shipLength,
@@ -202,7 +304,7 @@ function showBoard(
         x0,
         y0
       );
-    } else if (whoPlays === "player2") {
+    } else if (playerTurn === "player2") {
       fullShipCoordinates = player2.gameboard.placeShip(
         shipID,
         shipLength,
@@ -211,11 +313,17 @@ function showBoard(
         y0
       );
     }
+
+    // This condition is met when the ship could not be placed
+    if (typeof fullShipCoordinates === "string") {
+      return;
+    }
     shipsToPlace.removeShip(shipID);
 
     // Show placed ship on ownBoard
-    const gameboard = document.querySelector(`.gameboard.${whoPlays}.ownBoard`);
-
+    const gameboard = document.querySelector(
+      `.gameboard.${this.dataset.player}.ownBoard`
+    );
     for (let i = 0; i < fullShipCoordinates.length; i++) {
       const coord = fullShipCoordinates[i];
       const shipSquare = gameboard.querySelector(
@@ -246,10 +354,42 @@ function showBoard(
       square.style.opacity = "0";
       square.setAttribute.draggable = false;
     }
+
+    // Check if all ships have been placed
+    numberOfPlacedShips++;
+    if (numberOfPlacedShips === numberOfShipsToPlace) {
+      if (this.dataset.player === "player2") {
+        setTimeout(() => {
+          battleBegins(player1, player2);
+        }, 0);
+        return;
+      }
+      if (player2name === "Computadora") {
+        // Place random ships for Computer Player2
+        // Here!!
+        setTimeout(() => {
+          battleBegins(player1, player2);
+        }, 0);
+        return;
+      } else if (this.dataset.player === "player1") {
+        setTimeout(() => {
+          placeShips(
+            player1,
+            player2,
+            "player2",
+            numberOfShipsToPlace,
+            Gameboard(boardSize),
+            boardSize
+          );
+        }, 0);
+        numberOfPlacedShips = 0;
+        return;
+      }
+    }
   }
 }
 
-function showAttackEnemyBoard(result) {
+function showAttackEnemyBoard(result, player2name) {
   if (result === "¡Agua!") {
     this.addEventListener("transitionend", isComputerMove);
     this.classList.add("water");
@@ -272,7 +412,18 @@ function showAttackEnemyBoard(result) {
   }
 
   function isComputerMove() {
-    if (player2.name === "Computadora") {
+    if (player2name === "Computadora") {
+      const compMoveObject = computerMove();
+
+      // Show Computer Move:
+      const attackedSquare = document.querySelector(
+        `:not(.notAttacked)[data-player="player1"][data-x="${compMoveObject.x}"][data-y="${compMoveObject.y}"]`
+      );
+      attackedSquare.textContent = "\u{1F7CF}";
+      attackedSquare.classList.add("attacked");
+      attackedSquare.classList.add("attackedTrans");
+      attackedSquare.addEventListener("transitionend", transitionEndCallback);
+
       function transitionEndCallback() {
         attackedSquare.classList.remove("attackedTrans");
 
@@ -285,17 +436,6 @@ function showAttackEnemyBoard(result) {
           transitionEndCallback
         );
       }
-
-      const compMoveObject = computerMove();
-
-      // Show Computer Move:
-      const attackedSquare = document.querySelector(
-        `:not(.notAttacked)[data-player="player1"][data-x="${compMoveObject.x}"][data-y="${compMoveObject.y}"]`
-      );
-      attackedSquare.textContent = "\u{1F7CF}";
-      attackedSquare.classList.add("attacked");
-      attackedSquare.classList.add("attackedTrans");
-      attackedSquare.addEventListener("transitionend", transitionEndCallback);
     }
   }
 }
@@ -307,82 +447,6 @@ function showAttackOwnBoard() {
   attackedSquare.textContent = "\u{1F7CF}";
   attackedSquare.classList.add("attacked");
   attackedSquare.classList.add("lastAttacked");
-}
-
-function toggleBoards() {
-  const player = this.dataset.player;
-
-  let otherPlayer;
-  let playerName;
-  let otherPlayerName;
-
-  if (player === "player1") {
-    otherPlayer = "player2";
-    playerName = player1.name;
-    otherPlayerName = player2.name;
-  } else {
-    otherPlayer = "player1";
-    playerName = player2.name;
-    otherPlayerName = player1.name;
-  }
-
-  if (player === whoPlays) {
-    showMakeYourMove(whoPlays);
-    return;
-  }
-
-  // Hide:
-  const ownBoardToHide = document.querySelector(
-    `.gameboard.${player}.ownBoard`
-  );
-  ownBoardToHide.classList.toggle("hidden");
-
-  const enemyBoardToHide = document.querySelector(
-    `.gameboard.${otherPlayer}.enemyBoard`
-  );
-  enemyBoardToHide.classList.toggle("hidden");
-
-  const toggleButtonToHide = document.querySelector(
-    `button[data-player="${player}"]`
-  );
-  toggleButtonToHide.classList.toggle("hidden");
-
-  const lastAttacked = document.querySelector(
-    `[data-player="${player}"].lastAttacked`
-  );
-  if (lastAttacked) {
-    lastAttacked.classList.remove("lastAttacked");
-  }
-
-  // Show:
-  const showButton = document.createElement("button");
-  showButton.classList.add("showHiddenBoards");
-  showButton.textContent = `Mostrar tableros de ${otherPlayerName}`;
-  showButton.addEventListener("click", showHiddenBoards);
-  document.querySelector("main").appendChild(showButton);
-
-  function showMakeYourMove() {
-    alert(`¡Todavía no hiciste tu jugada, ${playerName}!`);
-  }
-
-  function showHiddenBoards() {
-    const ownBoardToShow = document.querySelector(
-      `.gameboard.${otherPlayer}.ownBoard`
-    );
-    ownBoardToShow.classList.toggle("hidden");
-
-    const enemyBoardToShow = document.querySelector(
-      `.gameboard.${player}.enemyBoard`
-    );
-    enemyBoardToShow.classList.toggle("hidden");
-
-    const toggleButtonToShow = document.querySelector(
-      `button[data-player="${otherPlayer}"]`
-    );
-    toggleButtonToShow.classList.toggle("hidden");
-
-    showButton.classList.toggle("hidden");
-  }
 }
 
 function winner() {

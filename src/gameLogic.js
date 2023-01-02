@@ -1,5 +1,3 @@
-import { boardSize, player1 } from "./index.js";
-
 function Ship(shipID, length, isVertical) {
   const timesHit = 0;
   function hit() {

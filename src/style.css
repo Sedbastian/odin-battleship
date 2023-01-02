@@ -8,8 +8,8 @@ body {
 
 main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45vmax, 1fr));
-  /* justify-items: stretch; */
+  grid-template-columns: repeat(2, .4fr);
+  justify-content: center;
 }
 
 .gameboard {
@@ -31,7 +31,6 @@ main {
 .row {
 	display: flex;
 	justify-content: space-between;
-	
 }
 
 .hidden {
