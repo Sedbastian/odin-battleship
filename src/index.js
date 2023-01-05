@@ -1,6 +1,8 @@
 import "./style.css";
 import { Player, Gameboard } from "./gameLogic.js";
 import {
+  placeShipsMessage,
+  removePlaceShipsElements,
   showShipsToPlace,
   showBoard,
   showAttackEnemyBoard,
@@ -28,27 +30,9 @@ function placeShips(
   boardSize
 ) {
   if (playerTurn === "player1") {
-    alert(`Ahora es el turno de ${player1.name} para posicionar sus barcos.`);
+    placeShipsMessage(player1.name, numberOfShipsToPlace);
   } else if (playerTurn === "player2") {
-    alert(`Ahora es el turno de ${player2.name} para posicionar sus barcos.`);
-  }
-
-  const verticalShipsToPlace = document.querySelector(
-    ".verticalShipsContainer"
-  );
-  const horizontalShipsToPlace = document.querySelector(
-    ".horizontalShipsContainer"
-  );
-  const gameboard = document.querySelector(".gameboard.ownBoard");
-
-  if (verticalShipsToPlace !== null) {
-    verticalShipsToPlace.remove();
-  }
-  if (horizontalShipsToPlace !== null) {
-    horizontalShipsToPlace.remove();
-  }
-  if (gameboard !== null) {
-    gameboard.remove();
+    placeShipsMessage(player2.name, numberOfShipsToPlace);
   }
 
   shipsToPlace.placeShip(1, 5, true, 0, 0);
@@ -77,50 +61,32 @@ function placeShips(
     playerTurn,
     "ownBoard",
     false,
+    boardSize,
     true,
     numberOfShipsToPlace,
     shipsToPlace,
-    player2.name,
-    boardSize
+    player2.name
   );
 }
 
-function battleBegins(player1, player2) {
-  // Remove placeShips elements
-  const verticalShipsToPlace = document.querySelector(
-    ".verticalShipsContainer"
-  );
-  const horizontalShipsToPlace = document.querySelector(
-    ".horizontalShipsContainer"
-  );
-  const gameboard = document.querySelector(".gameboard.ownBoard");
-
-  if (verticalShipsToPlace !== null) {
-    verticalShipsToPlace.remove();
-  }
-  if (horizontalShipsToPlace !== null) {
-    horizontalShipsToPlace.remove();
-  }
-  if (gameboard !== null) {
-    gameboard.remove();
-  }
-
+function battleBegins(player1, player2, boardSize) {
+  removePlaceShipsElements();
   alert(`Empieza ${player1.name}`);
 
   // Show boards
-  showBoard(player1, player2, "player1", "ownBoard", false);
-  showBoard(player1, player2, "player2", "enemyBoard", false);
+  showBoard(player1, player2, "player1", "ownBoard", false, boardSize);
+  showBoard(player1, player2, "player2", "enemyBoard", false, boardSize);
   if (player2.name !== "Computadora") {
     createToggleButton("player1", player1.name, player2.name);
   }
 
-  showBoard(player1, player2, "player2", "ownBoard", true);
-  showBoard(player1, player2, "player1", "enemyBoard", true);
+  showBoard(player1, player2, "player2", "ownBoard", true, boardSize);
+  showBoard(player1, player2, "player1", "enemyBoard", true, boardSize);
   createToggleButton("player2", player1.name, player2.name, "hide");
 }
 
-function attack(player1, player2) {
-	if (this.dataset.player === whoPlays) {
+function attack(player1, player2, boardSize) {
+  if (this.dataset.player === whoPlays) {
     return;
   }
 
@@ -134,7 +100,10 @@ function attack(player1, player2) {
   }
 
   if (result === "¡Todos los barcos han sido hundidos!") {
-    winner();
+    setTimeout(() => {
+      winner(player1.name, player2.name);
+    }, 0);
+
     return;
   }
 
@@ -145,8 +114,7 @@ function attack(player1, player2) {
       whoPlays = "player1";
     }
   }
-
-  showAttackEnemyBoard.call(this, result, player2.name);
+  showAttackEnemyBoard.call(this, player1, result, player2.name, boardSize);
   showAttackOwnBoard.call(this, result);
 }
 

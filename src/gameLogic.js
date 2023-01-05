@@ -126,15 +126,35 @@ function Player(name, gameboard) {
   };
 }
 
-function computerMove() {
+function placeRandomShips(player, boardSize) {
+  for (let i = 0; i < 5; i++) {
+    let x;
+    let y;
+    let isVertical;
+    do {
+      x = Math.floor(Math.random() * boardSize);
+      y = Math.floor(Math.random() * boardSize);
+      if ((x + 1) % 2 === 0) {
+        isVertical = true;
+      } else {
+        isVertical = false;
+      }
+    } while (
+      typeof player.gameboard.placeShip(i + 1, 5 - i, isVertical, x, y) !==
+      "object"
+    );
+  }
+}
+
+function computerAttack(boardSize, player) {
   let x;
   let y;
   do {
     x = Math.floor(Math.random() * boardSize);
     y = Math.floor(Math.random() * boardSize);
-  } while (player1.gameboard.receivedHits[x][y] === true);
-  const result = player1.gameboard.receiveAttack(x, y);
+  } while (player.gameboard.receivedHits[x][y] === true);
+  const result = player.gameboard.receiveAttack(x, y);
   return { result, x, y };
 }
 
-export { Ship, Gameboard, Player, computerMove };
+export { Ship, Gameboard, Player, placeRandomShips, computerAttack };

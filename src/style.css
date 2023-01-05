@@ -8,8 +8,13 @@ body {
 
 main {
   display: grid;
-  grid-template-columns: repeat(2, .4fr);
+  grid-template-columns: repeat(2, 0.4fr);
   justify-content: center;
+}
+
+.messages {
+  grid-column: 1 / 3;
+  color: green;
 }
 
 .gameboard {
@@ -22,15 +27,22 @@ main {
   width: 100%;
 }
 
-.gameboardHorizontal {
+/* .gameboardHorizontal {
   display: flex;
   flex-direction: column;
   margin: 1rem;
-}
+} */
 
 .row {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.rowDraggable {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .hidden {
@@ -43,8 +55,9 @@ main {
   align-items: center;
   aspect-ratio: 1;
   border-style: solid;
-  border-color: black;
-	border-radius: 0.5rem;
+  border-color: rgb(0, 0, 0);
+  border-width: 0.1rem;
+  border-radius: 0.5rem;
 }
 
 .square:hover {
