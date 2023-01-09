@@ -1,5 +1,47 @@
-import { whoPlays, placeShips, battleBegins, attack } from "./index.js";
+import { whoPlays, initializeGame, placeShips, battleBegins, attack } from "./index.js";
 import { Gameboard, placeRandomShips, computerAttack } from "./gameLogic.js";
+
+function getNames() {
+  const who = document.createElement("h2");
+  who.textContent = "¿Quiénes van a jugar?";
+
+  const main = document.querySelector("main");
+
+  const divPlayer1 = document.createElement("div");
+  const name1 = document.createElement("div");
+  name1.classList.add("name");
+  name1.textContent = "Jugador/a 1:";
+  divPlayer1.appendChild(name1);
+
+	const player1input = document.createElement("input");
+	divPlayer1.appendChild(player1input);
+
+  const divPlayer2 = document.createElement("div");
+  const name2 = document.createElement("div");
+  name2.classList.add("name");
+  name2.textContent = "Jugador/a 2:";
+  divPlayer2.appendChild(name2);
+
+	const player2input = document.createElement("input");
+	player2input.value = "Computadora";
+	divPlayer2.appendChild(player2input);
+	
+	const submitNames = document.createElement("button");
+	submitNames.classList.add("submitNames");
+	submitNames.textContent = "Listo!";
+	submitNames.addEventListener("click", () => {
+		who.remove();
+		divPlayer1.remove();
+		divPlayer2.remove();
+		submitNames.remove();
+		initializeGame(player1input.value, player2input.value);
+	})
+	
+	main.appendChild(who);
+  main.appendChild(divPlayer1);
+  main.appendChild(divPlayer2);
+	main.appendChild(submitNames);
+}
 
 function createToggleButton(player, player1name, player2name, hide) {
   const button = document.createElement("button");
@@ -413,7 +455,6 @@ function showBoard(
     const draggableDiv = document.querySelector(
       `[data-ship-id="${shipID}"][draggable="true"]`
     );
-    console.log(draggableDiv);
     draggableDiv.setAttribute("draggable", "false");
 
     // Check if all ships have been placed
@@ -522,6 +563,7 @@ function winner(player1name, player2name) {
 }
 
 export {
+  getNames,
   placeShipsMessage,
   removePlaceShipsElements,
   createToggleButton,

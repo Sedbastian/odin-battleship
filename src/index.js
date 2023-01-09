@@ -1,6 +1,7 @@
 import "./style.css";
 import { Player, Gameboard } from "./gameLogic.js";
 import {
+	getNames,
   placeShipsMessage,
   removePlaceShipsElements,
   showShipsToPlace,
@@ -12,10 +13,11 @@ import {
 } from "./domModule.js";
 
 let whoPlays = "player1";
-initializeGame(10, "Rinzai", "Selassie");
 
-function initializeGame(boardSize, player1name, player2name) {
-  const player1 = Player(player1name, Gameboard(boardSize));
+getNames();
+
+function initializeGame(player1name, player2name, boardSize = 10) {
+	const player1 = Player(player1name, Gameboard(boardSize));
   const player2 = Player(player2name, Gameboard(boardSize));
 
   placeShips(player1, player2, "player1", 5, Gameboard(boardSize), boardSize);
@@ -118,4 +120,4 @@ function attack(player1, player2, boardSize) {
   showAttackOwnBoard.call(this, result);
 }
 
-export { whoPlays, placeShips, battleBegins, attack };
+export { whoPlays, initializeGame, placeShips, battleBegins, attack };
