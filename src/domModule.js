@@ -1,4 +1,10 @@
-import { whoPlays, initializeGame, placeShips, battleBegins, attack } from "./index.js";
+import {
+  whoPlays,
+  initializeGame,
+  placeShips,
+  battleBegins,
+  attack
+} from "./index.js";
 import { Gameboard, placeRandomShips, computerAttack } from "./gameLogic.js";
 
 function getNames() {
@@ -13,8 +19,8 @@ function getNames() {
   name1.textContent = "Jugador/a 1:";
   divPlayer1.appendChild(name1);
 
-	const player1input = document.createElement("input");
-	divPlayer1.appendChild(player1input);
+  const player1input = document.createElement("input");
+  divPlayer1.appendChild(player1input);
 
   const divPlayer2 = document.createElement("div");
   const name2 = document.createElement("div");
@@ -22,25 +28,25 @@ function getNames() {
   name2.textContent = "Jugador/a 2:";
   divPlayer2.appendChild(name2);
 
-	const player2input = document.createElement("input");
-	player2input.value = "Computadora";
-	divPlayer2.appendChild(player2input);
-	
-	const submitNames = document.createElement("button");
-	submitNames.classList.add("submitNames");
-	submitNames.textContent = "Listo!";
-	submitNames.addEventListener("click", () => {
-		who.remove();
-		divPlayer1.remove();
-		divPlayer2.remove();
-		submitNames.remove();
-		initializeGame(player1input.value, player2input.value);
-	})
-	
-	main.appendChild(who);
+  const player2input = document.createElement("input");
+  player2input.value = "Computadora";
+  divPlayer2.appendChild(player2input);
+
+  const submitNames = document.createElement("button");
+  submitNames.classList.add("submitNames");
+  submitNames.textContent = "Listo!";
+  submitNames.addEventListener("click", () => {
+    who.remove();
+    divPlayer1.remove();
+    divPlayer2.remove();
+    submitNames.remove();
+    initializeGame(player1input.value, player2input.value);
+  });
+
+  main.appendChild(who);
   main.appendChild(divPlayer1);
   main.appendChild(divPlayer2);
-	main.appendChild(submitNames);
+  main.appendChild(submitNames);
 }
 
 function createToggleButton(player, player1name, player2name, hide) {
@@ -90,7 +96,7 @@ function createToggleButton(player, player1name, player2name, hide) {
     const toggleButtonToHide = document.querySelector(
       `button[data-player="${player}"]`
     );
-    toggleButtonToHide.classList.toggle("hidden");
+    toggleButtonToHide.classList.add("hidden");
 
     const lastAttacked = document.querySelector(
       `[data-player="${player}"].lastAttacked`
@@ -99,7 +105,7 @@ function createToggleButton(player, player1name, player2name, hide) {
       lastAttacked.classList.remove("lastAttacked");
     }
 
-    // Show:
+    // Show Button:
     const showButton = document.createElement("button");
     showButton.classList.add("showHiddenBoards");
     showButton.textContent = `Mostrar tableros de ${otherPlayerName}`;
@@ -124,26 +130,34 @@ function createToggleButton(player, player1name, player2name, hide) {
       const toggleButtonToShow = document.querySelector(
         `button[data-player="${otherPlayer}"]`
       );
-      toggleButtonToShow.classList.toggle("hidden");
+      toggleButtonToShow.classList.add("hidden");
 
       showButton.classList.toggle("hidden");
     }
   }
 }
 
-function placeShipsMessage(playerName, numberOfShipsToPlace) {
+function placeShipsMessage(playerName, otherPlayerName, numberOfShipsToPlace) {
   removePlaceShipsElements();
 
   const messagesDiv = document.createElement("div");
   messagesDiv.classList.add("messages");
   messagesDiv.textContent = `${playerName}, posiciona tus ${numberOfShipsToPlace} barcos sobre las aguas...`;
-
   const main = document.querySelector("main");
   main.appendChild(messagesDiv);
+
+  if (otherPlayerName !== "Computadora") {
+    const messagesDiv2 = document.createElement("div");
+    messagesDiv2.classList.add("messages");
+    messagesDiv2.classList.add("messages2");
+    messagesDiv2.textContent = `¡Que ${otherPlayerName} no vea tu tablero!`;
+    const main = document.querySelector("main");
+    main.appendChild(messagesDiv2);
+  }
 }
 
 function removePlaceShipsElements() {
-  const messages = document.querySelector(".messages");
+  const messages = document.querySelectorAll(".messages");
 
   const verticalShipsToPlace = document.querySelector(
     ".verticalShipsContainer"
@@ -154,7 +168,9 @@ function removePlaceShipsElements() {
   const gameboard = document.querySelector(".gameboard.ownBoard");
 
   if (messages !== null) {
-    messages.remove();
+    messages.forEach(message => {
+      message.remove();
+    });
   }
   if (verticalShipsToPlace !== null) {
     verticalShipsToPlace.remove();
@@ -167,7 +183,16 @@ function removePlaceShipsElements() {
   }
 }
 
-function showShipsToPlace(board, playerTurn, typeOfBoard, isHidden) {
+function showShipsToPlace(
+  player1,
+  player2,
+  boardOfShipsToPlace,
+  numberOfShipsToPlace,
+  boardSize,
+  playerTurn,
+  typeOfBoard,
+  isHidden
+) {
   // These variables will be defined by square's onColumnDragStart event callback
   let shipID;
   let squareDragged;
@@ -183,7 +208,7 @@ function showShipsToPlace(board, playerTurn, typeOfBoard, isHidden) {
 
   let shipsNumbering = {};
 
-  for (let i = 0; i < board.length; i++) {
+  for (let i = 0; i < boardOfShipsToPlace.length; i++) {
     const columnDivContainer = document.createElement("div");
     const columnDiv = document.createElement("div");
 
@@ -199,7 +224,7 @@ function showShipsToPlace(board, playerTurn, typeOfBoard, isHidden) {
       columnDiv.draggable = true;
     }
     columnDiv.addEventListener("dragstart", onColumnDragStart);
-    for (let j = 0; j < board[i].length; j++) {
+    for (let j = 0; j < boardOfShipsToPlace[i].length; j++) {
       const square = document.createElement("div");
       square.classList.add("square");
       if (typeOfBoard === "horizontalShipsToPlace") {
@@ -208,7 +233,7 @@ function showShipsToPlace(board, playerTurn, typeOfBoard, isHidden) {
       square.dataset.player = playerTurn;
       square.dataset.x = i;
       square.dataset.y = j;
-      if (board[i][j] === null) {
+      if (boardOfShipsToPlace[i][j] === null) {
         square.style.opacity = "0";
         if (typeOfBoard === "verticalShipsToPlace") {
           square.style.display = "none";
@@ -216,16 +241,19 @@ function showShipsToPlace(board, playerTurn, typeOfBoard, isHidden) {
       } else {
         square.textContent = "B";
         square.classList.add("ship");
-        square.dataset.shipId = board[i][j].shipID;
-        square.dataset.shipLength = board[i][j].length;
-        columnDiv.dataset.shipId = board[i][j].shipID;
+        square.dataset.shipId = boardOfShipsToPlace[i][j].shipID;
+        square.dataset.shipLength = boardOfShipsToPlace[i][j].length;
+        columnDiv.dataset.shipId = boardOfShipsToPlace[i][j].shipID;
 
-        if (shipsNumbering[`shipID${board[i][j].shipID}`] === undefined) {
-          shipsNumbering[`shipID${board[i][j].shipID}`] = 1;
+        if (
+          shipsNumbering[`shipID${boardOfShipsToPlace[i][j].shipID}`] ===
+          undefined
+        ) {
+          shipsNumbering[`shipID${boardOfShipsToPlace[i][j].shipID}`] = 1;
         }
         square.dataset.shipSquareNumber =
-          shipsNumbering[`shipID${board[i][j].shipID}`];
-        shipsNumbering[`shipID${board[i][j].shipID}`]++;
+          shipsNumbering[`shipID${boardOfShipsToPlace[i][j].shipID}`];
+        shipsNumbering[`shipID${boardOfShipsToPlace[i][j].shipID}`]++;
 
         square.addEventListener("mousedown", function(event) {
           if (event.target.dataset.shipId !== undefined) {
@@ -268,6 +296,12 @@ function showShipsToPlace(board, playerTurn, typeOfBoard, isHidden) {
   rotateButton.addEventListener("click", rotateShips);
   placeShipsDiv.appendChild(rotateButton);
 
+  const placeRandomly = document.createElement("button");
+  placeRandomly.textContent = "Posicionar Barcos Aleatoriamente";
+  placeRandomly.classList.add("placeRandomShips");
+  placeRandomly.addEventListener("click", placeRandomShipsAndShowEm);
+  placeShipsDiv.appendChild(placeRandomly);
+
   const main = document.querySelector("main");
   main.appendChild(placeShipsDiv);
 
@@ -277,6 +311,24 @@ function showShipsToPlace(board, playerTurn, typeOfBoard, isHidden) {
 
     verticalShips.classList.toggle("hidden");
     horizontalShips.classList.toggle("hidden");
+  }
+
+  function placeRandomShipsAndShowEm() {
+    if (playerTurn === "player1") {
+      placeRandomShips(player1, boardSize);
+    } else if (playerTurn === "player2") {
+      placeRandomShips(player2, boardSize);
+    }
+
+    document.querySelector(".gameboard.ownBoard").remove();
+    showBoard(player1, player2, playerTurn, "ownBoard", false, boardSize, true);
+    afterPlacingShipsButton(
+      player1,
+      player2,
+      playerTurn,
+      numberOfShipsToPlace,
+      boardSize
+    );
   }
 }
 
@@ -358,7 +410,8 @@ function showBoard(
     }
     gameboardDiv.appendChild(columnDiv);
   }
-  document.querySelector("main").appendChild(gameboardDiv);
+  const main = document.querySelector("main");
+  main.appendChild(gameboardDiv);
 
   function callAttack() {
     attack.call(this, player1, player2, boardSize);
@@ -460,33 +513,70 @@ function showBoard(
     // Check if all ships have been placed
     numberOfPlacedShips++;
     if (numberOfPlacedShips === numberOfShipsToPlace) {
-      if (this.dataset.player === "player2") {
-        setTimeout(() => {
-          battleBegins(player1, player2, boardSize);
-        }, 0);
-        return;
-      }
-      if (player2name === "Computadora") {
-        placeRandomShips(player2, boardSize);
-        setTimeout(() => {
-          battleBegins(player1, player2, boardSize);
-        }, 0);
-        return;
-      } else if (this.dataset.player === "player1") {
-        setTimeout(() => {
-          placeShips(
-            player1,
-            player2,
-            "player2",
-            numberOfShipsToPlace,
-            Gameboard(boardSize),
-            boardSize
-          );
-        }, 0);
-        numberOfPlacedShips = 0;
-        return;
-      }
+      numberOfPlacedShips = 0;
+      afterPlacingShipsButton(
+        player1,
+        player2,
+        this.dataset.player,
+        numberOfShipsToPlace,
+        boardSize
+      );
     }
+  }
+}
+
+function afterPlacingShipsButton(
+  player1,
+  player2,
+  whoPlaced,
+  numberOfShipsToPlace,
+  boardSize
+) {
+  let button;
+  if (whoPlaced === "player1" && player2.name !== "Computadora") {
+    // player2 placesShips
+    button = document.createElement("button");
+    button.classList.add("toggleBoards");
+    button.textContent = `Dejar que ${player2.name} posicione sus barcos`;
+    button.addEventListener("click", () => {
+      button.remove();
+      placeShips(
+        player1,
+        player2,
+        "player2",
+        numberOfShipsToPlace,
+        Gameboard(boardSize),
+        boardSize
+      );
+    });
+  } else if (whoPlaced === "player1" && player2.name === "Computadora") {
+    button = document.createElement("button");
+    button.classList.add("battleBegins");
+    button.textContent = `¡Empieza el juego!`;
+    button.addEventListener("click", () => {
+      button.remove();
+      battleBegins(player1, player2, boardSize);
+    });
+  } else if (whoPlaced === "player2") {
+    button = document.createElement("button");
+    button.classList.add("battleBegins");
+    button.textContent = `¡Ocultá tu tablero y dejá que ${player1.name} empiece el juego!`;
+    button.addEventListener("click", () => {
+      button.remove();
+      battleBegins(player1, player2, boardSize);
+    });
+  }
+  const verticalShips = document.querySelector(".verticalShipsContainer");
+  verticalShips.remove();
+  const horizontalShips = document.querySelector(".horizontalShipsContainer");
+  horizontalShips.remove();
+
+  const message = document.querySelector(".messages");
+  const message2 = document.querySelector(".messages2");
+  if (message2) {
+    message2.after(button);
+  } else if (message) {
+    message.after(button);
   }
 }
 
@@ -509,6 +599,9 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
   } else if (result === "¡Todos los barcos han sido hundidos!") {
     this.classList.add("sunkenShip");
     this.classList.add("sunkenShipTrans");
+    this.addEventListener("transitionend", () => {
+      winner(player1.name, player2name);
+    });
     this.textContent = "X";
   }
 
@@ -539,6 +632,21 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
           transitionEndCallback
         );
       }
+    } else {
+      // Show toggle button after the attack
+      let whoseButton;
+      if (whoPlays === "player1") {
+        whoseButton = "player2";
+      } else if (whoPlays === "player2") {
+        whoseButton = "player1";
+      }
+
+      const toggleButton = document.querySelector(
+        `button[data-player="${whoseButton}"]`
+      );
+      setTimeout(() => {
+        toggleButton.classList.remove("hidden");
+      }, 0);
     }
   }
 }

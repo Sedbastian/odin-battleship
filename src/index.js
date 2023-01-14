@@ -1,7 +1,7 @@
 import "./style.css";
 import { Player, Gameboard } from "./gameLogic.js";
 import {
-	getNames,
+  getNames,
   placeShipsMessage,
   removePlaceShipsElements,
   showShipsToPlace,
@@ -17,7 +17,7 @@ let whoPlays = "player1";
 getNames();
 
 function initializeGame(player1name, player2name, boardSize = 10) {
-	const player1 = Player(player1name, Gameboard(boardSize));
+  const player1 = Player(player1name, Gameboard(boardSize));
   const player2 = Player(player2name, Gameboard(boardSize));
 
   placeShips(player1, player2, "player1", 5, Gameboard(boardSize), boardSize);
@@ -32,9 +32,9 @@ function placeShips(
   boardSize
 ) {
   if (playerTurn === "player1") {
-    placeShipsMessage(player1.name, numberOfShipsToPlace);
+    placeShipsMessage(player1.name, player2.name, numberOfShipsToPlace);
   } else if (playerTurn === "player2") {
-    placeShipsMessage(player2.name, numberOfShipsToPlace);
+    placeShipsMessage(player2.name, player1.name, numberOfShipsToPlace);
   }
 
   shipsToPlace.placeShip(1, 5, true, 0, 0);
@@ -43,15 +43,30 @@ function placeShips(
   shipsToPlace.placeShip(4, 2, true, 6, 0);
   shipsToPlace.placeShip(5, 1, true, 8, 0);
 
+  let player;
+  if (playerTurn === "player1") {
+    player = player1;
+  } else if (playerTurn === "player2") {
+    player = player2;
+  }
+
   showShipsToPlace(
-    shipsToPlace.board,
+		player1,
+		player2,
+		shipsToPlace.board,
+		numberOfShipsToPlace,
+		boardSize,
     playerTurn,
     "verticalShipsToPlace",
     false
   );
 
   showShipsToPlace(
-    shipsToPlace.board,
+		player1,
+		player2,
+		shipsToPlace.board,
+		numberOfShipsToPlace,
+		boardSize,
     playerTurn,
     "horizontalShipsToPlace",
     true
@@ -79,7 +94,7 @@ function battleBegins(player1, player2, boardSize) {
   showBoard(player1, player2, "player1", "ownBoard", false, boardSize);
   showBoard(player1, player2, "player2", "enemyBoard", false, boardSize);
   if (player2.name !== "Computadora") {
-    createToggleButton("player1", player1.name, player2.name);
+    createToggleButton("player1", player1.name, player2.name, "hide");
   }
 
   showBoard(player1, player2, "player2", "ownBoard", true, boardSize);
@@ -101,13 +116,13 @@ function attack(player1, player2, boardSize) {
     console.log(result);
   }
 
-  if (result === "¡Todos los barcos han sido hundidos!") {
-    setTimeout(() => {
-      winner(player1.name, player2.name);
-    }, 0);
+  // if (result === "¡Todos los barcos han sido hundidos!") {
+  //   setTimeout(() => {
+  //     winner(player1.name, player2.name);
+  //   }, 0);
 
-    return;
-  }
+  //   return;
+  // }
 
   if (player2.name !== "Computadora") {
     if (whoPlays === "player1") {
