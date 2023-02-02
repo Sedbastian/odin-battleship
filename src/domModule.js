@@ -8,6 +8,9 @@ import {
 import { Gameboard, placeRandomShips, computerAttack } from "./gameLogic.js";
 
 function getNames() {
+  const battleship = document.createElement("h1");
+  battleship.textContent = "BATALLA NAVAL";
+
   const who = document.createElement("h2");
   who.textContent = "¿Quiénes van a jugar?";
 
@@ -19,7 +22,8 @@ function getNames() {
   name1.textContent = "Jugador/a 1:";
   divPlayer1.appendChild(name1);
 
-  const player1input = document.createElement("input");
+	const player1input = document.createElement("input");
+	player1input.setAttribute("placeholder", "Escribí tu nombre");
   divPlayer1.appendChild(player1input);
 
   const divPlayer2 = document.createElement("div");
@@ -34,8 +38,18 @@ function getNames() {
 
   const submitNames = document.createElement("button");
   submitNames.classList.add("submitNames");
-  submitNames.textContent = "Listo!";
+  submitNames.textContent = "Listo! Posicionar Flota";
+  submitNames.addEventListener("mousedown", () => {
+    submitNames.classList.add("inset");
+  });
+  submitNames.addEventListener("mouseout", () => {
+    submitNames.classList.remove("inset");
+  });
+  submitNames.addEventListener("mouseup", () => {
+    submitNames.classList.remove("inset");
+  });
   submitNames.addEventListener("click", () => {
+    battleship.remove();
     who.remove();
     divPlayer1.remove();
     divPlayer2.remove();
@@ -43,6 +57,7 @@ function getNames() {
     initializeGame(player1input.value, player2input.value);
   });
 
+  main.appendChild(battleship);
   main.appendChild(who);
   main.appendChild(divPlayer1);
   main.appendChild(divPlayer2);
@@ -555,6 +570,7 @@ function afterPlacingShipsButton(
     button.textContent = `¡Empieza el juego!`;
     button.addEventListener("click", () => {
       button.remove();
+      placeRandomShips(player2, boardSize);
       battleBegins(player1, player2, boardSize);
     });
   } else if (whoPlaced === "player2") {
@@ -600,7 +616,13 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
     this.classList.add("sunkenShip");
     this.classList.add("sunkenShipTrans");
     this.addEventListener("transitionend", () => {
-      winner(player1.name, player2name);
+      let whoWins;
+      if (this.dataset.player === "player1") {
+        whoWins = "player2";
+      } else if (this.dataset.player === "player2") {
+        whoWins = "player1";
+      }
+      winner(player1.name, player2name, whoWins);
     });
     this.textContent = "X";
   }
@@ -622,9 +644,8 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
         attackedSquare.classList.remove("attackedTrans");
 
         if (compMoveObject.result === "¡Todos los barcos han sido hundidos!") {
-          whoPlays = "player2";
           setTimeout(() => {
-            winner(player1.name, player2name);
+            winner(player1.name, player2name, "player2");
           }, 0);
         }
         attackedSquare.removeEventListener(
@@ -655,16 +676,18 @@ function showAttackOwnBoard() {
   const attackedSquare = document.querySelector(
     `:not(.notAttacked)[data-player="${this.dataset.player}"][data-x="${this.dataset.x}"][data-y="${this.dataset.y}"]`
   );
-  attackedSquare.textContent = "\u{1F7CF}";
-  attackedSquare.classList.add("attacked");
-  attackedSquare.classList.add("lastAttacked");
+  if (attackedSquare !== null) {
+    attackedSquare.textContent = "\u{1F7CF}";
+    attackedSquare.classList.add("attacked");
+    attackedSquare.classList.add("lastAttacked");
+  }
 }
 
-function winner(player1name, player2name) {
+function winner(player1name, player2name, playerTurn) {
   let whoWins;
-  if (whoPlays === "player1") {
+  if (playerTurn === "player1") {
     whoWins = player1name;
-  } else if (whoPlays === "player2") {
+  } else if (playerTurn === "player2") {
     whoWins = player2name;
   }
   alert(`Ganó ${whoWins}.  ¡Hundió todos los barcos!`);

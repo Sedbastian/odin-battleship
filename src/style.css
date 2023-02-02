@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "BigShouldersStencil";
+  src: url("./BigShouldersStencil.woff2");
+}
+
+@font-face {
+  font-family: "Audiowide-Regular";
+  src: url("./Audiowide-Regular.ttf");
+}
+
 html {
   background-color: black;
 }
@@ -10,20 +20,80 @@ main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
+  font-family: Audiowide-Regular;
+  font-size: 1.5rem;
+}
+
+@keyframes marcosclave1 {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+h1 {
+  grid-column: 1 / 3;
+  text-align: center;
+  font-family: "BigShouldersStencil";
+  color: grey;
+  font-size: 7rem;
+  text-shadow: 0 0 0.5rem rgb(162, 0, 255);
+
+  animation: marcosclave1 2s linear 0s infinite alternate;
 }
 
 h2 {
   grid-column: 1 / 3;
   color: goldenrod;
+  font-size: 2rem;
+}
+
+.name {
+	margin-bottom: 1rem;
+  color: forestgreen;
+}
+
+input {
+  background-color: grey;
+  border-style: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+	font-family: "Courier New", Courier, monospace;
+	text-align: center;
+  box-shadow: 0 0 0.5rem rgb(150, 150, 150);
+}
+
+input::placeholder {
+	color: rgb(64, 64, 64);
+}
+
+input:focus {
+	outline-style: none;
+	background-color: olivedrab;
 }
 
 .submitNames {
   grid-column: 1 / 3;
-  justify-self: center;
+	justify-self: center;
+	margin: 2rem;
+	padding: 1rem;
+	background-color: orangered;
+	border-style: outset;
+	border-width: 0.5rem;
+	border-color: rgb(64, 0, 128);
+	border-radius: 1rem;
+	font-size: 1rem;
+  font-weight: bold;
+	font-family: "Courier New", Courier, monospace;
+	animation: marcosclave1 2s linear 0s infinite alternate;
 }
 
-.name {
-  color: forestgreen;
+.submitNames.inset {
+	border-style: inset;
 }
 
 .messages {
@@ -40,12 +110,6 @@ h2 {
 .column {
   width: 100%;
 }
-
-/* .gameboardHorizontal {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
-} */
 
 .row {
   display: flex;
@@ -85,11 +149,6 @@ h2 {
 .square.water {
   background-color: blue;
 }
-
-/* .shipsToPlace .square.water {
-	background-color: black;
-	opacity: 0;
-} */
 
 .waterTrans {
   transform: rotateX(720deg);
