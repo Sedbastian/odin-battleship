@@ -92,6 +92,10 @@ input:focus {
 	animation: marcosclave1 2s linear 0s infinite alternate;
 }
 
+.submitNames:hover {
+	background-color: rgb(128,0,0);
+}
+
 .submitNames.inset {
 	border-style: inset;
 }
@@ -125,6 +129,24 @@ input:focus {
 
 .hidden {
   display: none;
+}
+
+button {
+	margin: 2rem;
+	padding: 1rem;
+	background-color: orangered;
+	border-style: outset;
+	border-width: 0.5rem;
+	border-color: rgb(64, 0, 128);
+	border-radius: 1rem;
+	font-size: 1rem;
+  font-weight: bold;
+	font-family: "Courier New", Courier, monospace;
+	animation: marcosclave1 2s linear 0s infinite alternate;
+}
+
+button.placeRandomShips {
+	background-color: rgb(128, 64, 0);
 }
 
 .square {
