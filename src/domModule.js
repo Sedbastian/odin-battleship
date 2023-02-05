@@ -612,27 +612,33 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
     });
     this.classList.add("questionTrans");
   } else if (result === "¡Barco hundido!") {
-    this.addEventListener("transitionend", () => {
+    function onTransitionEnd() {
       this.textContent = "X";
       this.classList.remove("questionTrans");
+      this.removeEventListener("transitionend", onTransitionEnd);
       this.classList.add("sunkenShip");
       isComputerMove();
-    });
+    }
+    this.addEventListener("transitionend", onTransitionEnd);
     this.classList.add("questionTrans");
   } else if (result === "¡Todos los barcos han sido hundidos!") {
-    this.classList.add("sunkenShip");
-    this.classList.add("questionTrans");
-    this.addEventListener("transitionend", () => {
+    function onTransitionEnd() {
       this.textContent = "X";
       this.classList.remove("questionTrans");
-      let whoWins;
-      if (this.dataset.player === "player1") {
-        whoWins = "player2";
-      } else if (this.dataset.player === "player2") {
-        whoWins = "player1";
-      }
-      winner(player1.name, player2name, whoWins);
-    });
+      this.removeEventListener("transitionend", onTransitionEnd);
+      this.addEventListener("transitionend", () => {
+        let whoWins;
+        if (this.dataset.player === "player1") {
+          whoWins = "player2";
+        } else if (this.dataset.player === "player2") {
+          whoWins = "player1";
+        }
+        winner(player1.name, player2name, whoWins);
+      });
+      this.classList.add("lastSunkenShip");
+    }
+    this.addEventListener("transitionend", onTransitionEnd);
+    this.classList.add("questionTrans");
   }
 
   function isComputerMove() {
@@ -655,9 +661,9 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
 
       function transitionEndCallback() {
         attackedSquare.classList.remove("attackedTrans");
-        attackedSquare.addEventListener("transitionend", () => {
-          attackedSquare.classList.add("waterAnimation");
-        });
+        // attackedSquare.addEventListener("transitionend", () => {
+        //   // attackedSquare.classList.add("waterAnimation");
+        // });
         if (compMoveObject.result === "¡Todos los barcos han sido hundidos!") {
           setTimeout(() => {
             winner(player1.name, player2name, "player2");
