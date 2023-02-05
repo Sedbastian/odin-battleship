@@ -22,8 +22,8 @@ function getNames() {
   name1.textContent = "Jugador/a 1:";
   divPlayer1.appendChild(name1);
 
-	const player1input = document.createElement("input");
-	player1input.setAttribute("placeholder", "Escribí tu nombre");
+  const player1input = document.createElement("input");
+  player1input.setAttribute("placeholder", "Escribí tu nombre");
   divPlayer1.appendChild(player1input);
 
   const divPlayer2 = document.createElement("div");
@@ -39,15 +39,6 @@ function getNames() {
   const submitNames = document.createElement("button");
   submitNames.classList.add("submitNames");
   submitNames.textContent = "Listo! Posicionar Flota";
-  submitNames.addEventListener("mousedown", () => {
-    submitNames.classList.add("inset");
-  });
-  submitNames.addEventListener("mouseout", () => {
-    submitNames.classList.remove("inset");
-  });
-  submitNames.addEventListener("mouseup", () => {
-    submitNames.classList.remove("inset");
-  });
   submitNames.addEventListener("click", () => {
     battleship.remove();
     who.remove();
@@ -329,14 +320,17 @@ function showShipsToPlace(
   }
 
   function placeRandomShipsAndShowEm() {
+    const message = document.querySelector(".messages");
     if (playerTurn === "player1") {
       placeRandomShips(player1, boardSize);
+      message.textContent = `Así queda pocisionada tu flota, ${player1.name}`;
     } else if (playerTurn === "player2") {
       placeRandomShips(player2, boardSize);
+      message.textContent = `Así queda pocisionada tu flota, ${player2.name}`;
     }
 
     document.querySelector(".gameboard.ownBoard").remove();
-    showBoard(player1, player2, playerTurn, "ownBoard", false, boardSize, true);
+
     afterPlacingShipsButton(
       player1,
       player2,
@@ -344,6 +338,7 @@ function showShipsToPlace(
       numberOfShipsToPlace,
       boardSize
     );
+    showBoard(player1, player2, playerTurn, "ownBoard", false, boardSize, true);
   }
 }
 
@@ -395,6 +390,7 @@ function showBoard(
       if (board[i][j] === null) {
         square.textContent = "A";
         square.classList.add("water");
+        square.classList.add("waterAnimation");
 
         if (isForPlacingShips) {
           square.addEventListener("dragenter", function(event) {
@@ -495,6 +491,7 @@ function showBoard(
         `[data-x="${coord[0]}"][data-y="${coord[1]}"]`
       );
       shipSquare.classList.remove("water");
+      shipSquare.classList.remove("waterAnimation");
       shipSquare.textContent = "B";
       shipSquare.classList.add("ship");
     }
@@ -598,24 +595,36 @@ function afterPlacingShipsButton(
 
 function showAttackEnemyBoard(player1, result, player2name, boardSize) {
   if (result === "¡Agua!") {
-    this.addEventListener("transitionend", isComputerMove);
-    this.classList.add("water");
-    this.classList.add("waterTrans");
-    this.textContent = "A";
+    this.addEventListener("transitionend", () => {
+      this.textContent = "A";
+      this.classList.remove("questionTrans");
+      this.classList.add("water");
+      this.classList.add("waterAnimation");
+      isComputerMove();
+    });
+    this.classList.add("questionTrans");
   } else if (result === "¡Barco tocado!") {
-    this.addEventListener("transitionend", isComputerMove);
-    this.classList.add("ship");
-    this.classList.add("shipTrans");
-    this.textContent = "B";
+    this.addEventListener("transitionend", () => {
+      this.textContent = "B";
+      this.classList.remove("questionTrans");
+      this.classList.add("ship");
+      isComputerMove();
+    });
+    this.classList.add("questionTrans");
   } else if (result === "¡Barco hundido!") {
-    this.addEventListener("transitionend", isComputerMove);
-    this.classList.add("sunkenShip");
-    this.classList.add("sunkenShipTrans");
-    this.textContent = "X";
+    this.addEventListener("transitionend", () => {
+      this.textContent = "X";
+      this.classList.remove("questionTrans");
+      this.classList.add("sunkenShip");
+      isComputerMove();
+    });
+    this.classList.add("questionTrans");
   } else if (result === "¡Todos los barcos han sido hundidos!") {
     this.classList.add("sunkenShip");
-    this.classList.add("sunkenShipTrans");
+    this.classList.add("questionTrans");
     this.addEventListener("transitionend", () => {
+      this.textContent = "X";
+      this.classList.remove("questionTrans");
       let whoWins;
       if (this.dataset.player === "player1") {
         whoWins = "player2";
@@ -624,7 +633,6 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
       }
       winner(player1.name, player2name, whoWins);
     });
-    this.textContent = "X";
   }
 
   function isComputerMove() {
@@ -635,14 +643,21 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
       const attackedSquare = document.querySelector(
         `:not(.notAttacked)[data-player="player1"][data-x="${compMoveObject.x}"][data-y="${compMoveObject.y}"]`
       );
+      if (compMoveObject.result === "¡Agua!") {
+        attackedSquare.classList.remove("waterAnimation");
+      }
       attackedSquare.textContent = "\u{1F7CF}";
-      attackedSquare.classList.add("attacked");
-      attackedSquare.classList.add("attackedTrans");
-      attackedSquare.addEventListener("transitionend", transitionEndCallback);
+      setTimeout(() => {
+        attackedSquare.classList.add("attacked");
+        attackedSquare.classList.add("attackedTrans");
+        attackedSquare.addEventListener("transitionend", transitionEndCallback);
+      }, 0);
 
       function transitionEndCallback() {
         attackedSquare.classList.remove("attackedTrans");
-
+        attackedSquare.addEventListener("transitionend", () => {
+          attackedSquare.classList.add("waterAnimation");
+        });
         if (compMoveObject.result === "¡Todos los barcos han sido hundidos!") {
           setTimeout(() => {
             winner(player1.name, player2name, "player2");
