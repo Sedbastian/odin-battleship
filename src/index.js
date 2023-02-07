@@ -81,16 +81,25 @@ function placeShips(
 
 function battleBegins(player1, player2, boardSize) {
   removePlaceShipsElements();
-  alert(`Empieza ${player1.name}`);
-
-  // Show boards
-  showBoard(player1, player2, "player1", "ownBoard", false, boardSize);
-  showBoard(player1, player2, "player2", "enemyBoard", false, boardSize);
   if (player2.name !== "Computadora") {
-    createToggleButton("player1", player1.name, player2.name, "hide");
-    showBoard(player1, player2, "player2", "ownBoard", true, boardSize);
-    showBoard(player1, player2, "player1", "enemyBoard", true, boardSize);
-    createToggleButton("player2", player1.name, player2.name, "hide");
+		const button = document.createElement("button");
+		button.classList.add("toggleBoards");
+    button.textContent = `Mostrar tableros de ${player1.name}`;
+    button.addEventListener("click", showPlayersBoards);
+    document.querySelector("main").appendChild(button);
+
+    function showPlayersBoards() {
+			button.remove();
+      showBoard(player1, player2, "player1", "ownBoard", false, boardSize);
+      showBoard(player1, player2, "player2", "enemyBoard", false, boardSize);
+      createToggleButton("player1", player1.name, player2.name, "hide");
+      showBoard(player1, player2, "player2", "ownBoard", true, boardSize);
+      showBoard(player1, player2, "player1", "enemyBoard", true, boardSize);
+      createToggleButton("player2", player1.name, player2.name, "hide");
+    }
+  } else {
+    showBoard(player1, player2, "player1", "ownBoard", false, boardSize);
+    showBoard(player1, player2, "player2", "enemyBoard", false, boardSize);
   }
 }
 

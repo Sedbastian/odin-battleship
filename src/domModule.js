@@ -478,6 +478,15 @@ function showBoard(
     // This condition is met when the ship could not be placed
     if (typeof fullShipCoordinates === "string") {
       return;
+    } else {
+      const placeRandomlyButton = document.querySelectorAll(
+        ".placeRandomShips"
+      );
+      if (placeRandomlyButton) {
+        placeRandomlyButton.forEach(button => {
+          button.remove();
+        });
+      }
     }
     shipsToPlace.removeShip(shipID);
 
@@ -549,17 +558,30 @@ function afterPlacingShipsButton(
     // player2 placesShips
     button = document.createElement("button");
     button.classList.add("toggleBoards");
+    button.classList.add("leftGrid");
     button.textContent = `Dejar que ${player2.name} posicione sus barcos`;
     button.addEventListener("click", () => {
-      button.remove();
-      placeShips(
-        player1,
-        player2,
-        "player2",
-        numberOfShipsToPlace,
-        Gameboard(boardSize),
-        boardSize
-      );
+      document.querySelectorAll(".messages").forEach(message => {
+        message.remove();
+      });
+      document.querySelector(".toggleBoards").remove();
+      document.querySelector(".gameboard").remove();
+
+      const showPlayer2ShipsToPlace = document.createElement("button");
+      showPlayer2ShipsToPlace.classList.add("toggleBoards");
+      showPlayer2ShipsToPlace.textContent = `Mostrar tableros de ${player2.name}`;
+      showPlayer2ShipsToPlace.addEventListener("click", () => {
+        showPlayer2ShipsToPlace.remove();
+        placeShips(
+          player1,
+          player2,
+          "player2",
+          numberOfShipsToPlace,
+          Gameboard(boardSize),
+          boardSize
+        );
+      });
+      document.querySelector("main").appendChild(showPlayer2ShipsToPlace);
     });
   } else if (whoPlaced === "player1" && player2.name === "Computadora") {
     button = document.createElement("button");
@@ -654,16 +676,17 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
       }
       attackedSquare.textContent = "\u{1F7CF}";
       setTimeout(() => {
+        attackedSquare.style.zIndex = "3";
         attackedSquare.classList.add("attacked");
         attackedSquare.classList.add("attackedTrans");
         attackedSquare.addEventListener("transitionend", transitionEndCallback);
       }, 0);
 
       function transitionEndCallback() {
+        attackedSquare.addEventListener("transitionend", () => {
+          attackedSquare.style.zIndex = "1";
+        });
         attackedSquare.classList.remove("attackedTrans");
-        // attackedSquare.addEventListener("transitionend", () => {
-        //   // attackedSquare.classList.add("waterAnimation");
-        // });
         if (compMoveObject.result === "¡Todos los barcos han sido hundidos!") {
           setTimeout(() => {
             winner(player1.name, player2name, "player2");
@@ -673,6 +696,11 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
           "transitionend",
           transitionEndCallback
         );
+        if (compMoveObject.result === "¡Agua!") {
+          attackedSquare.addEventListener("transitionend", () => {
+            attackedSquare.classList.add("waterAnimation");
+          });
+        }
       }
     } else {
       // Show toggle button after the attack
