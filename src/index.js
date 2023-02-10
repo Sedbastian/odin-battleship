@@ -1,7 +1,9 @@
 import "./style.css";
 import { Player, Gameboard } from "./gameLogic.js";
 import {
-  getNames,
+  mainTitleAndGetNames,
+  chainFadeInS,
+  createPlayersDivs,
   placeShipsMessage,
   removePlaceShipsElements,
   showShipsToPlace,
@@ -9,16 +11,19 @@ import {
   showAttackEnemyBoard,
   showAttackOwnBoard,
   createToggleButton,
+  showOtherPlayersBoardsButton,
   winner
 } from "./domModule.js";
 
 let whoPlays = "player1";
 
-getNames();
+mainTitleAndGetNames();
 
 function initializeGame(player1name, player2name, boardSize = 10) {
   const player1 = Player(player1name, Gameboard(boardSize));
   const player2 = Player(player2name, Gameboard(boardSize));
+
+  createPlayersDivs(player2name);
 
   placeShips(player1, player2, "player1", 5, Gameboard(boardSize), boardSize);
 }
@@ -31,11 +36,12 @@ function placeShips(
   shipsToPlace,
   boardSize
 ) {
-  if (playerTurn === "player1") {
-    placeShipsMessage(player1.name, player2.name, numberOfShipsToPlace);
-  } else if (playerTurn === "player2") {
-    placeShipsMessage(player2.name, player1.name, numberOfShipsToPlace);
-  }
+  placeShipsMessage(
+    player1.name,
+    player2.name,
+    playerTurn,
+    numberOfShipsToPlace
+  );
 
   shipsToPlace.placeShip(1, 5, true, 0, 0);
   shipsToPlace.placeShip(2, 4, true, 2, 0);
@@ -77,19 +83,27 @@ function placeShips(
     shipsToPlace,
     player2.name
   );
+
+  const messages = document.querySelector(".messages");
+  const shipsContainer = document.querySelector(".verticalShipsToPlace");
+
+  chainFadeInS(null, [messages, shipsContainer], "2s");
+
+  const messages2 = document.querySelector(".messages2");
+  const gameboardContainer = document.querySelector(".gameboardContainer");
+  chainFadeInS(messages, [messages2, gameboardContainer], "2s");
+
+  const buttons = document.querySelectorAll(".verticalShipsContainer button");
+  chainFadeInS(messages2, buttons, "2s");
 }
 
 function battleBegins(player1, player2, boardSize) {
   removePlaceShipsElements();
   if (player2.name !== "Computadora") {
-		const button = document.createElement("button");
-		button.classList.add("toggleBoards");
-    button.textContent = `Mostrar tableros de ${player1.name}`;
-    button.addEventListener("click", showPlayersBoards);
-    document.querySelector("main").appendChild(button);
+    showOtherPlayersBoardsButton(player1, showPlayersBoards);
 
     function showPlayersBoards() {
-			button.remove();
+      document.querySelector("button.toggleBoards.fadeIn").remove();
       showBoard(player1, player2, "player1", "ownBoard", false, boardSize);
       showBoard(player1, player2, "player2", "enemyBoard", false, boardSize);
       createToggleButton("player1", player1.name, player2.name, "hide");

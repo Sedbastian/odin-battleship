@@ -7,18 +7,20 @@ import {
 } from "./index.js";
 import { Gameboard, placeRandomShips, computerAttack } from "./gameLogic.js";
 
-function getNames() {
+function mainTitleAndGetNames() {
   const battleship = document.createElement("h1");
+  chainFadeInS(null, battleship, "2s");
   battleship.textContent = "BATALLA NAVAL";
 
   const who = document.createElement("h2");
+  chainFadeInS(battleship, who, "2s");
   who.textContent = "¿Quiénes van a jugar?";
 
-  const main = document.querySelector("main");
-
   const divPlayer1 = document.createElement("div");
+  chainFadeInS(who, divPlayer1, "0.5s");
   const name1 = document.createElement("div");
   name1.classList.add("name");
+
   name1.textContent = "Jugador/a 1:";
   divPlayer1.appendChild(name1);
 
@@ -27,6 +29,7 @@ function getNames() {
   divPlayer1.appendChild(player1input);
 
   const divPlayer2 = document.createElement("div");
+  chainFadeInS(divPlayer1, divPlayer2, "0.5s");
   const name2 = document.createElement("div");
   name2.classList.add("name");
   name2.textContent = "Jugador/a 2:";
@@ -37,6 +40,7 @@ function getNames() {
   divPlayer2.appendChild(player2input);
 
   const submitNames = document.createElement("button");
+  chainFadeInS(divPlayer2, submitNames, "0.5s");
   submitNames.classList.add("submitNames");
   submitNames.textContent = "Listo! Posicionar Flota";
   submitNames.addEventListener("click", () => {
@@ -48,6 +52,7 @@ function getNames() {
     initializeGame(player1input.value, player2input.value);
   });
 
+  const main = document.querySelector("main");
   main.appendChild(battleship);
   main.appendChild(who);
   main.appendChild(divPlayer1);
@@ -55,137 +60,125 @@ function getNames() {
   main.appendChild(submitNames);
 }
 
-function createToggleButton(player, player1name, player2name, hide) {
-  const button = document.createElement("button");
-  button.classList.add("toggleBoards");
-  if (hide) {
-    button.classList.add("hidden");
+function chainFadeIn(fromElement, toElement, duration, timingFunction) {
+  let timing;
+  if (timingFunction) {
+    timing = timingFunction;
+  } else {
+    timing = "ease-in-out";
   }
-  button.dataset.player = player;
-  button.textContent = "Esconder tableros y cambiar turno";
-  button.addEventListener("click", toggleBoards);
-  document.querySelector("main").appendChild(button);
 
-  function toggleBoards() {
-    const player = this.dataset.player;
+  toElement.style.opacity = "0";
 
-    let otherPlayer;
-    let playerName;
-    let otherPlayerName;
+  if (fromElement) {
+    fromElement.addEventListener("transitionend", () => {
+      setTimeout(() => {
+        toElement.style.opacity = "1";
+        toElement.style.transition = `opacity ${duration} ${timing}`;
+      }, 0);
+    });
+  } else {
+    setTimeout(() => {
+      toElement.style.opacity = "1";
+      toElement.style.transition = `opacity ${duration} ${timing}`;
+    }, 0);
+  }
+}
 
-    if (player === "player1") {
-      otherPlayer = "player2";
-      playerName = player1name;
-      otherPlayerName = player2name;
+function chainFadeInS(fromElement, toElementS, duration, timingFunction) {
+  let timing;
+  if (timingFunction) {
+    timing = timingFunction;
+  } else {
+    timing = "ease-in-out";
+  }
+
+  if (toElementS === null || toElementS.length === 0) {
+    return;
+  } else if (toElementS.length === undefined) {
+    toElementS.style.opacity = "0";
+    if (fromElement) {
+      fromElement.addEventListener("transitionend", () => {
+        setTimeout(() => {
+          toElementS.style.opacity = "1";
+          toElementS.style.transition = `opacity ${duration} ${timing}`;
+        }, 0);
+      });
     } else {
-      otherPlayer = "player1";
-      playerName = player2name;
-      otherPlayerName = player1name;
+      setTimeout(() => {
+        toElementS.style.opacity = "1";
+        toElementS.style.transition = `opacity ${duration} ${timing}`;
+      }, 0);
     }
-
-    if (player === whoPlays) {
-      showMakeYourMove(whoPlays);
-      return;
-    }
-
-    // Hide:
-    const ownBoardToHide = document.querySelector(
-      `.gameboard.${player}.ownBoard`
-    );
-    ownBoardToHide.classList.toggle("hidden");
-
-    const enemyBoardToHide = document.querySelector(
-      `.gameboard.${otherPlayer}.enemyBoard`
-    );
-    enemyBoardToHide.classList.toggle("hidden");
-
-    const toggleButtonToHide = document.querySelector(
-      `button[data-player="${player}"]`
-    );
-    toggleButtonToHide.classList.add("hidden");
-
-    const lastAttacked = document.querySelector(
-      `[data-player="${player}"].lastAttacked`
-    );
-    if (lastAttacked) {
-      lastAttacked.classList.remove("lastAttacked");
-    }
-
-    // Show Button:
-    const showButton = document.createElement("button");
-    showButton.classList.add("showHiddenBoards");
-    showButton.textContent = `Mostrar tableros de ${otherPlayerName}`;
-    showButton.addEventListener("click", showHiddenBoards);
-    document.querySelector("main").appendChild(showButton);
-
-    function showMakeYourMove() {
-      alert(`¡Todavía no hiciste tu jugada, ${playerName}!`);
-    }
-
-    function showHiddenBoards() {
-      const ownBoardToShow = document.querySelector(
-        `.gameboard.${otherPlayer}.ownBoard`
-      );
-      ownBoardToShow.classList.toggle("hidden");
-
-      const enemyBoardToShow = document.querySelector(
-        `.gameboard.${player}.enemyBoard`
-      );
-      enemyBoardToShow.classList.toggle("hidden");
-
-      const toggleButtonToShow = document.querySelector(
-        `button[data-player="${otherPlayer}"]`
-      );
-      toggleButtonToShow.classList.add("hidden");
-
-      showButton.classList.toggle("hidden");
+  } else if (toElementS.length > 0) {
+    toElementS.forEach(element => {
+      element.style.opacity = "0";
+    });
+    if (fromElement) {
+      fromElement.addEventListener("transitionend", () => {
+        setTimeout(() => {
+          toElementS.forEach(element => {
+            element.style.opacity = "1";
+            element.style.transition = `opacity ${duration} ${timing}`;
+          });
+        }, 0);
+      });
+    } else {
+      setTimeout(() => {
+        toElementS.forEach(element => {
+          element.style.opacity = "1";
+          element.style.transition = `opacity ${duration} ${timing}`;
+        });
+      }, 0);
     }
   }
 }
 
-function placeShipsMessage(playerName, otherPlayerName, numberOfShipsToPlace) {
+function createPlayersDivs(player2name) {
+  playerDiv(1);
+  if (player2name !== "Computadora") {
+    playerDiv(2);
+  }
+
+  function playerDiv(playerNumber) {
+    const playerDiv = document.createElement("div");
+    playerDiv.classList.add("playerDiv");
+    playerDiv.classList.add(`player${playerNumber}`);
+    const main = document.querySelector("main");
+    main.appendChild(playerDiv);
+  }
+}
+
+function placeShipsMessage(
+  player1name,
+  player2name,
+  playerTurn,
+  numberOfShipsToPlace
+) {
   removePlaceShipsElements();
+
+  let playerName;
+  let otherPlayerName;
+  if (playerTurn === "player1") {
+    playerName = player1name;
+    otherPlayerName = player2name;
+  } else if (playerTurn === "player2") {
+    playerName = player2name;
+    otherPlayerName = player1name;
+  }
 
   const messagesDiv = document.createElement("div");
   messagesDiv.classList.add("messages");
   messagesDiv.textContent = `${playerName}, posiciona tus ${numberOfShipsToPlace} barcos sobre las aguas...`;
-  const main = document.querySelector("main");
-  main.appendChild(messagesDiv);
+  const playerDiv = document.querySelector(`.${playerTurn}`);
+  playerDiv.appendChild(messagesDiv);
 
   if (otherPlayerName !== "Computadora") {
     const messagesDiv2 = document.createElement("div");
     messagesDiv2.classList.add("messages");
     messagesDiv2.classList.add("messages2");
     messagesDiv2.textContent = `¡Que ${otherPlayerName} no vea tu tablero!`;
-    const main = document.querySelector("main");
-    main.appendChild(messagesDiv2);
-  }
-}
-
-function removePlaceShipsElements() {
-  const messages = document.querySelectorAll(".messages");
-
-  const verticalShipsToPlace = document.querySelector(
-    ".verticalShipsContainer"
-  );
-  const horizontalShipsToPlace = document.querySelector(
-    ".horizontalShipsContainer"
-  );
-  const gameboard = document.querySelector(".gameboard.ownBoard");
-
-  if (messages !== null) {
-    messages.forEach(message => {
-      message.remove();
-    });
-  }
-  if (verticalShipsToPlace !== null) {
-    verticalShipsToPlace.remove();
-  }
-  if (horizontalShipsToPlace !== null) {
-    horizontalShipsToPlace.remove();
-  }
-  if (gameboard !== null) {
-    gameboard.remove();
+    playerDiv.appendChild(messagesDiv2);
   }
 }
 
@@ -206,6 +199,9 @@ function showShipsToPlace(
 
   const gameboardDiv = document.createElement("div");
   gameboardDiv.classList.add("gameboard");
+  setTimeout(() => {
+    gameboardDiv.classList.add("fadeIn");
+  }, 0);
   if (typeOfBoard === "horizontalShipsToPlace") {
     gameboardDiv.style.flexDirection = "column";
   }
@@ -298,7 +294,7 @@ function showShipsToPlace(
   placeShipsDiv.appendChild(gameboardDiv);
 
   const rotateButton = document.createElement("button");
-  rotateButton.textContent = "Rotar barcos";
+  rotateButton.textContent = "Rotar Barcos";
   rotateButton.addEventListener("click", rotateShips);
   placeShipsDiv.appendChild(rotateButton);
 
@@ -308,8 +304,8 @@ function showShipsToPlace(
   placeRandomly.addEventListener("click", placeRandomShipsAndShowEm);
   placeShipsDiv.appendChild(placeRandomly);
 
-  const main = document.querySelector("main");
-  main.appendChild(placeShipsDiv);
+  const playerDiv = document.querySelector(`.${playerTurn}`);
+  playerDiv.appendChild(placeShipsDiv);
 
   function rotateShips() {
     let verticalShips = document.querySelector(".verticalShipsContainer");
@@ -328,8 +324,10 @@ function showShipsToPlace(
       placeRandomShips(player2, boardSize);
       message.textContent = `Así queda pocisionada tu flota, ${player2.name}`;
     }
-
-    document.querySelector(".gameboard.ownBoard").remove();
+    const gameboards = document.querySelectorAll(".gameboardContainer");
+    gameboards.forEach(gameboard => {
+      gameboard.remove();
+    });
 
     afterPlacingShipsButton(
       player1,
@@ -342,6 +340,219 @@ function showShipsToPlace(
   }
 }
 
+function removePlaceShipsElements() {
+  const messages = document.querySelectorAll(".messages");
+
+  const verticalShipsToPlace = document.querySelector(
+    ".verticalShipsContainer"
+  );
+  const horizontalShipsToPlace = document.querySelector(
+    ".horizontalShipsContainer"
+  );
+  const gameboard = document.querySelector(".gameboardContainer");
+
+  if (messages !== null) {
+    messages.forEach(message => {
+      message.remove();
+    });
+  }
+  if (verticalShipsToPlace !== null) {
+    verticalShipsToPlace.remove();
+  }
+  if (horizontalShipsToPlace !== null) {
+    horizontalShipsToPlace.remove();
+  }
+  if (gameboard !== null) {
+    gameboard.remove();
+  }
+}
+
+function afterPlacingShipsButton(
+  player1,
+  player2,
+  whoPlaced,
+  numberOfShipsToPlace,
+  boardSize
+) {
+  let button;
+  if (whoPlaced === "player1" && player2.name !== "Computadora") {
+    // player2 placesShips
+    button = document.createElement("button");
+    button.classList.add("toggleBoards");
+    button.classList.add("leftGrid");
+    setTimeout(() => {
+      button.classList.add("fadeIn");
+    }, 0);
+    button.textContent = `Dejar que ${player2.name} posicione sus barcos`;
+    button.addEventListener("click", () => {
+      document.querySelectorAll(".messages").forEach(message => {
+        message.remove();
+      });
+      document.querySelector(".toggleBoards").remove();
+      document.querySelector(".gameboardContainer").remove();
+
+      const showPlayer2ShipsToPlace = document.createElement("button");
+      showPlayer2ShipsToPlace.classList.add("toggleBoards");
+      setTimeout(() => {
+        showPlayer2ShipsToPlace.classList.add("fadeIn");
+      }, 0);
+      showPlayer2ShipsToPlace.textContent = `Mostrar tableros de ${player2.name}`;
+      showPlayer2ShipsToPlace.addEventListener("click", () => {
+        showPlayer2ShipsToPlace.remove();
+        placeShips(
+          player1,
+          player2,
+          "player2",
+          numberOfShipsToPlace,
+          Gameboard(boardSize),
+          boardSize
+        );
+      });
+      document.querySelector("main").appendChild(showPlayer2ShipsToPlace);
+    });
+  } else if (whoPlaced === "player1" && player2.name === "Computadora") {
+    button = document.createElement("button");
+    button.classList.add("battleBegins");
+    setTimeout(() => {
+      button.classList.add("fadeIn");
+    }, 0);
+    button.textContent = `¡Empieza el juego!`;
+    button.addEventListener("click", () => {
+      button.remove();
+      placeRandomShips(player2, boardSize);
+      battleBegins(player1, player2, boardSize);
+    });
+  } else if (whoPlaced === "player2") {
+    button = document.createElement("button");
+    button.classList.add("battleBegins");
+    setTimeout(() => {
+      button.classList.add("fadeIn");
+    }, 0);
+    button.textContent = `¡Ocultá tu tablero y dejá que ${player1.name} empiece el juego!`;
+    button.addEventListener("click", () => {
+      button.remove();
+      battleBegins(player1, player2, boardSize);
+    });
+  }
+  const verticalShips = document.querySelector(".verticalShipsContainer");
+  verticalShips.remove();
+  const horizontalShips = document.querySelector(".horizontalShipsContainer");
+  horizontalShips.remove();
+
+  const message = document.querySelector(".messages");
+  const message2 = document.querySelector(".messages2");
+  if (message2) {
+    message2.after(button);
+  } else if (message) {
+    message.after(button);
+  }
+}
+
+function createToggleButton(player, player1name, player2name, hide) {
+  const button = document.createElement("button");
+  button.classList.add("toggleBoards");
+  setTimeout(() => {
+    button.classList.add("fadeIn");
+  });
+  if (hide) {
+    button.classList.add("hidden");
+  }
+  button.dataset.player = player;
+  button.textContent = "Esconder tableros y cambiar turno";
+  button.addEventListener("click", toggleBoards);
+  document.querySelector("main").appendChild(button);
+
+  function toggleBoards() {
+    const player = this.dataset.player;
+
+    let otherPlayer;
+    let playerName;
+    let otherPlayerName;
+
+    if (player === "player1") {
+      otherPlayer = "player2";
+      playerName = player1name;
+      otherPlayerName = player2name;
+    } else {
+      otherPlayer = "player1";
+      playerName = player2name;
+      otherPlayerName = player1name;
+    }
+
+    if (player === whoPlays) {
+      showMakeYourMove(whoPlays);
+      return;
+    }
+
+    // Hide:
+    const ownBoardToHide = document.querySelector(
+      `.gameboard.${player}.ownBoard`
+    );
+    ownBoardToHide.classList.toggle("hidden");
+
+    const enemyBoardToHide = document.querySelector(
+      `.gameboard.${otherPlayer}.enemyBoard`
+    );
+    enemyBoardToHide.classList.toggle("hidden");
+
+    const toggleButtonToHide = document.querySelector(
+      `button[data-player="${player}"]`
+    );
+    toggleButtonToHide.classList.add("hidden");
+
+    const lastAttacked = document.querySelector(
+      `[data-player="${player}"].lastAttacked`
+    );
+    if (lastAttacked) {
+      lastAttacked.classList.remove("lastAttacked");
+    }
+
+    // Show Button:
+    const showButton = document.createElement("button");
+    showButton.classList.add("showHiddenBoards");
+    setTimeout(() => {
+      button.classList.add("fadeIn");
+    }, 0);
+    showButton.textContent = `Mostrar tableros de ${otherPlayerName}`;
+    showButton.addEventListener("click", showHiddenBoards);
+    document.querySelector("main").appendChild(showButton);
+
+    function showMakeYourMove() {
+      alert(`¡Todavía no hiciste tu jugada, ${playerName}!`);
+    }
+
+    function showHiddenBoards() {
+      const ownBoardToShow = document.querySelector(
+        `.gameboard.${otherPlayer}.ownBoard`
+      );
+      ownBoardToShow.classList.toggle("hidden");
+
+      const enemyBoardToShow = document.querySelector(
+        `.gameboard.${player}.enemyBoard`
+      );
+      enemyBoardToShow.classList.toggle("hidden");
+
+      const toggleButtonToShow = document.querySelector(
+        `button[data-player="${otherPlayer}"]`
+      );
+      toggleButtonToShow.classList.add("hidden");
+
+      showButton.classList.toggle("hidden");
+    }
+  }
+}
+
+function showOtherPlayersBoardsButton(player1, callBack) {
+  const button = document.createElement("button");
+  button.classList.add("toggleBoards");
+  setTimeout(() => {
+    button.classList.add("fadeIn");
+  }, 0);
+  button.textContent = `Mostrar tableros de ${player1.name}`;
+  button.addEventListener("click", callBack);
+  document.querySelector("main").appendChild(button);
+}
+
 function showBoard(
   player1,
   player2,
@@ -351,32 +562,49 @@ function showBoard(
   boardSize,
   isForPlacingShips,
   numberOfShipsToPlace,
-  shipsToPlace,
-  player2name
+  shipsToPlace
 ) {
-  const gameboardDiv = document.createElement("div");
-  gameboardDiv.classList.add("gameboard");
-  gameboardDiv.classList.add(playerTurn);
-  gameboardDiv.classList.add(typeOfBoard);
-  if (isHidden) {
-    gameboardDiv.classList.add("hidden");
-  }
-  let shipsNumbering = {};
-
   let board;
+  let playerName;
+  let otherPlayerName;
   if (playerTurn === "player1") {
+    playerName = player1.name;
+    otherPlayerName = player2.name;
     if (typeOfBoard === "ownBoard") {
       board = player1.gameboard.board;
     } else if (typeOfBoard === "enemyBoard") {
       board = player1.gameboard.receivedHits;
     }
   } else if (playerTurn === "player2") {
+    playerName = player2.name;
+    otherPlayerName = player1.name;
     if (typeOfBoard === "ownBoard") {
       board = player2.gameboard.board;
     } else if (typeOfBoard === "enemyBoard") {
       board = player2.gameboard.receivedHits;
     }
   }
+
+  const gameboardContainer = document.createElement("div");
+  gameboardContainer.classList.add("gameboardContainer");
+  gameboardContainer.classList.add(playerTurn);
+  if (isHidden) {
+    gameboardContainer.classList.add("hidden");
+  }
+
+  if (!isForPlacingShips) {
+    const boardTitle = document.createElement("div");
+    boardTitle.classList.add(`${typeOfBoard}Title`);
+    boardTitle.textContent = `Aguas y Flota de ${playerName}`;
+    gameboardContainer.appendChild(boardTitle);
+  }
+
+  const gameboardDiv = document.createElement("div");
+  gameboardDiv.classList.add("gameboard");
+  gameboardDiv.classList.add(playerTurn);
+  gameboardDiv.classList.add(typeOfBoard);
+
+  let shipsNumbering = {};
 
   for (let i = 0; i < board.length; i++) {
     const columnDiv = document.createElement("div");
@@ -421,8 +649,10 @@ function showBoard(
     }
     gameboardDiv.appendChild(columnDiv);
   }
-  const main = document.querySelector("main");
-  main.appendChild(gameboardDiv);
+
+  gameboardContainer.appendChild(gameboardDiv);
+  const playerDiv = document.querySelector(`.${playerTurn}`);
+  playerDiv.appendChild(gameboardContainer);
 
   function callAttack() {
     attack.call(this, player1, player2, boardSize);
@@ -543,75 +773,6 @@ function showBoard(
         boardSize
       );
     }
-  }
-}
-
-function afterPlacingShipsButton(
-  player1,
-  player2,
-  whoPlaced,
-  numberOfShipsToPlace,
-  boardSize
-) {
-  let button;
-  if (whoPlaced === "player1" && player2.name !== "Computadora") {
-    // player2 placesShips
-    button = document.createElement("button");
-    button.classList.add("toggleBoards");
-    button.classList.add("leftGrid");
-    button.textContent = `Dejar que ${player2.name} posicione sus barcos`;
-    button.addEventListener("click", () => {
-      document.querySelectorAll(".messages").forEach(message => {
-        message.remove();
-      });
-      document.querySelector(".toggleBoards").remove();
-      document.querySelector(".gameboard").remove();
-
-      const showPlayer2ShipsToPlace = document.createElement("button");
-      showPlayer2ShipsToPlace.classList.add("toggleBoards");
-      showPlayer2ShipsToPlace.textContent = `Mostrar tableros de ${player2.name}`;
-      showPlayer2ShipsToPlace.addEventListener("click", () => {
-        showPlayer2ShipsToPlace.remove();
-        placeShips(
-          player1,
-          player2,
-          "player2",
-          numberOfShipsToPlace,
-          Gameboard(boardSize),
-          boardSize
-        );
-      });
-      document.querySelector("main").appendChild(showPlayer2ShipsToPlace);
-    });
-  } else if (whoPlaced === "player1" && player2.name === "Computadora") {
-    button = document.createElement("button");
-    button.classList.add("battleBegins");
-    button.textContent = `¡Empieza el juego!`;
-    button.addEventListener("click", () => {
-      button.remove();
-      placeRandomShips(player2, boardSize);
-      battleBegins(player1, player2, boardSize);
-    });
-  } else if (whoPlaced === "player2") {
-    button = document.createElement("button");
-    button.classList.add("battleBegins");
-    button.textContent = `¡Ocultá tu tablero y dejá que ${player1.name} empiece el juego!`;
-    button.addEventListener("click", () => {
-      button.remove();
-      battleBegins(player1, player2, boardSize);
-    });
-  }
-  const verticalShips = document.querySelector(".verticalShipsContainer");
-  verticalShips.remove();
-  const horizontalShips = document.querySelector(".horizontalShipsContainer");
-  horizontalShips.remove();
-
-  const message = document.querySelector(".messages");
-  const message2 = document.querySelector(".messages2");
-  if (message2) {
-    message2.after(button);
-  } else if (message) {
-    message.after(button);
   }
 }
 
@@ -743,10 +904,13 @@ function winner(player1name, player2name, playerTurn) {
 }
 
 export {
-  getNames,
+	mainTitleAndGetNames,
+	chainFadeInS,
+  createPlayersDivs,
   placeShipsMessage,
   removePlaceShipsElements,
   createToggleButton,
+  showOtherPlayersBoardsButton,
   showShipsToPlace,
   showBoard,
   showAttackEnemyBoard,
