@@ -94,12 +94,15 @@ function placeShips(
   chainFadeInS(messages, [messages2, gameboardContainer], "2s");
 
   const buttons = document.querySelectorAll(".verticalShipsContainer button");
-  chainFadeInS(messages2, buttons, "2s");
+  chainFadeInS(gameboardContainer, buttons, "2s");
 }
 
 function battleBegins(player1, player2, boardSize) {
   removePlaceShipsElements();
   if (player2.name !== "Computadora") {
+    const player2Div = document.querySelector(".playerDiv.player2");
+    player2Div.classList.add("hidden");
+
     showOtherPlayersBoardsButton(player1, showPlayersBoards);
 
     function showPlayersBoards() {
@@ -107,8 +110,8 @@ function battleBegins(player1, player2, boardSize) {
       showBoard(player1, player2, "player1", "ownBoard", false, boardSize);
       showBoard(player1, player2, "player2", "enemyBoard", false, boardSize);
       createToggleButton("player1", player1.name, player2.name, "hide");
-      showBoard(player1, player2, "player2", "ownBoard", true, boardSize);
-      showBoard(player1, player2, "player1", "enemyBoard", true, boardSize);
+      showBoard(player1, player2, "player2", "ownBoard", false, boardSize);
+      showBoard(player1, player2, "player1", "enemyBoard", false, boardSize);
       createToggleButton("player2", player1.name, player2.name, "hide");
     }
   } else {
