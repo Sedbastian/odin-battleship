@@ -404,24 +404,14 @@ function afterPlacingShipsButton(
       document.querySelector(".toggleBoards").remove();
       document.querySelector(".gameboardContainer").remove();
 
-      const showPlayer2ShipsToPlace = document.createElement("button");
-      showPlayer2ShipsToPlace.classList.add("toggleBoards");
-      setTimeout(() => {
-        showPlayer2ShipsToPlace.classList.add("fadeIn");
-      }, 0);
-      showPlayer2ShipsToPlace.textContent = `Mostrar tableros de posicionamiento de barcos de ${player2.name}`;
-      showPlayer2ShipsToPlace.addEventListener("click", () => {
-        showPlayer2ShipsToPlace.remove();
-        placeShips(
-          player1,
-          player2,
-          "player2",
-          numberOfShipsToPlace,
-          Gameboard(boardSize),
-          boardSize
-        );
-      });
-      document.querySelector("main").appendChild(showPlayer2ShipsToPlace);
+      placeShips(
+        player1,
+        player2,
+        "player2",
+        numberOfShipsToPlace,
+        Gameboard(boardSize),
+        boardSize
+      );
     });
   } else if (playerTurn === "player1" && player2.name === "Computadora") {
     button = document.createElement("button");
@@ -495,6 +485,7 @@ function createToggleButton(player, player1name, player2name, hide) {
     }
 
     // Hide:
+		button.classList.add("hidden");
 
     const playerDiv = document.querySelector(`.playerDiv.${player}`);
     playerDiv.classList.add("hidden");
@@ -524,8 +515,8 @@ function createToggleButton(player, player1name, player2name, hide) {
       const otherPlayerDiv = document.querySelector(
         `.playerDiv.${otherPlayer}`
       );
-			otherPlayerDiv.classList.remove("hidden");
-			showButton.remove();
+      otherPlayerDiv.classList.remove("hidden");
+      showButton.remove();
     }
   }
 }
