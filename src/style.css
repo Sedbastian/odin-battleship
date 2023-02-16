@@ -24,6 +24,10 @@ main {
 	font-size: 1.5rem;
 }
 
+.version {
+	color: white;
+}
+
 @keyframes marcosclave1 {
   from {
     opacity: 0.7;
