@@ -1,22 +1,22 @@
 @font-face {
-  font-family: "BigShouldersStencil";
-  src: url("./BigShouldersStencil.woff2");
+	font-family: "BigShouldersStencil";
+	src: url("./BigShouldersStencil.woff2");
 }
 
 @font-face {
-  font-family: "Audiowide-Regular";
-  src: url("./Audiowide-Regular.ttf");
+	font-family: "Audiowide-Regular";
+	src: url("./Audiowide-Regular.ttf");
 }
 
 html {
-  background-color: black;
+	background-color: black;
 }
 
 body {
-	display: flex;
+	/* display: flex;
 	flex-direction: column;
-	align-items: center;
-  text-align: center;
+	align-items: center; */
+	text-align: center;
 }
 
 main {
@@ -32,90 +32,94 @@ main {
 }
 
 @keyframes marcosclave1 {
-  from {
-    opacity: 0.7;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0.7;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 h1 {
-  grid-column: 1 / 3;
 	text-align: center;
 	font-family: "BigShouldersStencil";
-  color: grey;
-  font-size: 7rem;
-  text-shadow: 0 0 0.5rem rgb(162, 0, 255);
+	color: grey;
+	font-size: 7rem;
+	text-shadow: 0 0 0.5rem rgb(162, 0, 255);
+	margin-top: 1rem;
+	margin-bottom: 2rem;
 
-  /* animation: marcosclave1 2s linear 0s infinite alternate; */
+	/* animation: marcosclave1 2s linear 0s infinite alternate; */
 }
 
 h2 {
-  grid-column: 1 / 3;
-  color: goldenrod;
-  font-size: 2rem;
+	color: goldenrod;
+	font-size: 2rem;
 }
 
 .name {
 	font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: forestgreen;
+	margin-bottom: 0;
+	color: forestgreen;
 }
 
 input {
-  margin-bottom: 1rem;
-  background-color: grey;
-  border-style: none;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-family: "Courier New", Courier, monospace;
-  text-align: center;
-  box-shadow: 0 0 0.5rem rgb(150, 150, 150);
+	margin-bottom: 1rem;
+	background-color: grey;
+	border-style: none;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+	font-family: "Courier New", Courier, monospace;
+	text-align: center;
+	box-shadow: 0 0 0.5rem rgb(150, 150, 150);
 }
 
 input::placeholder {
-  color: rgb(64, 64, 64);
+	color: rgb(64, 64, 64);
 }
 
 input:focus {
-  outline-style: none;
-  background-color: olivedrab;
+	outline-style: none;
+	background-color: olivedrab;
 }
 
 button {
-  grid-column: 1 / 3;
-  justify-self: center;
-  margin: 1rem;
-  padding: 1rem;
-  background-color: orangered;
-  border-style: none;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  font-family: "Courier New", Courier, monospace;
+	/* grid-column: 1 / 3; */
+	/* justify-self: center; */
+	margin: 0.3rem;
+	padding: 0.6rem;
+	background-color: orangered;
+	border-style: none;
+	border-radius: 0.5rem;
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: "Courier New", Courier, monospace;
 }
 
 button:hover {
-  background-color: rgb(255, 32, 0);
-  transform: scale(1.05);
-  cursor: pointer;
+	background-color: rgb(255, 32, 0);
+	transform: scale(1.05);
+	cursor: pointer;
 }
 
-.playerDiv.player1, .playerDiv.player2 {
-	display: flex;
+.playerDiv.player1,
+.playerDiv.player2 {
+	/* display: flex; */
 	flex-direction: column;
 	align-items: center;
+	width: 100%;
+	/* height: 90vh; */
 	/* grid-template-columns: repeat(2, auto); */
 	/* grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr)); */
 	/* justify-content: center; */
-  font-family: Audiowide-Regular;
-  font-size: 1.5rem;
+	font-family: Audiowide-Regular;
+	font-size: 1.5rem;
 }
 
-.playerDiv.player1.hidden, .playerDiv.player2.hidden {
+.playerDiv.player1.hidden,
+.playerDiv.player2.hidden {
 	display: none;
 }
 
@@ -124,7 +128,8 @@ button:hover {
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.verticalShipsContainer, .horizontalShipsContainer {
+.verticalShipsContainer,
+.horizontalShipsContainer {
 	/* grid-column: 1 / 2; */
 	display: flex;
 	flex-direction: column;
@@ -132,34 +137,39 @@ button:hover {
 }
 
 button.placeRandomShips {
-  /* width: 60%; */
-  background-color: rgb(128, 0, 255);
+	width: 60%;
+	background-color: rgb(128, 0, 255);
 }
 
 button.placeRandomShips:hover {
-  background-color: rgb(64, 0, 255);
+	background-color: rgb(64, 0, 255);
 }
 
 .messages {
-  margin-bottom: 1rem;
+	margin-bottom: 1rem;
 	color: green;
 	/* width: 60%; */
 }
 
 .battleBegins {
-  grid-column: 1 / 2;
+	grid-column: 1 / 2;
+	height: max-content;
+	width: max-content;
+	align-self: center;
 }
 
 .ownBoardTitle {
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-  color: forestgreen;
+	grid-row: 1 / 2;
+	grid-column: 1 / 2;
+	color: forestgreen;
+	height: 4rem;
 }
 
 .enemyBoardTitle {
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
-  color: orangered;
+	grid-row: 1 / 2;
+	grid-column: 2 / 3;
+	color: orangered;
+	height: 4rem;
 }
 
 .gameboardContainer {
@@ -171,172 +181,173 @@ button.placeRandomShips:hover {
 .gameboard {
 	display: flex;
 	justify-content: space-around;
-	width: 100%;
+	/* height: 100%; */
+	width: 65%;
 	margin: 1rem;
-  cursor: crosshair;
+	cursor: crosshair;
 }
 
 .gameboard.ownBoard {
-  grid-column: 1 / 2;
+	grid-column: 1 / 2;
 }
 
 .gameboard.enemyBoard {
-  grid-column: 2 / 3;
+	grid-column: 2 / 3;
 }
 
 .column {
-  width: 100%;
+	width: 100%;
 }
 
 .row {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 }
 
 .rowDraggable {
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
 }
 
 .hidden {
-  display: none;
+	display: none;
 }
 
 .square {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  aspect-ratio: 1;
-  border-style: solid;
-  border-color: rgb(0, 0, 0);
-  border-width: 0.1rem;
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	aspect-ratio: 1;
+	border-style: solid;
+	border-color: rgb(0, 0, 0);
+	border-width: 0.1rem;
 	border-radius: 0.5rem;
 	font-size: 1rem;
 }
 
 .square:hover {
-  opacity: 0.7;
+	opacity: 0.7;
 }
 
 .notAttacked {
-  background-color: grey;
+	background-color: grey;
 }
 
 @keyframes water {
-  from {
-    transform: rotateZ(-20deg);
-    background-color: rgb(0, 0, 224);
-  }
-  to {
-    transform: rotateZ(20deg);
-    background-color: rgb(0, 0, 255);
-  }
+	from {
+		transform: rotateZ(-20deg);
+		background-color: rgb(0, 0, 224);
+	}
+	to {
+		transform: rotateZ(20deg);
+		background-color: rgb(0, 0, 255);
+	}
 }
 
 .water {
-  background-color: blue;
+	background-color: blue;
 }
 
 .waterAnimation {
-  position: relative;
-  /* animation: water 1s linear 0s infinite alternate; */
+	position: relative;
+	/* animation: water 1s linear 0s infinite alternate; */
 }
 
 .square.questionTrans {
-  transform: rotateX(720deg);
-  transition: transform 1000ms ease-in-out;
+	transform: rotateX(720deg);
+	transition: transform 1000ms ease-in-out;
 }
 
 .square.ship {
-  background-color: brown;
+	background-color: brown;
 }
 
 .shipTrans {
-  transform: rotateY(720deg);
-  transition: transform 1000ms ease-in-out;
+	transform: rotateY(720deg);
+	transition: transform 1000ms ease-in-out;
 }
 
 .square.sunkenShip {
-  background-color: red;
-  transform: rotateZ(720deg);
-  transition: transform 1000ms ease-in-out;
+	background-color: red;
+	transform: rotateZ(720deg);
+	transition: transform 1000ms ease-in-out;
 }
 
 .square.lastSunkenShip {
-  background-color: red;
-  transform: rotateZ(720deg) scale(8);
-  transition: transform 1000ms ease-in-out;
+	background-color: red;
+	transform: rotateZ(720deg) scale(5);
+	transition: transform 1000ms ease-in-out;
 }
 
 .square.attacked {
-  z-index: 2;
-  border-style: solid;
-  border-color: red;
-  transition: transform 700ms ease-in-out;
+	z-index: 2;
+	border-style: solid;
+	border-color: red;
+	transition: transform 700ms ease-in-out;
 }
 
 .square.attacked.attackedTrans {
-  transform: rotateZ(720deg) scale(10);
+	transform: rotateZ(720deg) scale(5);
 }
 
 @keyframes marcosclave {
-  from {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  to {
-    opacity: 1;
-    transform: scale(2);
-  }
+	from {
+		opacity: 0.5;
+		transform: scale(1);
+	}
+	to {
+		opacity: 1;
+		transform: scale(2);
+	}
 }
 
 .square.lastAttacked {
-  animation: marcosclave 1s linear 0s infinite alternate;
+	animation: marcosclave 1s linear 0s infinite alternate;
 }
 
 button.toggleBoards {
 	align-self: center;
 	width: 100%;
-  font-size: 1.5rem;
-  text-align: center;
-  background-color: orangered;
-  border-radius: 1rem;
-  border-width: 1rem;
-  border-style: none;
-  padding: 1rem;
-  opacity: 0;
+	font-size: 1.5rem;
+	text-align: center;
+	background-color: orangered;
+	border-radius: 1rem;
+	border-width: 1rem;
+	border-style: none;
+	padding: 1rem;
+	opacity: 0;
 }
 
 button.leftGrid {
-  grid-column: 1 / 2;
+	grid-column: 1 / 2;
 }
 
 button.battleBegins {
-  font-size: 1.5rem;
-  text-align: center;
-  background-color: rgb(162, 0, 255);
-  border-radius: 1rem;
-  border-width: 1rem;
-  border-style: none;
-  padding: 1rem;
-  opacity: 0;
+	font-size: 1.5rem;
+	text-align: center;
+	background-color: rgb(162, 0, 255);
+	border-radius: 1rem;
+	border-width: 1rem;
+	border-style: none;
+	padding: 1rem;
+	opacity: 0;
 }
 
 button.showHiddenBoards {
-  font-size: 1.5rem;
-  text-align: center;
-  background-color: orangered;
-  border-radius: 1rem;
-  border-width: 1rem;
-  border-style: none;
-  padding: 1rem;
+	font-size: 1.5rem;
+	text-align: center;
+	background-color: orangered;
+	border-radius: 1rem;
+	border-width: 1rem;
+	border-style: none;
+	padding: 1rem;
 }
 
 button.fadeIn {
-  opacity: 1;
-  transition: opacity 1000ms ease-in-out;
+	opacity: 1;
+	transition: opacity 1000ms ease-in-out;
 }
