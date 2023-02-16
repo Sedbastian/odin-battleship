@@ -44,11 +44,15 @@ function mainTitleAndGetNames() {
 	submitNames.classList.add("submitNames");
 	submitNames.textContent = "Listo! Posicionar Flota";
 	submitNames.addEventListener("click", () => {
-		battleship.remove();
-		who.remove();
-		divPlayer1.remove();
-		divPlayer2.remove();
-		submitNames.remove();
+		// battleship.remove();
+		// who.remove();
+		// divPlayer1.remove();
+		// divPlayer2.remove();
+		// submitNames.remove();
+		// version.remove();
+		while (main.firstChild) {
+			main.removeChild(main.firstChild);
+		}
 		initializeGame(player1input.value, player2input.value);
 	});
 
