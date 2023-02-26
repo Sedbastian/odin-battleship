@@ -13,30 +13,33 @@ html {
 }
 
 body {
-	/* display: flex;
-	flex-direction: column;
-	align-items: center; */
-	text-align: center;
+	
 }
 
 main {
+	height: 95vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	font-family: Audiowide-Regular;
 	font-size: 1.5rem;
+	text-align: center;
 }
 
 .version {
+	/* flex-grow: 1; */
+	margin-top: auto;
 	color: white;
 }
 
 @keyframes marcosclave1 {
 	from {
 		opacity: 0.7;
+		/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */
 	}
 	to {
 		opacity: 1;
+		text-shadow: 0 0 5rem rgb(162, 0, 255);
 	}
 }
 
@@ -45,11 +48,11 @@ h1 {
 	font-family: "BigShouldersStencil";
 	color: grey;
 	font-size: 7rem;
-	text-shadow: 0 0 0.5rem rgb(162, 0, 255);
+	/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */
 	margin-top: 1rem;
 	margin-bottom: 2rem;
 
-	/* animation: marcosclave1 2s linear 0s infinite alternate; */
+	/* animation: marcosclave1 1.5s linear 0s infinite alternate; */
 }
 
 h2 {
@@ -98,20 +101,13 @@ button {
 
 button:hover {
 	background-color: rgb(255, 32, 0);
-	transform: scale(1.05);
+	transform: scale(1.04);
 	cursor: pointer;
 }
 
 .playerDiv.player1,
 .playerDiv.player2 {
-	/* display: flex; */
-	flex-direction: column;
-	align-items: center;
 	width: 100%;
-	/* height: 90vh; */
-	/* grid-template-columns: repeat(2, auto); */
-	/* grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr)); */
-	/* justify-content: center; */
 	font-family: Audiowide-Regular;
 	font-size: 1.5rem;
 }
@@ -122,18 +118,26 @@ button:hover {
 }
 
 .boardsContainer {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	
-	
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	/* justify-content: space-between; */
 }
 
 .verticalShipsContainer,
 .horizontalShipsContainer {
-	/* grid-column: 1 / 2; */
+	flex-grow: 1;
+	flex-basis: 45%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.verticalShipsContainer .gameboard {
+	gap: 0.5rem;
+}
+
+.horizontalShipsContainer .gameboard . {
 }
 
 button.placeRandomShips {
@@ -146,26 +150,24 @@ button.placeRandomShips:hover {
 }
 
 .messages {
-	margin-bottom: 1rem;
+	height: 4rem;
+	text-align: center;
 	color: green;
-	/* width: 60%; */
 }
 
 .ownBoardTitle {
-	grid-row: 1 / 2;
-	grid-column: 1 / 2;
 	color: forestgreen;
 	height: 4rem;
 }
 
 .enemyBoardTitle {
-	grid-row: 1 / 2;
-	grid-column: 2 / 3;
 	color: orangered;
 	height: 4rem;
 }
 
 .gameboardContainer {
+	flex-grow: 1;
+	/* flex-basis: 45%; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -173,29 +175,20 @@ button.placeRandomShips:hover {
 
 .gameboard {
 	display: flex;
-	justify-content: space-around;
-	/* height: 100%; */
-	width: 65%;
 	margin: 1rem;
 	cursor: crosshair;
 }
 
-.gameboard.ownBoard {
-	grid-column: 1 / 2;
-}
-
-.gameboard.enemyBoard {
-	grid-column: 2 / 3;
-}
-
 .column {
-	width: 100%;
+	/* width: 2rem; */
 }
 
-.row {
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
+.row.empty {
+	display: none;
+}
+
+.horizontalShipsContainer .row {
+	margin-bottom: 1rem;
 }
 
 .rowDraggable {
@@ -209,6 +202,8 @@ button.placeRandomShips:hover {
 }
 
 .square {
+	width: 2.5rem;
+	height: 2.5rem;
 	position: relative;
 	z-index: 1;
 	display: flex;
@@ -219,7 +214,7 @@ button.placeRandomShips:hover {
 	border-color: rgb(0, 0, 0);
 	border-width: 0.1rem;
 	border-radius: 0.5rem;
-	font-size: 1rem;
+	font-size: 1.5rem;
 }
 
 .square:hover {
@@ -232,11 +227,11 @@ button.placeRandomShips:hover {
 
 @keyframes water {
 	from {
-		transform: rotateZ(-20deg);
-		background-color: rgb(0, 0, 224);
+		transform: rotateZ(-20deg) rotateX(-40deg);
+		background-color: rgb(0, 0, 168);
 	}
 	to {
-		transform: rotateZ(20deg);
+		transform: rotateZ(20deg) rotateX(40deg);
 		background-color: rgb(0, 0, 255);
 	}
 }
@@ -247,6 +242,7 @@ button.placeRandomShips:hover {
 
 .waterAnimation {
 	position: relative;
+	/* z-index: 6; */
 	/* animation: water 1s linear 0s infinite alternate; */
 }
 
@@ -304,7 +300,6 @@ button.placeRandomShips:hover {
 
 button.toggleBoards {
 	align-self: center;
-	/* width: 100%; */
 	font-size: 1.5rem;
 	text-align: center;
 	background-color: orangered;
@@ -319,8 +314,15 @@ button.leftGrid {
 	grid-column: 1 / 2;
 }
 
+.buttonContainer {
+	flex-grow: 1;
+	flex-basis: 45%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 button.battleBegins {
-	align-self: center;
 	font-size: 1.5rem;
 	text-align: center;
 	background-color: rgb(162, 0, 255);
@@ -333,6 +335,7 @@ button.battleBegins {
 }
 
 button.showHiddenBoards {
+	margin-top: 6rem;
 	font-size: 1.5rem;
 	text-align: center;
 	background-color: orangered;

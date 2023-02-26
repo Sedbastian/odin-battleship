@@ -49,6 +49,19 @@ function placeShips(
 	shipsToPlace.placeShip(4, 2, true, 6, 0);
 	shipsToPlace.placeShip(5, 1, true, 8, 0);
 
+	showBoard(
+		player1,
+		player2,
+		playerTurn,
+		"ownBoard",
+		false,
+		boardSize,
+		true,
+		numberOfShipsToPlace,
+		shipsToPlace,
+		player2.name
+	);
+
 	showShipsToPlace(
 		player1,
 		player2,
@@ -69,19 +82,6 @@ function placeShips(
 		playerTurn,
 		"horizontalShipsToPlace",
 		true
-	);
-
-	showBoard(
-		player1,
-		player2,
-		playerTurn,
-		"ownBoard",
-		false,
-		boardSize,
-		true,
-		numberOfShipsToPlace,
-		shipsToPlace,
-		player2.name
 	);
 
 	const messages = document.querySelector(".messages");
