@@ -12,10 +12,6 @@ html {
 	background-color: black;
 }
 
-body {
-	
-}
-
 main {
 	height: 95vh;
 	display: flex;
@@ -94,7 +90,7 @@ button {
 	background-color: orangered;
 	border-style: none;
 	border-radius: 0.5rem;
-	font-size: 1rem;
+	font-size: 1.5rem;
 	font-weight: bold;
 	font-family: "Courier New", Courier, monospace;
 }
@@ -105,11 +101,80 @@ button:hover {
 	cursor: pointer;
 }
 
+button.placeRandomShips {
+	width: min-content;
+	background-color: rgb(128, 0, 255);
+}
+
+button.placeRandomShips:hover {
+	background-color: rgb(64, 0, 255);
+}
+
+.buttonContainer {
+	flex-grow: 1;
+	flex-basis: 45%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+button.toggleBoards {
+	flex-basis: 70%;
+	align-self: center;
+	font-size: 1.5rem;
+	text-align: center;
+	background-color: orangered;
+	border-radius: 1rem;
+	border-width: 1rem;
+	border-style: none;
+	padding: 1rem;
+	opacity: 0;
+}
+
+button.toggleBoards:hover {
+	background-color: rgb(255, 32, 0);
+	transform: scale(1.04);
+	cursor: pointer;
+}
+
+button.toggleBoards.afterPlacing {
+	height: 5rem;
+}
+
+button.battleBegins {
+	flex-basis: 70%;
+	font-size: 1.5rem;
+	text-align: center;
+	background-color: rgb(162, 0, 255);
+	border-radius: 1rem;
+	border-width: 1rem;
+	border-style: none;
+	padding: 1rem;
+	opacity: 0;
+	height: min-content;
+}
+
+button.showHiddenBoards {
+	margin-top: 6rem;
+	font-size: 1.5rem;
+	text-align: center;
+	background-color: orangered;
+	border-radius: 1rem;
+	border-width: 1rem;
+	border-style: none;
+	padding: 1rem;
+}
+
+button.fadeIn {
+	opacity: 1;
+	transition: opacity 1000ms ease-in-out;
+}
+
 .playerDiv.player1,
 .playerDiv.player2 {
 	width: 100%;
 	font-family: Audiowide-Regular;
-	font-size: 1.5rem;
+	font-size: 2rem;
 }
 
 .playerDiv.player1.hidden,
@@ -137,37 +202,26 @@ button:hover {
 	gap: 0.5rem;
 }
 
-.horizontalShipsContainer .gameboard . {
-}
-
-button.placeRandomShips {
-	width: min-content;
-	background-color: rgb(128, 0, 255);
-}
-
-button.placeRandomShips:hover {
-	background-color: rgb(64, 0, 255);
-}
-
 .messages {
-	height: 4rem;
+	font-size: 2rem;
+	height: 6rem;
 	text-align: center;
 	color: green;
 }
 
 .ownBoardTitle {
 	color: forestgreen;
-	height: 4rem;
+	height: 6rem;
 }
 
 .enemyBoardTitle {
 	color: orangered;
-	height: 4rem;
+	height: 6rem;
 }
 
 .gameboardContainer {
 	flex-grow: 1;
-	/* flex-basis: 45%; */
+	flex-basis: 45%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -177,10 +231,6 @@ button.placeRandomShips:hover {
 	display: flex;
 	margin: 1rem;
 	cursor: crosshair;
-}
-
-.column {
-	/* width: 2rem; */
 }
 
 .row.empty {
@@ -202,8 +252,8 @@ button.placeRandomShips:hover {
 }
 
 .square {
-	width: 2.5rem;
-	height: 2.5rem;
+	width: 3rem;
+	height: 3rem;
 	position: relative;
 	z-index: 1;
 	display: flex;
@@ -214,7 +264,7 @@ button.placeRandomShips:hover {
 	border-color: rgb(0, 0, 0);
 	border-width: 0.1rem;
 	border-radius: 0.5rem;
-	font-size: 1.5rem;
+	font-size: 2rem;
 }
 
 .square:hover {
@@ -242,8 +292,8 @@ button.placeRandomShips:hover {
 
 .waterAnimation {
 	position: relative;
-	/* z-index: 6; */
-	/* animation: water 1s linear 0s infinite alternate; */
+	z-index: 0;
+	animation: water 1s linear 0s infinite alternate;
 }
 
 .square.questionTrans {
@@ -296,56 +346,4 @@ button.placeRandomShips:hover {
 
 .square.lastAttacked {
 	animation: marcosclave 1s linear 0s infinite alternate;
-}
-
-button.toggleBoards {
-	align-self: center;
-	font-size: 1.5rem;
-	text-align: center;
-	background-color: orangered;
-	border-radius: 1rem;
-	border-width: 1rem;
-	border-style: none;
-	padding: 1rem;
-	opacity: 0;
-}
-
-button.leftGrid {
-	grid-column: 1 / 2;
-}
-
-.buttonContainer {
-	flex-grow: 1;
-	flex-basis: 45%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-button.battleBegins {
-	font-size: 1.5rem;
-	text-align: center;
-	background-color: rgb(162, 0, 255);
-	border-radius: 1rem;
-	border-width: 1rem;
-	border-style: none;
-	padding: 1rem;
-	opacity: 0;
-	height: min-content;
-}
-
-button.showHiddenBoards {
-	margin-top: 6rem;
-	font-size: 1.5rem;
-	text-align: center;
-	background-color: orangered;
-	border-radius: 1rem;
-	border-width: 1rem;
-	border-style: none;
-	padding: 1rem;
-}
-
-button.fadeIn {
-	opacity: 1;
-	transition: opacity 1000ms ease-in-out;
 }

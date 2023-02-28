@@ -106,7 +106,7 @@ function battleBegins(player1, player2, boardSize) {
 		showOtherPlayersBoardsButton(player1, showPlayersBoards);
 
 		function showPlayersBoards() {
-			document.querySelector("button.toggleBoards.fadeIn").remove();
+			document.querySelector(".buttonContainer").remove();
 			showBoard(
 				player1,
 				player2,
@@ -123,7 +123,9 @@ function battleBegins(player1, player2, boardSize) {
 				false,
 				boardSize
 			);
-			createToggleButton("player1", player1.name, player2.name, "hide");
+
+			createToggleButton("player1", player1.name, player2.name, "Esconder tableros y cambiar turno", ".playerDiv.player1", "hide");
+			
 			showBoard(
 				player1,
 				player2,
@@ -140,7 +142,7 @@ function battleBegins(player1, player2, boardSize) {
 				false,
 				boardSize
 			);
-			createToggleButton("player2", player1.name, player2.name, "hide");
+			createToggleButton("player2", player1.name, player2.name, "Esconder tableros y cambiar turno", ".playerDiv.player2", "hide");
 		}
 	} else {
 		showBoard(player1, player2, "player1", "ownBoard", false, boardSize);

@@ -57,8 +57,9 @@ function mainTitleAndGetNames() {
 	});
 
 	const version = document.createElement("div");
+	chainFadeInS(submitNames, version, "1s");
 	version.classList.add("version");
-	version.textContent = "v1";
+	version.textContent = "v0.1";
 
 	const main = document.querySelector("main");
 	main.appendChild(battleship);
@@ -349,10 +350,10 @@ function showShipsToPlace(
 		const message = document.querySelector(".messages");
 		if (playerTurn === "player1") {
 			placeRandomShips(player1, boardSize);
-			message.textContent = `Así queda pocisionada tu flota, ${player1.name}`;
+			message.textContent = `Así queda pocisionada tu flota, ${player1.name}:`;
 		} else if (playerTurn === "player2") {
 			placeRandomShips(player2, boardSize);
-			message.textContent = `Así queda pocisionada tu flota, ${player2.name}`;
+			message.textContent = `Así queda pocisionada tu flota, ${player2.name}:`;
 		}
 		const gameboards = document.querySelectorAll(".gameboardContainer");
 		gameboards.forEach(gameboard => {
@@ -430,7 +431,6 @@ function afterPlacingShipsButton(
 			document.querySelectorAll(".messages").forEach(message => {
 				message.remove();
 			});
-			// document.querySelector(".toggleBoards").remove();
 			document.querySelector(".gameboardContainer").remove();
 
 			placeShips(
@@ -466,10 +466,9 @@ function afterPlacingShipsButton(
 			battleBegins(player1, player2, boardSize);
 		});
 	}
-	
-	
+
 	buttonContainer.appendChild(button);
-	
+
 	const verticalShips = document.querySelector(".verticalShipsContainer");
 	verticalShips.remove();
 	const horizontalShips = document.querySelector(".horizontalShipsContainer");
@@ -481,7 +480,14 @@ function afterPlacingShipsButton(
 	boardsContainer.appendChild(buttonContainer);
 }
 
-function createToggleButton(player, player1name, player2name, hide) {
+function createToggleButton(
+	player,
+	player1name,
+	player2name,
+	textContent,
+	selectorToAppendIt,
+	hide
+) {
 	const button = document.createElement("button");
 	button.classList.add("toggleBoards");
 	setTimeout(() => {
@@ -491,9 +497,10 @@ function createToggleButton(player, player1name, player2name, hide) {
 		button.classList.add("hidden");
 	}
 	button.dataset.player = player;
-	button.textContent = "Esconder tableros y cambiar turno";
+	button.textContent = textContent;
 	button.addEventListener("click", toggleBoards);
-	document.querySelector(`.playerDiv.${player}`).appendChild(button);
+	// document.querySelector(`.playerDiv.${player}`).appendChild(button);
+	document.querySelector(selectorToAppendIt).appendChild(button);
 
 	function toggleBoards() {
 		const player = this.dataset.player;
@@ -531,6 +538,8 @@ function createToggleButton(player, player1name, player2name, hide) {
 		}
 
 		// Show Button:
+		const buttonContainer = document.createElement("div");
+		buttonContainer.classList.add("buttonContainer");
 		const showButton = document.createElement("button");
 		showButton.classList.add("showHiddenBoards");
 		setTimeout(() => {
@@ -538,7 +547,8 @@ function createToggleButton(player, player1name, player2name, hide) {
 		}, 0);
 		showButton.textContent = `Mostrar tableros de ${otherPlayerName}`;
 		showButton.addEventListener("click", showHiddenBoards);
-		document.querySelector("main").appendChild(showButton);
+		buttonContainer.appendChild(showButton);
+		document.querySelector("main").appendChild(buttonContainer);
 
 		function showMakeYourMove() {
 			alert(`¡Todavía no hiciste tu jugada, ${playerName}!`);
@@ -549,12 +559,14 @@ function createToggleButton(player, player1name, player2name, hide) {
 				`.playerDiv.${otherPlayer}`
 			);
 			otherPlayerDiv.classList.remove("hidden");
-			showButton.remove();
+			buttonContainer.remove();
 		}
 	}
 }
 
 function showOtherPlayersBoardsButton(player1, callBack) {
+	const buttonContainer = document.createElement("div");
+	buttonContainer.classList.add("buttonContainer");
 	const button = document.createElement("button");
 	button.classList.add("toggleBoards");
 	setTimeout(() => {
@@ -562,7 +574,8 @@ function showOtherPlayersBoardsButton(player1, callBack) {
 	}, 0);
 	button.textContent = `Mostrar tableros de ${player1.name}`;
 	button.addEventListener("click", callBack);
-	document.querySelector("main").appendChild(button);
+	buttonContainer.appendChild(button);
+	document.querySelector("main").appendChild(buttonContainer);
 }
 
 function showBoard(
