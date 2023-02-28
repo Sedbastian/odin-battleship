@@ -186,7 +186,6 @@ button.fadeIn {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;
-	/* justify-content: space-between; */
 }
 
 .verticalShipsContainer,
@@ -203,18 +202,20 @@ button.fadeIn {
 }
 
 .messages {
-	font-size: 2rem;
+	font-size: 1.8rem;
 	height: 6rem;
 	text-align: center;
 	color: green;
 }
 
 .ownBoardTitle {
+	font-size: 1.8rem;
 	color: forestgreen;
 	height: 6rem;
 }
 
 .enemyBoardTitle {
+	font-size: 1.8rem;	
 	color: orangered;
 	height: 6rem;
 }
@@ -252,8 +253,8 @@ button.fadeIn {
 }
 
 .square {
-	width: 3rem;
-	height: 3rem;
+	width: 2.2rem;
+	height: 2.2rem;
 	position: relative;
 	z-index: 1;
 	display: flex;
@@ -264,7 +265,7 @@ button.fadeIn {
 	border-color: rgb(0, 0, 0);
 	border-width: 0.1rem;
 	border-radius: 0.5rem;
-	font-size: 2rem;
+	font-size: 1.8rem;
 }
 
 .square:hover {
@@ -330,7 +331,7 @@ button.fadeIn {
 }
 
 .square.attacked.attackedTrans {
-	transform: rotateZ(720deg) scale(5);
+	transform: rotateZ(720deg) scale(4);
 }
 
 @keyframes marcosclave {
