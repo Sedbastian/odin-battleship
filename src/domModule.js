@@ -70,31 +70,6 @@ function mainTitleAndGetNames() {
 	main.appendChild(version);
 }
 
-function chainFadeIn(fromElement, toElement, duration, timingFunction) {
-	let timing;
-	if (timingFunction) {
-		timing = timingFunction;
-	} else {
-		timing = "ease-in-out";
-	}
-
-	toElement.style.opacity = "0";
-
-	if (fromElement) {
-		fromElement.addEventListener("transitionend", () => {
-			setTimeout(() => {
-				toElement.style.opacity = "1";
-				toElement.style.transition = `opacity ${duration} ${timing}`;
-			}, 0);
-		});
-	} else {
-		setTimeout(() => {
-			toElement.style.opacity = "1";
-			toElement.style.transition = `opacity ${duration} ${timing}`;
-		}, 0);
-	}
-}
-
 function chainFadeInS(fromElement, toElementS, duration, timingFunction) {
 	let timing;
 	if (timingFunction) {
@@ -944,6 +919,12 @@ function winner(player1name, player2name, playerTurn) {
 	} else if (playerTurn === "player2") {
 		whoWins = player2name;
 	}
+
+	const main = document.querySelector("main");
+	while (main.firstChild) {
+		main.removeChild(main.firstChild);
+	}
+
 	alert(`Ganó ${whoWins}.  ¡Hundió todos los barcos!`);
 }
 

@@ -172,6 +172,9 @@ npm install --save-dev jest
 # GitHub Pages:
 
 Sometimes you want to have a subdirectory on the master branch be the root directory of a repository’s gh-pages branch.
+Primero ejecutar: 
+	$ npx webpack
+y luego:
 
 $ git subtree push --prefix dist origin gh-pages
 
