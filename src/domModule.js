@@ -846,11 +846,13 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
 				`:not(.notAttacked)[data-player="player1"][data-x="${compMoveObject.x}"][data-y="${compMoveObject.y}"]`
 			);
 			if (compMoveObject.result === "¡Agua!") {
+				// Remove waterAnimation while attackedTrans is happening.
 				attackedSquare.classList.remove("waterAnimation");
+				console.log(attackedSquare);
 			}
 			attackedSquare.textContent = "\u{1F7CF}";
 			setTimeout(() => {
-				attackedSquare.style.zIndex = "3";
+				// attackedSquare.style.zIndex = "3";
 				attackedSquare.classList.add("attacked");
 				attackedSquare.classList.add("attackedTrans");
 				attackedSquare.addEventListener(
@@ -860,6 +862,8 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
 			}, 0);
 
 			function transitionEndCallback() {
+				// This zIndex is to lower already attacked squares so that newly attacked
+				// squares remain in a higher zIndex
 				attackedSquare.addEventListener("transitionend", () => {
 					attackedSquare.style.zIndex = "1";
 				});
@@ -925,7 +929,47 @@ function winner(player1name, player2name, playerTurn) {
 		main.removeChild(main.firstChild);
 	}
 
-	alert(`Ganó ${whoWins}.  ¡Hundió todos los barcos!`);
+	main.style.justifyContent = "space-around"
+
+	const won = document.createElement("div");
+	won.textContent = "GANÓ";
+	won.classList.add("won");
+	won.classList.add("wonAnim");
+
+	let count = 0;
+	won.addEventListener("animationiteration", () => {
+		count += 1;
+		if (count === 3) {
+			won.textContent += ".";
+			won.classList.remove("wonAnim");
+			winPlayer.classList.add("winPlayerAnim");
+			return;
+		}
+		won.textContent += ".";
+	});
+
+	const winPlayer = document.createElement("div");
+	winPlayer.textContent = `${whoWins}`;
+	winPlayer.classList.add("winPlayer");
+	winPlayer.style.opacity = "0";
+	winPlayer.addEventListener("animationend", () => {
+		winPlayer.style.opacity = "1";
+		sunkAll.classList.add("sunkAllAnim");
+	});
+
+	const sunkAll = document.createElement("div");
+	sunkAll.textContent = "¡Hundió todos los barcos!";
+	sunkAll.classList.add("sunkAll");
+	sunkAll.style.opacity = "0";
+	sunkAll.addEventListener("animationend", () => {
+		sunkAll.style.opacity = "1";
+	});
+
+	main.appendChild(won);
+	main.appendChild(winPlayer);
+	main.appendChild(sunkAll);
+
+	// alert(`Ganó ${whoWins}.  ¡Hundió todos los barcos!`);
 }
 
 export {
