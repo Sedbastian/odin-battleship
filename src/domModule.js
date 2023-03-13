@@ -848,7 +848,6 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
 			if (compMoveObject.result === "¡Agua!") {
 				// Remove waterAnimation while attackedTrans is happening.
 				attackedSquare.classList.remove("waterAnimation");
-				console.log(attackedSquare);
 			}
 			attackedSquare.textContent = "\u{1F7CF}";
 			setTimeout(() => {
@@ -929,7 +928,7 @@ function winner(player1name, player2name, playerTurn) {
 		main.removeChild(main.firstChild);
 	}
 
-	main.style.justifyContent = "space-around"
+	main.style.justifyContent = "space-around";
 
 	const won = document.createElement("div");
 	won.textContent = "GANÓ";

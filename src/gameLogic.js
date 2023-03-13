@@ -153,15 +153,254 @@ function placeRandomShips(player, boardSize) {
 	}
 }
 
+let fromAttackObj;
+let iA = false;
+let nextAttackDir;
+let axisFound = false;
+let firstHitIa;
+
 function computerAttack(boardSize, player) {
-	let x;
-	let y;
-	do {
-		x = Math.floor(Math.random() * boardSize);
-		y = Math.floor(Math.random() * boardSize);
-	} while (player.gameboard.receivedHits[x][y] === true);
-	const result = player.gameboard.receiveAttack(x, y);
-	return { result, x, y };
+	if (iA === false) {
+		axisFound = false;
+		fromAttackObj = randomAttack();
+		if (fromAttackObj.result === "¡Barco tocado!") {
+			iA = true;
+			firstHitIa = {
+				x: fromAttackObj.x,
+				y: fromAttackObj.y
+			};
+			// if South of attacked square exists and has not been attacked then nextAttackDir:South
+			if (
+				fromAttackObj.y + 1 < boardSize &&
+				player.gameboard.receivedHits[fromAttackObj.x][
+					fromAttackObj.y + 1
+				] === false
+			) {
+				nextAttackDir = { x: 0, y: 1 };
+				// if North of attacked square exists and has not been attacked then nextAttackDir:North
+			} else if (
+				fromAttackObj.y - 1 >= 0 &&
+				player.gameboard.receivedHits[fromAttackObj.x][
+					fromAttackObj.y - 1
+				] === false
+			) {
+				nextAttackDir = { x: 0, y: -1 };
+				// if East of attacked square exists and has not been attacked then nextAttackDir:East
+			} else if (
+				fromAttackObj.x + 1 < boardSize &&
+				player.gameboard.receivedHits[fromAttackObj.x + 1][
+					fromAttackObj.y
+				] === false
+			) {
+				nextAttackDir = { x: 1, y: 0 };
+				// if West of attacked square exists and has not been attacked then nextAttackDir:West
+			} else if (
+				fromAttackObj.x - 1 >= 0 &&
+				player.gameboard.receivedHits[fromAttackObj.x - 1][
+					fromAttackObj.y
+				] === false
+			) {
+				nextAttackDir = { x: -1, y: 0 };
+			} else {
+				iA = false;
+			}
+		}
+	} else if (iA === true) {
+		if (
+			fromAttackObj.x + nextAttackDir.x < boardSize &&
+			fromAttackObj.x + nextAttackDir.x >= 0
+		) {
+			fromAttackObj.x = fromAttackObj.x + nextAttackDir.x;
+		} else {
+			console.log("Handle Out of Board Case");
+			fromAttackObj = randomAttack();
+			iA = false;
+			axisFound = false;
+			return fromAttackObj;
+		}
+
+		if (
+			fromAttackObj.y + nextAttackDir.y < boardSize &&
+			fromAttackObj.y + nextAttackDir.y >= 0
+		) {
+			fromAttackObj.y = fromAttackObj.y + nextAttackDir.y;
+		} else {
+			console.log("Handle Out of Board Case");
+			fromAttackObj = randomAttack();
+			iA = false;
+			axisFound = false;
+			return fromAttackObj;
+		}
+
+		fromAttackObj.result = player.gameboard.receiveAttack(
+			fromAttackObj.x,
+			fromAttackObj.y
+		);
+		// Faltaria caso: result: posicion ya atacada (entonces, cambiar de direccion d ataque)
+		// O ya estaría contemplado?? con receivedHits[x][y]===false??
+		if (fromAttackObj.result === "¡Barco tocado!") {
+			if (axisFound === false) {
+				axisFound = true;
+			}
+			if (
+				fromAttackObj.x + nextAttackDir.x >= boardSize ||
+				fromAttackObj.x + nextAttackDir.x < 0 ||
+				fromAttackObj.y + nextAttackDir.y >= boardSize ||
+				fromAttackObj.y + nextAttackDir.y < 0 ||
+				player.gameboard.receivedHits[
+					fromAttackObj.x + nextAttackDir.x
+				][fromAttackObj.y + nextAttackDir.y] === true
+			) {
+				console.log("In!!!");
+				if (nextAttackDir.x === 1) {
+					nextAttackDir.x = -1;
+				} else if (nextAttackDir.x === -1) {
+					nextAttackDir.x = 1;
+				}
+				if (nextAttackDir.y === 1) {
+					nextAttackDir.y = -1;
+				} else if (nextAttackDir.y === -1) {
+					nextAttackDir.y = 1;
+				}
+				const returnValueX = fromAttackObj.x;
+				const returnValueY = fromAttackObj.y;
+
+				fromAttackObj.x = firstHitIa.x;
+				fromAttackObj.y = firstHitIa.y;
+				return {
+					result: "¡Agua!",
+					x: returnValueX,
+					y: returnValueY
+				};
+			}
+		} else if (fromAttackObj.result === "¡Agua!") {
+			// save fromAttackObj coordinates to return result object (because they will be changed)
+			const returnValueX = fromAttackObj.x;
+			const returnValueY = fromAttackObj.y;
+
+			if (axisFound === true) {
+				if (nextAttackDir.x === 1) {
+					nextAttackDir.x = -1;
+				} else if (nextAttackDir.x === -1) {
+					nextAttackDir.x = 1;
+				}
+				if (nextAttackDir.y === 1) {
+					nextAttackDir.y = -1;
+				} else if (nextAttackDir.y === -1) {
+					nextAttackDir.y = 1;
+				}
+				fromAttackObj.x = firstHitIa.x;
+				fromAttackObj.y = firstHitIa.y;
+			} else if (axisFound === false) {
+				// First: save fromAttackObj coordinates to return and then make them as previous attack:
+
+				fromAttackObj.x = fromAttackObj.x - nextAttackDir.x;
+				fromAttackObj.y = fromAttackObj.y - nextAttackDir.y;
+
+				// Second: change nextAttackDir:
+				// SouthCase
+				if (nextAttackDir.x === 0 && nextAttackDir.y === 1) {
+					// if North of attacked square exists and has not been attacked then nextAttackDir:North
+					if (
+						fromAttackObj.y - 1 >= 0 &&
+						player.gameboard.receivedHits[fromAttackObj.x][
+							fromAttackObj.y - 1
+						] === false
+					) {
+						nextAttackDir = { x: 0, y: -1 };
+						// if East of attacked square exists and has not been attacked then nextAttackDir:East
+					} else if (
+						fromAttackObj.x + 1 < boardSize &&
+						player.gameboard.receivedHits[fromAttackObj.x + 1][
+							fromAttackObj.y
+						] === false
+					) {
+						nextAttackDir = { x: 1, y: 0 };
+						// if West of attacked square exists and has not been attacked then nextAttackDir:West
+					} else if (
+						fromAttackObj.x - 1 >= 0 &&
+						player.gameboard.receivedHits[fromAttackObj.x - 1][
+							fromAttackObj.y
+						] === false
+					) {
+						nextAttackDir = { x: -1, y: 0 };
+					} else {
+						iA = false;
+					}
+				}
+				// North Case
+				else if (nextAttackDir.x === 0 && nextAttackDir.y === -1) {
+					// if East of attacked square exists and has not been attacked then nextAttackDir:East
+					if (
+						fromAttackObj.x + 1 < boardSize &&
+						player.gameboard.receivedHits[fromAttackObj.x + 1][
+							fromAttackObj.y
+						] === false
+					) {
+						nextAttackDir = { x: 1, y: 0 };
+						// if West of attacked square exists and has not been attacked then nextAttackDir:West
+					} else if (
+						fromAttackObj.x - 1 >= 0 &&
+						player.gameboard.receivedHits[fromAttackObj.x - 1][
+							fromAttackObj.y
+						] === false
+					) {
+						nextAttackDir = { x: -1, y: 0 };
+					} else {
+						iA = false;
+					}
+				}
+				// East Case
+				else if (nextAttackDir.x === 1 && nextAttackDir.y === 0) {
+					if (
+						fromAttackObj.x - 1 >= 0 &&
+						player.gameboard.receivedHits[fromAttackObj.x - 1][
+							fromAttackObj.y
+						] === false
+					) {
+						nextAttackDir = { x: -1, y: 0 };
+					} else {
+						iA = false;
+					}
+				}
+				// West Case
+				else if (nextAttackDir.x === -1 && nextAttackDir.y === 0) {
+					iA = false;
+				}
+			}
+
+			return {
+				result: "¡Agua!",
+				x: returnValueX,
+				y: returnValueY
+			};
+		} else {
+			iA = false;
+			axisFound = false;
+		}
+	}
+	return fromAttackObj;
+
+	function randomAttack() {
+		let x;
+		let y;
+		do {
+			x = Math.floor(Math.random() * boardSize);
+			y = Math.floor(Math.random() * boardSize);
+		} while (player.gameboard.receivedHits[x][y] === true);
+		let result = player.gameboard.receiveAttack(x, y);
+		return { result, x, y };
+	}
 }
 
-export { Ship, Gameboard, Player, placeRandomShips, computerAttack };
+export {
+	Ship,
+	Gameboard,
+	Player,
+	placeRandomShips,
+	computerAttack,
+	iA,
+	nextAttackDir,
+	firstHitIa,
+	fromAttackObj
+};

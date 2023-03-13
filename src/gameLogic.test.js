@@ -1,4 +1,13 @@
-import { Ship, Gameboard, Player } from "./gameLogic";
+import {
+	Ship,
+	Gameboard,
+	Player,
+	fromAttackObj,
+	iA,
+	nextAttackDir,
+	firstHitIa,
+	computerAttack
+} from "./gameLogic";
 
 test("Ship factory", () => {
 	const shipy = Ship("0", 5, true);
@@ -142,4 +151,73 @@ test("Player factory", () => {
 		[2, 2],
 		[2, 3]
 	]);
+});
+
+test("computerAttacks sinks one vertical ship", () => {
+	// 1- Create gameboard, player and place a vertical ship of length 5
+	const player1Gameboard = Gameboard(10);
+	const player1 = Player("Rinzai", player1Gameboard);
+
+	player1.gameboard.placeShip("0", 5, true, 2, 2);
+
+	// 2- computerAttack will attack randomly untill iA === true on the first hit
+	let firstHit;
+
+	do {
+		firstHit = computerAttack(10, player1);
+	} while (iA === false);
+
+	expect(iA).toBe(true);
+	expect(firstHit).toStrictEqual(fromAttackObj);
+
+	// 3- Continue attacking untill attack.result === "¡Todos los barcos han sido hundidos!"
+
+	let attack = { ...firstHit };
+
+	while (attack.result !== "¡Todos los barcos han sido hundidos!") {
+		attack = computerAttack(10, player1);
+	}
+
+	expect(attack.result).toBe("¡Todos los barcos han sido hundidos!");
+});
+
+test("computerAttacks sinks one horizontal ship", () => {
+	// 1- Create gameboard, player and place a horizontal ship of length 5
+	const player1Gameboard = Gameboard(10);
+	const player1 = Player("Rinzai", player1Gameboard);
+
+	player1.gameboard.placeShip("0", 5, false, 2, 2);
+
+	// 2- computerAttack will attack randomly untill iA === true on the first hit
+	let firstHit;
+
+	do {
+		firstHit = computerAttack(10, player1);
+	} while (iA === false);
+
+	expect(iA).toBe(true);
+	expect(firstHit).toStrictEqual(fromAttackObj);
+
+	// console.log("After 1st Hit:");
+	// console.log({ fromAttackObj });
+	// console.log({ nextAttackDir });
+	// console.log({ firstHitIa });
+
+	// 3- Continue attacking untill attack.result === "¡Todos los barcos han sido hundidos!"
+
+	let attack = { ...firstHit };
+	let n = 1;
+
+	while (attack.result !== "¡Todos los barcos han sido hundidos!") {
+		attack = computerAttack(10, player1);
+		// console.log(`After attack number ${n}:`);
+		n += 1;
+		// console.log({ attack });
+		// console.log({ fromAttackObj });
+		// console.log({ nextAttackDir });
+		// console.log({ firstHitIa });
+	}
+
+	expect(attack.result).toBe("¡Todos los barcos han sido hundidos!");
+	expect(n).toBeLessThan(10);
 });
