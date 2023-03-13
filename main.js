@@ -28,7 +28,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_1___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@font-face {\n\tfont-family: \"BigShouldersStencil\";\n\tsrc: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n\n@font-face {\n\tfont-family: \"Audiowide-Regular\";\n\tsrc: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n}\n\nhtml {\n\tbackground-color: black;\n}\n\nmain {\n\theight: 95vh;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tfont-family: Audiowide-Regular;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n}\n\n.version {\n\t/* flex-grow: 1; */\n\tmargin-top: auto;\n\tcolor: white;\n}\n\n@keyframes marcosclave1 {\n\tfrom {\n\t\topacity: 0.7;\n\t\t/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttext-shadow: 0 0 5rem rgb(162, 0, 255);\n\t}\n}\n\nh1 {\n\ttext-align: center;\n\tfont-family: \"BigShouldersStencil\";\n\tcolor: grey;\n\tfont-size: 7rem;\n\t/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n\tmargin-top: 1rem;\n\tmargin-bottom: 2rem;\n\n\t/* animation: marcosclave1 1.5s linear 0s infinite alternate; */\n}\n\nh2 {\n\tcolor: goldenrod;\n\tfont-size: 2rem;\n}\n\n.name {\n\tfont-size: 1.5rem;\n\tmargin-bottom: 0;\n\tcolor: forestgreen;\n}\n\ninput {\n\tmargin-bottom: 1rem;\n\tbackground-color: grey;\n\tborder-style: none;\n\tborder-radius: 0.5rem;\n\tpadding: 1rem;\n\tfont-size: 1.5rem;\n\tfont-weight: bold;\n\tfont-family: \"Courier New\", Courier, monospace;\n\ttext-align: center;\n\tbox-shadow: 0 0 0.5rem rgb(150, 150, 150);\n}\n\ninput::placeholder {\n\tcolor: rgb(64, 64, 64);\n}\n\ninput:focus {\n\toutline-style: none;\n\tbackground-color: olivedrab;\n}\n\nbutton {\n\tmargin: 0.3rem;\n\tpadding: 0.6rem;\n\tbackground-color: orangered;\n\tborder-style: none;\n\tborder-radius: 0.5rem;\n\tfont-size: 1.5rem;\n\tfont-weight: bold;\n\tfont-family: \"Courier New\", Courier, monospace;\n}\n\nbutton:hover {\n\tbackground-color: rgb(255, 32, 0);\n\ttransform: scale(1.04);\n\tcursor: pointer;\n}\n\nbutton.placeRandomShips {\n\twidth: min-content;\n\tbackground-color: rgb(128, 0, 255);\n}\n\nbutton.placeRandomShips:hover {\n\tbackground-color: rgb(64, 0, 255);\n}\n\n.buttonContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n}\n\nbutton.toggleBoards {\n\tflex-basis: 70%;\n\talign-self: center;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: orangered;\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n\topacity: 0;\n}\n\nbutton.toggleBoards:hover {\n\tbackground-color: rgb(255, 32, 0);\n\ttransform: scale(1.04);\n\tcursor: pointer;\n}\n\nbutton.toggleBoards.afterPlacing {\n\theight: 5rem;\n}\n\nbutton.battleBegins {\n\tflex-basis: 70%;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: rgb(162, 0, 255);\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n\topacity: 0;\n\theight: min-content;\n}\n\nbutton.showHiddenBoards {\n\tmargin-top: 6rem;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: orangered;\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n}\n\nbutton.fadeIn {\n\topacity: 1;\n\ttransition: opacity 1000ms ease-in-out;\n}\n\n.playerDiv.player1,\n.playerDiv.player2 {\n\twidth: 100%;\n\tfont-family: Audiowide-Regular;\n\tfont-size: 2rem;\n}\n\n.playerDiv.player1.hidden,\n.playerDiv.player2.hidden {\n\tdisplay: none;\n}\n\n.boardsContainer {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tgap: 1rem;\n}\n\n.verticalShipsContainer,\n.horizontalShipsContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n\n.verticalShipsContainer .gameboard {\n\tgap: 0.5rem;\n}\n\n.messages {\n\tfont-size: 1.8rem;\n\theight: 6rem;\n\ttext-align: center;\n\tcolor: green;\n}\n\n.ownBoardTitle {\n\tfont-size: 1.8rem;\n\tcolor: forestgreen;\n\theight: 6rem;\n}\n\n.enemyBoardTitle {\n\tfont-size: 1.8rem;\n\tcolor: orangered;\n\theight: 6rem;\n}\n\n.gameboardContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n\n.gameboard {\n\tdisplay: flex;\n\tmargin: 1rem;\n\tcursor: crosshair;\n}\n\n.row.empty {\n\tdisplay: none;\n}\n\n.horizontalShipsContainer .row {\n\tmargin-bottom: 1rem;\n}\n\n.rowDraggable {\n\tdisplay: flex;\n\tjustify-content: flex-start;\n\twidth: 100%;\n}\n\n.hidden {\n\tdisplay: none;\n}\n\n.square {\n\twidth: 2.2rem;\n\theight: 2.2rem;\n\tposition: relative;\n\tz-index: 1;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\taspect-ratio: 1;\n\tborder-style: solid;\n\tborder-color: rgb(0, 0, 0);\n\tborder-width: 0.1rem;\n\tborder-radius: 0.5rem;\n\tfont-size: 1.8rem;\n}\n\n.square:hover {\n\topacity: 0.7;\n}\n\n.notAttacked {\n\tbackground-color: grey;\n}\n\n@keyframes water {\n\tfrom {\n\t\ttransform: rotateZ(-20deg) rotateX(-40deg);\n\t\tbackground-color: rgb(0, 0, 168);\n\t}\n\tto {\n\t\ttransform: rotateZ(20deg) rotateX(40deg);\n\t\tbackground-color: rgb(0, 0, 255);\n\t}\n}\n\n.water {\n\tbackground-color: blue;\n}\n\n.waterAnimation {\n\tposition: relative;\n\tz-index: 0;\n\tanimation: water 1s linear 0s infinite alternate;\n}\n\n.square.questionTrans {\n\ttransform: rotateX(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.ship {\n\tbackground-color: brown;\n}\n\n.shipTrans {\n\ttransform: rotateY(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.sunkenShip {\n\tbackground-color: red;\n\ttransform: rotateZ(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.lastSunkenShip {\n\tbackground-color: red;\n\ttransform: rotateZ(720deg) scale(5);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.attacked {\n\tz-index: 2;\n\tborder-style: solid;\n\tborder-color: red;\n\ttransition: transform 700ms ease-in-out;\n}\n\n.square.attacked.attackedTrans {\n\ttransform: rotateZ(720deg) scale(4);\n}\n\n@keyframes marcosclave {\n\tfrom {\n\t\topacity: 0.5;\n\t\ttransform: scale(1);\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttransform: scale(2);\n\t}\n}\n\n.square.lastAttacked {\n\tanimation: marcosclave 1s linear 0s infinite alternate;\n}\n\n/* Winner */\n.won {\n\tmargin-top: 2rem;\n\tcolor: rgb(255, 64, 0);\n\tfont-size: 2rem;\n\tfont-family: \"BigShouldersStencil\";\n\ttransform: scale(3);\n}\n\n@keyframes won {\n\tfrom {\n\t\t/* color: rgb(255, 64, 0); */\n\t\ttransform: scale(0.1);\n\t}\n\t30% {\n\t\ttransform: rotateZ(30deg);\n\t}\n\t70% {\n\t\ttransform: rotateZ(-30deg);\n\t}\n\tto {\n\t\t/* color: rgb(128, 0, 255); */\n\t\ttransform: scale(3);\n\t}\n}\n\n.wonAnim {\n\t/* animation: won 1s cubic-bezier(0, 1, 1, 0) 0s infinite alternate; */\n\tanimation: won 1s ease 0s infinite alternate;\n}\n\n.winPlayer {\n\tmargin-top: 3rem;\n\tfont-size: 6rem;\n\tcolor: rgb(143, 0, 143);\n}\n\n@keyframes winPlayer {\n\tfrom {\n\t\topacity: 0;\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttransform: rotateZ(4turn);\n\t}\n}\n\n.winPlayerAnim {\n\tanimation: winPlayer 2s ease-in 0s 1;\n}\n\n.sunkAll {\n\tjustify-self: center;\n\tmargin-top: 2rem;\n\tcolor: orange;\n\tfont-family: 'Courier New', Courier, monospace;\n\tfont-size: 4rem;\n}\n\n@keyframes sunkAll {\n\tfrom {\n\t\topacity: 0;\n\t}\n\tto {\n\t\topacity: 1;\n\t}\n}\n\n.sunkAllAnim {\n\tanimation: sunkAll 0.3s ease 0s 7;\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["@font-face {\n\tfont-family: \"BigShouldersStencil\";\n\tsrc: url(\"./BigShouldersStencil.woff2\");\n}\n\n@font-face {\n\tfont-family: \"Audiowide-Regular\";\n\tsrc: url(\"./Audiowide-Regular.ttf\");\n}\n\nhtml {\n\tbackground-color: black;\n}\n\nmain {\n\theight: 95vh;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tfont-family: Audiowide-Regular;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n}\n\n.version {\n\t/* flex-grow: 1; */\n\tmargin-top: auto;\n\tcolor: white;\n}\n\n@keyframes marcosclave1 {\n\tfrom {\n\t\topacity: 0.7;\n\t\t/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttext-shadow: 0 0 5rem rgb(162, 0, 255);\n\t}\n}\n\nh1 {\n\ttext-align: center;\n\tfont-family: \"BigShouldersStencil\";\n\tcolor: grey;\n\tfont-size: 7rem;\n\t/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n\tmargin-top: 1rem;\n\tmargin-bottom: 2rem;\n\n\t/* animation: marcosclave1 1.5s linear 0s infinite alternate; */\n}\n\nh2 {\n\tcolor: goldenrod;\n\tfont-size: 2rem;\n}\n\n.name {\n\tfont-size: 1.5rem;\n\tmargin-bottom: 0;\n\tcolor: forestgreen;\n}\n\ninput {\n\tmargin-bottom: 1rem;\n\tbackground-color: grey;\n\tborder-style: none;\n\tborder-radius: 0.5rem;\n\tpadding: 1rem;\n\tfont-size: 1.5rem;\n\tfont-weight: bold;\n\tfont-family: \"Courier New\", Courier, monospace;\n\ttext-align: center;\n\tbox-shadow: 0 0 0.5rem rgb(150, 150, 150);\n}\n\ninput::placeholder {\n\tcolor: rgb(64, 64, 64);\n}\n\ninput:focus {\n\toutline-style: none;\n\tbackground-color: olivedrab;\n}\n\nbutton {\n\tmargin: 0.3rem;\n\tpadding: 0.6rem;\n\tbackground-color: orangered;\n\tborder-style: none;\n\tborder-radius: 0.5rem;\n\tfont-size: 1.5rem;\n\tfont-weight: bold;\n\tfont-family: \"Courier New\", Courier, monospace;\n}\n\nbutton:hover {\n\tbackground-color: rgb(255, 32, 0);\n\ttransform: scale(1.04);\n\tcursor: pointer;\n}\n\nbutton.placeRandomShips {\n\twidth: min-content;\n\tbackground-color: rgb(128, 0, 255);\n}\n\nbutton.placeRandomShips:hover {\n\tbackground-color: rgb(64, 0, 255);\n}\n\n.buttonContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n}\n\nbutton.toggleBoards {\n\tflex-basis: 70%;\n\talign-self: center;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: orangered;\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n\topacity: 0;\n}\n\nbutton.toggleBoards:hover {\n\tbackground-color: rgb(255, 32, 0);\n\ttransform: scale(1.04);\n\tcursor: pointer;\n}\n\nbutton.toggleBoards.afterPlacing {\n\theight: 5rem;\n}\n\nbutton.battleBegins {\n\tflex-basis: 70%;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: rgb(162, 0, 255);\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n\topacity: 0;\n\theight: min-content;\n}\n\nbutton.showHiddenBoards {\n\tmargin-top: 6rem;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: orangered;\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n}\n\nbutton.fadeIn {\n\topacity: 1;\n\ttransition: opacity 1000ms ease-in-out;\n}\n\n.playerDiv.player1,\n.playerDiv.player2 {\n\twidth: 100%;\n\tfont-family: Audiowide-Regular;\n\tfont-size: 2rem;\n}\n\n.playerDiv.player1.hidden,\n.playerDiv.player2.hidden {\n\tdisplay: none;\n}\n\n.boardsContainer {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tgap: 1rem;\n}\n\n.verticalShipsContainer,\n.horizontalShipsContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n\n.verticalShipsContainer .gameboard {\n\tgap: 0.5rem;\n}\n\n.messages {\n\tfont-size: 1.8rem;\n\theight: 6rem;\n\ttext-align: center;\n\tcolor: green;\n}\n\n.ownBoardTitle {\n\tfont-size: 1.8rem;\n\tcolor: forestgreen;\n\theight: 6rem;\n}\n\n.enemyBoardTitle {\n\tfont-size: 1.8rem;\n\tcolor: orangered;\n\theight: 6rem;\n}\n\n.gameboardContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n\n.gameboard {\n\tdisplay: flex;\n\tmargin: 1rem;\n\tcursor: crosshair;\n}\n\n.row.empty {\n\tdisplay: none;\n}\n\n.horizontalShipsContainer .row {\n\tmargin-bottom: 1rem;\n}\n\n.rowDraggable {\n\tdisplay: flex;\n\tjustify-content: flex-start;\n\twidth: 100%;\n}\n\n.hidden {\n\tdisplay: none;\n}\n\n.square {\n\twidth: 2.2rem;\n\theight: 2.2rem;\n\tposition: relative;\n\tz-index: 1;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\taspect-ratio: 1;\n\tborder-style: solid;\n\tborder-color: rgb(0, 0, 0);\n\tborder-width: 0.1rem;\n\tborder-radius: 0.5rem;\n\tfont-size: 1.8rem;\n}\n\n.square:hover {\n\topacity: 0.7;\n}\n\n.notAttacked {\n\tbackground-color: grey;\n}\n\n@keyframes water {\n\tfrom {\n\t\ttransform: rotateZ(-20deg) rotateX(-40deg);\n\t\tbackground-color: rgb(0, 0, 168);\n\t}\n\tto {\n\t\ttransform: rotateZ(20deg) rotateX(40deg);\n\t\tbackground-color: rgb(0, 0, 255);\n\t}\n}\n\n.water {\n\tbackground-color: blue;\n}\n\n.waterAnimation {\n\tposition: relative;\n\tz-index: 0;\n\tanimation: water 1s linear 0s infinite alternate;\n}\n\n.square.questionTrans {\n\ttransform: rotateX(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.ship {\n\tbackground-color: brown;\n}\n\n.shipTrans {\n\ttransform: rotateY(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.sunkenShip {\n\tbackground-color: red;\n\ttransform: rotateZ(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.lastSunkenShip {\n\tbackground-color: red;\n\ttransform: rotateZ(720deg) scale(5);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.attacked {\n\tz-index: 2;\n\tborder-style: solid;\n\tborder-color: red;\n\ttransition: transform 700ms ease-in-out;\n}\n\n.square.attacked.attackedTrans {\n\ttransform: rotateZ(720deg) scale(4);\n}\n\n@keyframes marcosclave {\n\tfrom {\n\t\topacity: 0.5;\n\t\ttransform: scale(1);\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttransform: scale(2);\n\t}\n}\n\n.square.lastAttacked {\n\tanimation: marcosclave 1s linear 0s infinite alternate;\n}\n\n/* Winner */\n.won {\n\tmargin-top: 2rem;\n\tcolor: rgb(255, 64, 0);\n\tfont-size: 2rem;\n\tfont-family: \"BigShouldersStencil\";\n\ttransform: scale(3);\n}\n\n@keyframes won {\n\tfrom {\n\t\t/* color: rgb(255, 64, 0); */\n\t\ttransform: scale(0.1);\n\t}\n\t30% {\n\t\ttransform: rotateZ(30deg);\n\t}\n\t70% {\n\t\ttransform: rotateZ(-30deg);\n\t}\n\tto {\n\t\t/* color: rgb(128, 0, 255); */\n\t\ttransform: scale(3);\n\t}\n}\n\n.wonAnim {\n\t/* animation: won 1s cubic-bezier(0, 1, 1, 0) 0s infinite alternate; */\n\tanimation: won 1s ease 0s infinite alternate;\n}\n\n.winPlayer {\n\tmargin-top: 3rem;\n\tfont-size: 6rem;\n\tcolor: rgb(143, 0, 143);\n}\n\n@keyframes winPlayer {\n\tfrom {\n\t\topacity: 0;\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttransform: rotateZ(4turn);\n\t}\n}\n\n.winPlayerAnim {\n\tanimation: winPlayer 2s ease-in 0s 1;\n}\n\n.sunkAll {\n\tjustify-self: center;\n\tmargin-top: 2rem;\n\tcolor: orange;\n\tfont-family: 'Courier New', Courier, monospace;\n\tfont-size: 4rem;\n}\n\n@keyframes sunkAll {\n\tfrom {\n\t\topacity: 0;\n\t}\n\tto {\n\t\topacity: 1;\n\t}\n}\n\n.sunkAllAnim {\n\tanimation: sunkAll 0.3s ease 0s 7;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "@font-face {\n\tfont-family: \"BigShouldersStencil\";\n\tsrc: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n\n@font-face {\n\tfont-family: \"Audiowide-Regular\";\n\tsrc: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n}\n\nhtml {\n\tbackground-color: black;\n}\n\nmain {\n\theight: 95vh;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tfont-family: Audiowide-Regular;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n}\n\n.version {\n\t/* flex-grow: 1; */\n\tmargin-top: auto;\n\tcolor: white;\n}\n\n@keyframes marcosclave1 {\n\tfrom {\n\t\topacity: 0.7;\n\t\t/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttext-shadow: 0 0 5rem rgb(162, 0, 255);\n\t}\n}\n\nh1 {\n\ttext-align: center;\n\tfont-family: \"BigShouldersStencil\";\n\tcolor: grey;\n\tfont-size: 7rem;\n\t/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n\tmargin-top: 1rem;\n\tmargin-bottom: 2rem;\n\n\t/* animation: marcosclave1 1.5s linear 0s infinite alternate; */\n}\n\nh2 {\n\tcolor: goldenrod;\n\tfont-size: 2rem;\n}\n\n.name {\n\tfont-size: 1.5rem;\n\tmargin-bottom: 0;\n\tcolor: forestgreen;\n}\n\ninput {\n\tmargin-bottom: 1rem;\n\tbackground-color: grey;\n\tborder-style: none;\n\tborder-radius: 0.5rem;\n\tpadding: 1rem;\n\tfont-size: 1.5rem;\n\tfont-weight: bold;\n\tfont-family: \"Courier New\", Courier, monospace;\n\ttext-align: center;\n\tbox-shadow: 0 0 0.5rem rgb(150, 150, 150);\n}\n\ninput::placeholder {\n\tcolor: rgb(64, 64, 64);\n}\n\ninput:focus {\n\toutline-style: none;\n\tbackground-color: olivedrab;\n}\n\nbutton {\n\tmargin: 0.3rem;\n\tpadding: 0.6rem;\n\tbackground-color: orangered;\n\tborder-style: none;\n\tborder-radius: 0.5rem;\n\tfont-size: 1.5rem;\n\tfont-weight: bold;\n\tfont-family: \"Courier New\", Courier, monospace;\n}\n\nbutton:hover {\n\tbackground-color: rgb(255, 32, 0);\n\ttransform: scale(1.04);\n\tcursor: pointer;\n}\n\nbutton.placeRandomShips {\n\twidth: min-content;\n\tbackground-color: rgb(128, 0, 255);\n}\n\nbutton.placeRandomShips:hover {\n\tbackground-color: rgb(64, 0, 255);\n}\n\n.buttonContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n}\n\nbutton.toggleBoards {\n\tflex-basis: 70%;\n\talign-self: center;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: orangered;\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n\topacity: 0;\n}\n\nbutton.toggleBoards:hover {\n\tbackground-color: rgb(255, 32, 0);\n\ttransform: scale(1.04);\n\tcursor: pointer;\n}\n\nbutton.toggleBoards.afterPlacing {\n\theight: 5rem;\n}\n\nbutton.battleBegins {\n\tflex-basis: 70%;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: rgb(162, 0, 255);\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n\topacity: 0;\n\theight: min-content;\n}\n\nbutton.showHiddenBoards {\n\tmargin-top: 6rem;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: orangered;\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n}\n\nbutton.fadeIn {\n\topacity: 1;\n\ttransition: opacity 1000ms ease-in-out;\n}\n\n.playerDiv.player1,\n.playerDiv.player2 {\n\twidth: 100%;\n\tfont-family: Audiowide-Regular;\n\tfont-size: 2rem;\n}\n\n.playerDiv.player1.hidden,\n.playerDiv.player2.hidden {\n\tdisplay: none;\n}\n\n.boardsContainer {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tgap: 1rem;\n}\n\n.verticalShipsContainer,\n.horizontalShipsContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n\n.verticalShipsContainer .gameboard {\n\tgap: 0.5rem;\n}\n\n.messages {\n\tfont-size: 1.8rem;\n\theight: 6rem;\n\ttext-align: center;\n\tcolor: green;\n}\n\n.ownBoardTitle {\n\tfont-size: 1.8rem;\n\tcolor: forestgreen;\n\theight: 6rem;\n}\n\n.enemyBoardTitle {\n\tfont-size: 1.8rem;\n\tcolor: orangered;\n\theight: 6rem;\n}\n\n.gameboardContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n\n.gameboard {\n\tdisplay: flex;\n\tmargin: 1rem;\n\tcursor: crosshair;\n}\n\n.row.empty {\n\tdisplay: none;\n}\n\n.horizontalShipsContainer .row {\n\tmargin-bottom: 1rem;\n}\n\n.rowDraggable {\n\tdisplay: flex;\n\tjustify-content: flex-start;\n\twidth: 100%;\n}\n\n.hidden {\n\tdisplay: none;\n}\n\n.square {\n\twidth: 2.2rem;\n\theight: 2.2rem;\n\tposition: relative;\n\tz-index: 1;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\taspect-ratio: 1;\n\tborder-style: solid;\n\tborder-color: rgb(0, 0, 0);\n\tborder-width: 0.1rem;\n\tborder-radius: 0.5rem;\n\tfont-size: 1.8rem;\n}\n\n.square:hover {\n\topacity: 0.7;\n}\n\n.notAttacked {\n\tbackground-color: grey;\n}\n\n@keyframes water {\n\tfrom {\n\t\ttransform: rotateZ(-20deg) rotateX(-40deg);\n\t\tbackground-color: rgb(0, 0, 168);\n\t}\n\tto {\n\t\ttransform: rotateZ(20deg) rotateX(40deg);\n\t\tbackground-color: rgb(0, 0, 255);\n\t}\n}\n\n.water {\n\tbackground-color: blue;\n}\n\n.waterAnimation {\n\tposition: relative;\n\tz-index: 0;\n\t/* animation: water 1s linear 0s infinite alternate; */\n}\n\n.square.questionTrans {\n\ttransform: rotateX(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.ship {\n\tbackground-color: brown;\n}\n\n.shipTrans {\n\ttransform: rotateY(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.sunkenShip {\n\tbackground-color: red;\n\ttransform: rotateZ(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.lastSunkenShip {\n\tbackground-color: red;\n\ttransform: rotateZ(720deg) scale(5);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.attacked {\n\tz-index: 2;\n\tborder-style: solid;\n\tborder-color: red;\n\ttransition: transform 700ms ease-in-out;\n}\n\n.square.attacked.attackedTrans {\n\ttransform: rotateZ(720deg) scale(4);\n}\n\n@keyframes marcosclave {\n\tfrom {\n\t\topacity: 0.5;\n\t\ttransform: scale(1);\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttransform: scale(2);\n\t}\n}\n\n.square.lastAttacked {\n\tanimation: marcosclave 1s linear 0s infinite alternate;\n}\n\n/* Winner */\n.won {\n\tmargin-top: 2rem;\n\tcolor: rgb(255, 64, 0);\n\tfont-size: 2rem;\n\tfont-family: \"BigShouldersStencil\";\n\ttransform: scale(3);\n}\n\n@keyframes won {\n\tfrom {\n\t\t/* color: rgb(255, 64, 0); */\n\t\ttransform: scale(0.1);\n\t}\n\t30% {\n\t\ttransform: rotateZ(30deg);\n\t}\n\t70% {\n\t\ttransform: rotateZ(-30deg);\n\t}\n\tto {\n\t\t/* color: rgb(128, 0, 255); */\n\t\ttransform: scale(3);\n\t}\n}\n\n.wonAnim {\n\t/* animation: won 1s cubic-bezier(0, 1, 1, 0) 0s infinite alternate; */\n\tanimation: won 1s ease 0s infinite alternate;\n}\n\n.winPlayer {\n\tmargin-top: 3rem;\n\tfont-size: 6rem;\n\tcolor: rgb(143, 0, 143);\n}\n\n@keyframes winPlayer {\n\tfrom {\n\t\topacity: 0;\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttransform: rotateZ(4turn);\n\t}\n}\n\n.winPlayerAnim {\n\tanimation: winPlayer 2s ease-in 0s 1;\n}\n\n.sunkAll {\n\tjustify-self: center;\n\tmargin-top: 2rem;\n\tcolor: orange;\n\tfont-family: 'Courier New', Courier, monospace;\n\tfont-size: 4rem;\n}\n\n@keyframes sunkAll {\n\tfrom {\n\t\topacity: 0;\n\t}\n\tto {\n\t\topacity: 1;\n\t}\n}\n\n.sunkAllAnim {\n\tanimation: sunkAll 0.3s ease 0s 7;\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["@font-face {\n\tfont-family: \"BigShouldersStencil\";\n\tsrc: url(\"./BigShouldersStencil.woff2\");\n}\n\n@font-face {\n\tfont-family: \"Audiowide-Regular\";\n\tsrc: url(\"./Audiowide-Regular.ttf\");\n}\n\nhtml {\n\tbackground-color: black;\n}\n\nmain {\n\theight: 95vh;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tfont-family: Audiowide-Regular;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n}\n\n.version {\n\t/* flex-grow: 1; */\n\tmargin-top: auto;\n\tcolor: white;\n}\n\n@keyframes marcosclave1 {\n\tfrom {\n\t\topacity: 0.7;\n\t\t/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttext-shadow: 0 0 5rem rgb(162, 0, 255);\n\t}\n}\n\nh1 {\n\ttext-align: center;\n\tfont-family: \"BigShouldersStencil\";\n\tcolor: grey;\n\tfont-size: 7rem;\n\t/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n\tmargin-top: 1rem;\n\tmargin-bottom: 2rem;\n\n\t/* animation: marcosclave1 1.5s linear 0s infinite alternate; */\n}\n\nh2 {\n\tcolor: goldenrod;\n\tfont-size: 2rem;\n}\n\n.name {\n\tfont-size: 1.5rem;\n\tmargin-bottom: 0;\n\tcolor: forestgreen;\n}\n\ninput {\n\tmargin-bottom: 1rem;\n\tbackground-color: grey;\n\tborder-style: none;\n\tborder-radius: 0.5rem;\n\tpadding: 1rem;\n\tfont-size: 1.5rem;\n\tfont-weight: bold;\n\tfont-family: \"Courier New\", Courier, monospace;\n\ttext-align: center;\n\tbox-shadow: 0 0 0.5rem rgb(150, 150, 150);\n}\n\ninput::placeholder {\n\tcolor: rgb(64, 64, 64);\n}\n\ninput:focus {\n\toutline-style: none;\n\tbackground-color: olivedrab;\n}\n\nbutton {\n\tmargin: 0.3rem;\n\tpadding: 0.6rem;\n\tbackground-color: orangered;\n\tborder-style: none;\n\tborder-radius: 0.5rem;\n\tfont-size: 1.5rem;\n\tfont-weight: bold;\n\tfont-family: \"Courier New\", Courier, monospace;\n}\n\nbutton:hover {\n\tbackground-color: rgb(255, 32, 0);\n\ttransform: scale(1.04);\n\tcursor: pointer;\n}\n\nbutton.placeRandomShips {\n\twidth: min-content;\n\tbackground-color: rgb(128, 0, 255);\n}\n\nbutton.placeRandomShips:hover {\n\tbackground-color: rgb(64, 0, 255);\n}\n\n.buttonContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n}\n\nbutton.toggleBoards {\n\tflex-basis: 70%;\n\talign-self: center;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: orangered;\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n\topacity: 0;\n}\n\nbutton.toggleBoards:hover {\n\tbackground-color: rgb(255, 32, 0);\n\ttransform: scale(1.04);\n\tcursor: pointer;\n}\n\nbutton.toggleBoards.afterPlacing {\n\theight: 5rem;\n}\n\nbutton.battleBegins {\n\tflex-basis: 70%;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: rgb(162, 0, 255);\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n\topacity: 0;\n\theight: min-content;\n}\n\nbutton.showHiddenBoards {\n\tmargin-top: 6rem;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: orangered;\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n}\n\nbutton.fadeIn {\n\topacity: 1;\n\ttransition: opacity 1000ms ease-in-out;\n}\n\n.playerDiv.player1,\n.playerDiv.player2 {\n\twidth: 100%;\n\tfont-family: Audiowide-Regular;\n\tfont-size: 2rem;\n}\n\n.playerDiv.player1.hidden,\n.playerDiv.player2.hidden {\n\tdisplay: none;\n}\n\n.boardsContainer {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tgap: 1rem;\n}\n\n.verticalShipsContainer,\n.horizontalShipsContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n\n.verticalShipsContainer .gameboard {\n\tgap: 0.5rem;\n}\n\n.messages {\n\tfont-size: 1.8rem;\n\theight: 6rem;\n\ttext-align: center;\n\tcolor: green;\n}\n\n.ownBoardTitle {\n\tfont-size: 1.8rem;\n\tcolor: forestgreen;\n\theight: 6rem;\n}\n\n.enemyBoardTitle {\n\tfont-size: 1.8rem;\n\tcolor: orangered;\n\theight: 6rem;\n}\n\n.gameboardContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n\n.gameboard {\n\tdisplay: flex;\n\tmargin: 1rem;\n\tcursor: crosshair;\n}\n\n.row.empty {\n\tdisplay: none;\n}\n\n.horizontalShipsContainer .row {\n\tmargin-bottom: 1rem;\n}\n\n.rowDraggable {\n\tdisplay: flex;\n\tjustify-content: flex-start;\n\twidth: 100%;\n}\n\n.hidden {\n\tdisplay: none;\n}\n\n.square {\n\twidth: 2.2rem;\n\theight: 2.2rem;\n\tposition: relative;\n\tz-index: 1;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\taspect-ratio: 1;\n\tborder-style: solid;\n\tborder-color: rgb(0, 0, 0);\n\tborder-width: 0.1rem;\n\tborder-radius: 0.5rem;\n\tfont-size: 1.8rem;\n}\n\n.square:hover {\n\topacity: 0.7;\n}\n\n.notAttacked {\n\tbackground-color: grey;\n}\n\n@keyframes water {\n\tfrom {\n\t\ttransform: rotateZ(-20deg) rotateX(-40deg);\n\t\tbackground-color: rgb(0, 0, 168);\n\t}\n\tto {\n\t\ttransform: rotateZ(20deg) rotateX(40deg);\n\t\tbackground-color: rgb(0, 0, 255);\n\t}\n}\n\n.water {\n\tbackground-color: blue;\n}\n\n.waterAnimation {\n\tposition: relative;\n\tz-index: 0;\n\t/* animation: water 1s linear 0s infinite alternate; */\n}\n\n.square.questionTrans {\n\ttransform: rotateX(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.ship {\n\tbackground-color: brown;\n}\n\n.shipTrans {\n\ttransform: rotateY(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.sunkenShip {\n\tbackground-color: red;\n\ttransform: rotateZ(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.lastSunkenShip {\n\tbackground-color: red;\n\ttransform: rotateZ(720deg) scale(5);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.attacked {\n\tz-index: 2;\n\tborder-style: solid;\n\tborder-color: red;\n\ttransition: transform 700ms ease-in-out;\n}\n\n.square.attacked.attackedTrans {\n\ttransform: rotateZ(720deg) scale(4);\n}\n\n@keyframes marcosclave {\n\tfrom {\n\t\topacity: 0.5;\n\t\ttransform: scale(1);\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttransform: scale(2);\n\t}\n}\n\n.square.lastAttacked {\n\tanimation: marcosclave 1s linear 0s infinite alternate;\n}\n\n/* Winner */\n.won {\n\tmargin-top: 2rem;\n\tcolor: rgb(255, 64, 0);\n\tfont-size: 2rem;\n\tfont-family: \"BigShouldersStencil\";\n\ttransform: scale(3);\n}\n\n@keyframes won {\n\tfrom {\n\t\t/* color: rgb(255, 64, 0); */\n\t\ttransform: scale(0.1);\n\t}\n\t30% {\n\t\ttransform: rotateZ(30deg);\n\t}\n\t70% {\n\t\ttransform: rotateZ(-30deg);\n\t}\n\tto {\n\t\t/* color: rgb(128, 0, 255); */\n\t\ttransform: scale(3);\n\t}\n}\n\n.wonAnim {\n\t/* animation: won 1s cubic-bezier(0, 1, 1, 0) 0s infinite alternate; */\n\tanimation: won 1s ease 0s infinite alternate;\n}\n\n.winPlayer {\n\tmargin-top: 3rem;\n\tfont-size: 6rem;\n\tcolor: rgb(143, 0, 143);\n}\n\n@keyframes winPlayer {\n\tfrom {\n\t\topacity: 0;\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttransform: rotateZ(4turn);\n\t}\n}\n\n.winPlayerAnim {\n\tanimation: winPlayer 2s ease-in 0s 1;\n}\n\n.sunkAll {\n\tjustify-self: center;\n\tmargin-top: 2rem;\n\tcolor: orange;\n\tfont-family: 'Courier New', Courier, monospace;\n\tfont-size: 4rem;\n}\n\n@keyframes sunkAll {\n\tfrom {\n\t\topacity: 0;\n\t}\n\tto {\n\t\topacity: 1;\n\t}\n}\n\n.sunkAllAnim {\n\tanimation: sunkAll 0.3s ease 0s 7;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1442,7 +1442,6 @@ function showAttackEnemyBoard(player1, result, player2name, boardSize) {
 			if (compMoveObject.result === "¡Agua!") {
 				// Remove waterAnimation while attackedTrans is happening.
 				attackedSquare.classList.remove("waterAnimation");
-				console.log(attackedSquare);
 			}
 			attackedSquare.textContent = "\u{1F7CF}";
 			setTimeout(() => {
@@ -1523,7 +1522,7 @@ function winner(player1name, player2name, playerTurn) {
 		main.removeChild(main.firstChild);
 	}
 
-	main.style.justifyContent = "space-around"
+	main.style.justifyContent = "space-around";
 
 	const won = document.createElement("div");
 	won.textContent = "GANÓ";
@@ -1583,6 +1582,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Player": () => (/* binding */ Player),
 /* harmony export */   "Ship": () => (/* binding */ Ship),
 /* harmony export */   "computerAttack": () => (/* binding */ computerAttack),
+/* harmony export */   "firstHitIa": () => (/* binding */ firstHitIa),
+/* harmony export */   "fromAttackObj": () => (/* binding */ fromAttackObj),
+/* harmony export */   "iA": () => (/* binding */ iA),
+/* harmony export */   "nextAttackDir": () => (/* binding */ nextAttackDir),
 /* harmony export */   "placeRandomShips": () => (/* binding */ placeRandomShips)
 /* harmony export */ });
 function Ship(shipID, length, isVertical) {
@@ -1740,15 +1743,244 @@ function placeRandomShips(player, boardSize) {
 	}
 }
 
+let fromAttackObj;
+let iA = false;
+let nextAttackDir;
+let axisFound = false;
+let firstHitIa;
+
 function computerAttack(boardSize, player) {
-	let x;
-	let y;
-	do {
-		x = Math.floor(Math.random() * boardSize);
-		y = Math.floor(Math.random() * boardSize);
-	} while (player.gameboard.receivedHits[x][y] === true);
-	const result = player.gameboard.receiveAttack(x, y);
-	return { result, x, y };
+	if (iA === false) {
+		axisFound = false;
+		fromAttackObj = randomAttack();
+		if (fromAttackObj.result === "¡Barco tocado!") {
+			iA = true;
+			firstHitIa = {
+				x: fromAttackObj.x,
+				y: fromAttackObj.y
+			};
+			// if South of attacked square exists and has not been attacked then nextAttackDir:South
+			if (
+				fromAttackObj.y + 1 < boardSize &&
+				player.gameboard.receivedHits[fromAttackObj.x][
+					fromAttackObj.y + 1
+				] === false
+			) {
+				nextAttackDir = { x: 0, y: 1 };
+				// if North of attacked square exists and has not been attacked then nextAttackDir:North
+			} else if (
+				fromAttackObj.y - 1 >= 0 &&
+				player.gameboard.receivedHits[fromAttackObj.x][
+					fromAttackObj.y - 1
+				] === false
+			) {
+				nextAttackDir = { x: 0, y: -1 };
+				// if East of attacked square exists and has not been attacked then nextAttackDir:East
+			} else if (
+				fromAttackObj.x + 1 < boardSize &&
+				player.gameboard.receivedHits[fromAttackObj.x + 1][
+					fromAttackObj.y
+				] === false
+			) {
+				nextAttackDir = { x: 1, y: 0 };
+				// if West of attacked square exists and has not been attacked then nextAttackDir:West
+			} else if (
+				fromAttackObj.x - 1 >= 0 &&
+				player.gameboard.receivedHits[fromAttackObj.x - 1][
+					fromAttackObj.y
+				] === false
+			) {
+				nextAttackDir = { x: -1, y: 0 };
+			} else {
+				iA = false;
+			}
+		}
+	} else if (iA === true) {
+		if (
+			fromAttackObj.x + nextAttackDir.x < boardSize &&
+			fromAttackObj.x + nextAttackDir.x >= 0
+		) {
+			fromAttackObj.x = fromAttackObj.x + nextAttackDir.x;
+		} else {
+			console.log("Handle Out of Board Case");
+			fromAttackObj = randomAttack();
+			iA = false;
+			axisFound = false;
+			return fromAttackObj;
+		}
+
+		if (
+			fromAttackObj.y + nextAttackDir.y < boardSize &&
+			fromAttackObj.y + nextAttackDir.y >= 0
+		) {
+			fromAttackObj.y = fromAttackObj.y + nextAttackDir.y;
+		} else {
+			console.log("Handle Out of Board Case");
+			fromAttackObj = randomAttack();
+			iA = false;
+			axisFound = false;
+			return fromAttackObj;
+		}
+
+		fromAttackObj.result = player.gameboard.receiveAttack(
+			fromAttackObj.x,
+			fromAttackObj.y
+		);
+		// Faltaria caso: result: posicion ya atacada (entonces, cambiar de direccion d ataque)
+		// O ya estaría contemplado?? con receivedHits[x][y]===false??
+		if (fromAttackObj.result === "¡Barco tocado!") {
+			if (axisFound === false) {
+				axisFound = true;
+			}
+			if (
+				fromAttackObj.x + nextAttackDir.x >= boardSize ||
+				fromAttackObj.x + nextAttackDir.x < 0 ||
+				fromAttackObj.y + nextAttackDir.y >= boardSize ||
+				fromAttackObj.y + nextAttackDir.y < 0 ||
+				player.gameboard.receivedHits[
+					fromAttackObj.x + nextAttackDir.x
+				][fromAttackObj.y + nextAttackDir.y] === true
+			) {
+				console.log("In!!!");
+				if (nextAttackDir.x === 1) {
+					nextAttackDir.x = -1;
+				} else if (nextAttackDir.x === -1) {
+					nextAttackDir.x = 1;
+				}
+				if (nextAttackDir.y === 1) {
+					nextAttackDir.y = -1;
+				} else if (nextAttackDir.y === -1) {
+					nextAttackDir.y = 1;
+				}
+				const returnValueX = fromAttackObj.x;
+				const returnValueY = fromAttackObj.y;
+
+				fromAttackObj.x = firstHitIa.x;
+				fromAttackObj.y = firstHitIa.y;
+				return {
+					result: "¡Agua!",
+					x: returnValueX,
+					y: returnValueY
+				};
+			}
+		} else if (fromAttackObj.result === "¡Agua!") {
+			// save fromAttackObj coordinates to return result object (because they will be changed)
+			const returnValueX = fromAttackObj.x;
+			const returnValueY = fromAttackObj.y;
+
+			if (axisFound === true) {
+				if (nextAttackDir.x === 1) {
+					nextAttackDir.x = -1;
+				} else if (nextAttackDir.x === -1) {
+					nextAttackDir.x = 1;
+				}
+				if (nextAttackDir.y === 1) {
+					nextAttackDir.y = -1;
+				} else if (nextAttackDir.y === -1) {
+					nextAttackDir.y = 1;
+				}
+				fromAttackObj.x = firstHitIa.x;
+				fromAttackObj.y = firstHitIa.y;
+			} else if (axisFound === false) {
+				// First: save fromAttackObj coordinates to return and then make them as previous attack:
+
+				fromAttackObj.x = fromAttackObj.x - nextAttackDir.x;
+				fromAttackObj.y = fromAttackObj.y - nextAttackDir.y;
+
+				// Second: change nextAttackDir:
+				// SouthCase
+				if (nextAttackDir.x === 0 && nextAttackDir.y === 1) {
+					// if North of attacked square exists and has not been attacked then nextAttackDir:North
+					if (
+						fromAttackObj.y - 1 >= 0 &&
+						player.gameboard.receivedHits[fromAttackObj.x][
+							fromAttackObj.y - 1
+						] === false
+					) {
+						nextAttackDir = { x: 0, y: -1 };
+						// if East of attacked square exists and has not been attacked then nextAttackDir:East
+					} else if (
+						fromAttackObj.x + 1 < boardSize &&
+						player.gameboard.receivedHits[fromAttackObj.x + 1][
+							fromAttackObj.y
+						] === false
+					) {
+						nextAttackDir = { x: 1, y: 0 };
+						// if West of attacked square exists and has not been attacked then nextAttackDir:West
+					} else if (
+						fromAttackObj.x - 1 >= 0 &&
+						player.gameboard.receivedHits[fromAttackObj.x - 1][
+							fromAttackObj.y
+						] === false
+					) {
+						nextAttackDir = { x: -1, y: 0 };
+					} else {
+						iA = false;
+					}
+				}
+				// North Case
+				else if (nextAttackDir.x === 0 && nextAttackDir.y === -1) {
+					// if East of attacked square exists and has not been attacked then nextAttackDir:East
+					if (
+						fromAttackObj.x + 1 < boardSize &&
+						player.gameboard.receivedHits[fromAttackObj.x + 1][
+							fromAttackObj.y
+						] === false
+					) {
+						nextAttackDir = { x: 1, y: 0 };
+						// if West of attacked square exists and has not been attacked then nextAttackDir:West
+					} else if (
+						fromAttackObj.x - 1 >= 0 &&
+						player.gameboard.receivedHits[fromAttackObj.x - 1][
+							fromAttackObj.y
+						] === false
+					) {
+						nextAttackDir = { x: -1, y: 0 };
+					} else {
+						iA = false;
+					}
+				}
+				// East Case
+				else if (nextAttackDir.x === 1 && nextAttackDir.y === 0) {
+					if (
+						fromAttackObj.x - 1 >= 0 &&
+						player.gameboard.receivedHits[fromAttackObj.x - 1][
+							fromAttackObj.y
+						] === false
+					) {
+						nextAttackDir = { x: -1, y: 0 };
+					} else {
+						iA = false;
+					}
+				}
+				// West Case
+				else if (nextAttackDir.x === -1 && nextAttackDir.y === 0) {
+					iA = false;
+				}
+			}
+
+			return {
+				result: "¡Agua!",
+				x: returnValueX,
+				y: returnValueY
+			};
+		} else {
+			iA = false;
+			axisFound = false;
+		}
+	}
+	return fromAttackObj;
+
+	function randomAttack() {
+		let x;
+		let y;
+		do {
+			x = Math.floor(Math.random() * boardSize);
+			y = Math.floor(Math.random() * boardSize);
+		} while (player.gameboard.receivedHits[x][y] === true);
+		let result = player.gameboard.receiveAttack(x, y);
+		return { result, x, y };
+	}
 }
 
 
