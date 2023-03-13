@@ -294,7 +294,7 @@ button.fadeIn {
 .waterAnimation {
 	position: relative;
 	z-index: 0;
-	/* animation: water 1s linear 0s infinite alternate; */
+	animation: water 1s linear 0s infinite alternate;
 }
 
 .square.questionTrans {

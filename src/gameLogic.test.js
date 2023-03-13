@@ -160,7 +160,7 @@ test("computerAttacks sinks one vertical ship", () => {
 
 	player1.gameboard.placeShip("0", 5, true, 2, 2);
 
-	// 2- computerAttack will attack randomly untill iA === true on the first hit
+	// 2- computerAttack will attack randomly until iA === true on the first hit
 	let firstHit;
 
 	do {
@@ -170,7 +170,7 @@ test("computerAttacks sinks one vertical ship", () => {
 	expect(iA).toBe(true);
 	expect(firstHit).toStrictEqual(fromAttackObj);
 
-	// 3- Continue attacking untill attack.result === "¡Todos los barcos han sido hundidos!"
+	// 3- Continue attacking until attack.result === "¡Todos los barcos han sido hundidos!"
 
 	let attack = { ...firstHit };
 
@@ -188,7 +188,7 @@ test("computerAttacks sinks one horizontal ship", () => {
 
 	player1.gameboard.placeShip("0", 5, false, 2, 2);
 
-	// 2- computerAttack will attack randomly untill iA === true on the first hit
+	// 2- computerAttack will attack randomly until iA === true on the first hit
 	let firstHit;
 
 	do {
@@ -203,7 +203,7 @@ test("computerAttacks sinks one horizontal ship", () => {
 	// console.log({ nextAttackDir });
 	// console.log({ firstHitIa });
 
-	// 3- Continue attacking untill attack.result === "¡Todos los barcos han sido hundidos!"
+	// 3- Continue attacking until attack.result === "¡Todos los barcos han sido hundidos!"
 
 	let attack = { ...firstHit };
 	let n = 1;
