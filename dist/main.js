@@ -28,7 +28,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_1___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@font-face {\n\tfont-family: \"BigShouldersStencil\";\n\tsrc: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n\n@font-face {\n\tfont-family: \"Audiowide-Regular\";\n\tsrc: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n}\n\nhtml {\n\tbackground-color: black;\n}\n\nmain {\n\theight: 95vh;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tfont-family: Audiowide-Regular;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n}\n\n.version {\n\t/* flex-grow: 1; */\n\tmargin-top: auto;\n\tcolor: white;\n}\n\n@keyframes marcosclave1 {\n\tfrom {\n\t\topacity: 0.7;\n\t\t/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttext-shadow: 0 0 5rem rgb(162, 0, 255);\n\t}\n}\n\nh1 {\n\ttext-align: center;\n\tfont-family: \"BigShouldersStencil\";\n\tcolor: grey;\n\tfont-size: 7rem;\n\t/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n\tmargin-top: 1rem;\n\tmargin-bottom: 2rem;\n\n\t/* animation: marcosclave1 1.5s linear 0s infinite alternate; */\n}\n\nh2 {\n\tcolor: goldenrod;\n\tfont-size: 2rem;\n}\n\n.name {\n\tfont-size: 1.5rem;\n\tmargin-bottom: 0;\n\tcolor: forestgreen;\n}\n\ninput {\n\tmargin-bottom: 1rem;\n\tbackground-color: grey;\n\tborder-style: none;\n\tborder-radius: 0.5rem;\n\tpadding: 1rem;\n\tfont-size: 1.5rem;\n\tfont-weight: bold;\n\tfont-family: \"Courier New\", Courier, monospace;\n\ttext-align: center;\n\tbox-shadow: 0 0 0.5rem rgb(150, 150, 150);\n}\n\ninput::placeholder {\n\tcolor: rgb(64, 64, 64);\n}\n\ninput:focus {\n\toutline-style: none;\n\tbackground-color: olivedrab;\n}\n\nbutton {\n\tmargin: 0.3rem;\n\tpadding: 0.6rem;\n\tbackground-color: orangered;\n\tborder-style: none;\n\tborder-radius: 0.5rem;\n\tfont-size: 1.5rem;\n\tfont-weight: bold;\n\tfont-family: \"Courier New\", Courier, monospace;\n}\n\nbutton:hover {\n\tbackground-color: rgb(255, 32, 0);\n\ttransform: scale(1.04);\n\tcursor: pointer;\n}\n\nbutton.placeRandomShips {\n\twidth: min-content;\n\tbackground-color: rgb(128, 0, 255);\n}\n\nbutton.placeRandomShips:hover {\n\tbackground-color: rgb(64, 0, 255);\n}\n\n.buttonContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n}\n\nbutton.toggleBoards {\n\tflex-basis: 70%;\n\talign-self: center;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: orangered;\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n\topacity: 0;\n}\n\nbutton.toggleBoards:hover {\n\tbackground-color: rgb(255, 32, 0);\n\ttransform: scale(1.04);\n\tcursor: pointer;\n}\n\nbutton.toggleBoards.afterPlacing {\n\theight: 5rem;\n}\n\nbutton.battleBegins {\n\tflex-basis: 70%;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: rgb(162, 0, 255);\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n\topacity: 0;\n\theight: min-content;\n}\n\nbutton.showHiddenBoards {\n\tmargin-top: 6rem;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: orangered;\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n}\n\nbutton.fadeIn {\n\topacity: 1;\n\ttransition: opacity 1000ms ease-in-out;\n}\n\n.playerDiv.player1,\n.playerDiv.player2 {\n\twidth: 100%;\n\tfont-family: Audiowide-Regular;\n\tfont-size: 2rem;\n}\n\n.playerDiv.player1.hidden,\n.playerDiv.player2.hidden {\n\tdisplay: none;\n}\n\n.boardsContainer {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tgap: 1rem;\n}\n\n.verticalShipsContainer,\n.horizontalShipsContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n\n.verticalShipsContainer .gameboard {\n\tgap: 0.5rem;\n}\n\n.messages {\n\tfont-size: 1.8rem;\n\theight: 6rem;\n\ttext-align: center;\n\tcolor: green;\n}\n\n.ownBoardTitle {\n\tfont-size: 1.8rem;\n\tcolor: forestgreen;\n\theight: 6rem;\n}\n\n.enemyBoardTitle {\n\tfont-size: 1.8rem;\n\tcolor: orangered;\n\theight: 6rem;\n}\n\n.gameboardContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n\n.gameboard {\n\tdisplay: flex;\n\tmargin: 1rem;\n\tcursor: crosshair;\n}\n\n.row.empty {\n\tdisplay: none;\n}\n\n.horizontalShipsContainer .row {\n\tmargin-bottom: 1rem;\n}\n\n.rowDraggable {\n\tdisplay: flex;\n\tjustify-content: flex-start;\n\twidth: 100%;\n}\n\n.hidden {\n\tdisplay: none;\n}\n\n.square {\n\twidth: 2.2rem;\n\theight: 2.2rem;\n\tposition: relative;\n\tz-index: 1;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\taspect-ratio: 1;\n\tborder-style: solid;\n\tborder-color: rgb(0, 0, 0);\n\tborder-width: 0.1rem;\n\tborder-radius: 0.5rem;\n\tfont-size: 1.8rem;\n}\n\n.square:hover {\n\topacity: 0.7;\n}\n\n.notAttacked {\n\tbackground-color: grey;\n}\n\n@keyframes water {\n\tfrom {\n\t\ttransform: rotateZ(-20deg) rotateX(-40deg);\n\t\tbackground-color: rgb(0, 0, 168);\n\t}\n\tto {\n\t\ttransform: rotateZ(20deg) rotateX(40deg);\n\t\tbackground-color: rgb(0, 0, 255);\n\t}\n}\n\n.water {\n\tbackground-color: blue;\n}\n\n.waterAnimation {\n\tposition: relative;\n\tz-index: 0;\n\tanimation: water 1s linear 0s infinite alternate;\n}\n\n.square.questionTrans {\n\ttransform: rotateX(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.ship {\n\tbackground-color: brown;\n}\n\n.shipTrans {\n\ttransform: rotateY(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.sunkenShip {\n\tbackground-color: red;\n\ttransform: rotateZ(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.lastSunkenShip {\n\tbackground-color: red;\n\ttransform: rotateZ(720deg) scale(5);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.attacked {\n\tz-index: 2;\n\tborder-style: solid;\n\tborder-color: red;\n\ttransition: transform 700ms ease-in-out;\n}\n\n.square.attacked.attackedTrans {\n\ttransform: rotateZ(720deg) scale(4);\n}\n\n@keyframes marcosclave {\n\tfrom {\n\t\topacity: 0.5;\n\t\ttransform: scale(1);\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttransform: scale(2);\n\t}\n}\n\n.square.lastAttacked {\n\tanimation: marcosclave 1s linear 0s infinite alternate;\n}\n\n/* Winner */\n.won {\n\tmargin-top: 2rem;\n\tcolor: rgb(255, 64, 0);\n\tfont-size: 2rem;\n\tfont-family: \"BigShouldersStencil\";\n\ttransform: scale(3);\n}\n\n@keyframes won {\n\tfrom {\n\t\t/* color: rgb(255, 64, 0); */\n\t\ttransform: scale(0.1);\n\t}\n\t30% {\n\t\ttransform: rotateZ(30deg);\n\t}\n\t70% {\n\t\ttransform: rotateZ(-30deg);\n\t}\n\tto {\n\t\t/* color: rgb(128, 0, 255); */\n\t\ttransform: scale(3);\n\t}\n}\n\n.wonAnim {\n\t/* animation: won 1s cubic-bezier(0, 1, 1, 0) 0s infinite alternate; */\n\tanimation: won 1s ease 0s infinite alternate;\n}\n\n.winPlayer {\n\tmargin-top: 3rem;\n\tfont-size: 6rem;\n\tcolor: rgb(143, 0, 143);\n}\n\n@keyframes winPlayer {\n\tfrom {\n\t\topacity: 0;\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttransform: rotateZ(4turn);\n\t}\n}\n\n.winPlayerAnim {\n\tanimation: winPlayer 2s ease-in 0s 1;\n}\n\n.sunkAll {\n\tjustify-self: center;\n\tmargin-top: 2rem;\n\tcolor: orange;\n\tfont-family: 'Courier New', Courier, monospace;\n\tfont-size: 4rem;\n}\n\n@keyframes sunkAll {\n\tfrom {\n\t\topacity: 0;\n\t}\n\tto {\n\t\topacity: 1;\n\t}\n}\n\n.sunkAllAnim {\n\tanimation: sunkAll 0.3s ease 0s 7;\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["@font-face {\n\tfont-family: \"BigShouldersStencil\";\n\tsrc: url(\"./BigShouldersStencil.woff2\");\n}\n\n@font-face {\n\tfont-family: \"Audiowide-Regular\";\n\tsrc: url(\"./Audiowide-Regular.ttf\");\n}\n\nhtml {\n\tbackground-color: black;\n}\n\nmain {\n\theight: 95vh;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tfont-family: Audiowide-Regular;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n}\n\n.version {\n\t/* flex-grow: 1; */\n\tmargin-top: auto;\n\tcolor: white;\n}\n\n@keyframes marcosclave1 {\n\tfrom {\n\t\topacity: 0.7;\n\t\t/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttext-shadow: 0 0 5rem rgb(162, 0, 255);\n\t}\n}\n\nh1 {\n\ttext-align: center;\n\tfont-family: \"BigShouldersStencil\";\n\tcolor: grey;\n\tfont-size: 7rem;\n\t/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n\tmargin-top: 1rem;\n\tmargin-bottom: 2rem;\n\n\t/* animation: marcosclave1 1.5s linear 0s infinite alternate; */\n}\n\nh2 {\n\tcolor: goldenrod;\n\tfont-size: 2rem;\n}\n\n.name {\n\tfont-size: 1.5rem;\n\tmargin-bottom: 0;\n\tcolor: forestgreen;\n}\n\ninput {\n\tmargin-bottom: 1rem;\n\tbackground-color: grey;\n\tborder-style: none;\n\tborder-radius: 0.5rem;\n\tpadding: 1rem;\n\tfont-size: 1.5rem;\n\tfont-weight: bold;\n\tfont-family: \"Courier New\", Courier, monospace;\n\ttext-align: center;\n\tbox-shadow: 0 0 0.5rem rgb(150, 150, 150);\n}\n\ninput::placeholder {\n\tcolor: rgb(64, 64, 64);\n}\n\ninput:focus {\n\toutline-style: none;\n\tbackground-color: olivedrab;\n}\n\nbutton {\n\tmargin: 0.3rem;\n\tpadding: 0.6rem;\n\tbackground-color: orangered;\n\tborder-style: none;\n\tborder-radius: 0.5rem;\n\tfont-size: 1.5rem;\n\tfont-weight: bold;\n\tfont-family: \"Courier New\", Courier, monospace;\n}\n\nbutton:hover {\n\tbackground-color: rgb(255, 32, 0);\n\ttransform: scale(1.04);\n\tcursor: pointer;\n}\n\nbutton.placeRandomShips {\n\twidth: min-content;\n\tbackground-color: rgb(128, 0, 255);\n}\n\nbutton.placeRandomShips:hover {\n\tbackground-color: rgb(64, 0, 255);\n}\n\n.buttonContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n}\n\nbutton.toggleBoards {\n\tflex-basis: 70%;\n\talign-self: center;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: orangered;\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n\topacity: 0;\n}\n\nbutton.toggleBoards:hover {\n\tbackground-color: rgb(255, 32, 0);\n\ttransform: scale(1.04);\n\tcursor: pointer;\n}\n\nbutton.toggleBoards.afterPlacing {\n\theight: 5rem;\n}\n\nbutton.battleBegins {\n\tflex-basis: 70%;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: rgb(162, 0, 255);\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n\topacity: 0;\n\theight: min-content;\n}\n\nbutton.showHiddenBoards {\n\tmargin-top: 6rem;\n\tfont-size: 1.5rem;\n\ttext-align: center;\n\tbackground-color: orangered;\n\tborder-radius: 1rem;\n\tborder-width: 1rem;\n\tborder-style: none;\n\tpadding: 1rem;\n}\n\nbutton.fadeIn {\n\topacity: 1;\n\ttransition: opacity 1000ms ease-in-out;\n}\n\n.playerDiv.player1,\n.playerDiv.player2 {\n\twidth: 100%;\n\tfont-family: Audiowide-Regular;\n\tfont-size: 2rem;\n}\n\n.playerDiv.player1.hidden,\n.playerDiv.player2.hidden {\n\tdisplay: none;\n}\n\n.boardsContainer {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tgap: 1rem;\n}\n\n.verticalShipsContainer,\n.horizontalShipsContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n\n.verticalShipsContainer .gameboard {\n\tgap: 0.5rem;\n}\n\n.messages {\n\tfont-size: 1.8rem;\n\theight: 6rem;\n\ttext-align: center;\n\tcolor: green;\n}\n\n.ownBoardTitle {\n\tfont-size: 1.8rem;\n\tcolor: forestgreen;\n\theight: 6rem;\n}\n\n.enemyBoardTitle {\n\tfont-size: 1.8rem;\n\tcolor: orangered;\n\theight: 6rem;\n}\n\n.gameboardContainer {\n\tflex-grow: 1;\n\tflex-basis: 45%;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n\n.gameboard {\n\tdisplay: flex;\n\tmargin: 1rem;\n\tcursor: crosshair;\n}\n\n.row.empty {\n\tdisplay: none;\n}\n\n.horizontalShipsContainer .row {\n\tmargin-bottom: 1rem;\n}\n\n.rowDraggable {\n\tdisplay: flex;\n\tjustify-content: flex-start;\n\twidth: 100%;\n}\n\n.hidden {\n\tdisplay: none;\n}\n\n.square {\n\twidth: 2.2rem;\n\theight: 2.2rem;\n\tposition: relative;\n\tz-index: 1;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\taspect-ratio: 1;\n\tborder-style: solid;\n\tborder-color: rgb(0, 0, 0);\n\tborder-width: 0.1rem;\n\tborder-radius: 0.5rem;\n\tfont-size: 1.8rem;\n}\n\n.square:hover {\n\topacity: 0.7;\n}\n\n.notAttacked {\n\tbackground-color: grey;\n}\n\n@keyframes water {\n\tfrom {\n\t\ttransform: rotateZ(-20deg) rotateX(-40deg);\n\t\tbackground-color: rgb(0, 0, 168);\n\t}\n\tto {\n\t\ttransform: rotateZ(20deg) rotateX(40deg);\n\t\tbackground-color: rgb(0, 0, 255);\n\t}\n}\n\n.water {\n\tbackground-color: blue;\n}\n\n.waterAnimation {\n\tposition: relative;\n\tz-index: 0;\n\tanimation: water 1s linear 0s infinite alternate;\n}\n\n.square.questionTrans {\n\ttransform: rotateX(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.ship {\n\tbackground-color: brown;\n}\n\n.shipTrans {\n\ttransform: rotateY(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.sunkenShip {\n\tbackground-color: red;\n\ttransform: rotateZ(720deg);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.lastSunkenShip {\n\tbackground-color: red;\n\ttransform: rotateZ(720deg) scale(5);\n\ttransition: transform 1000ms ease-in-out;\n}\n\n.square.attacked {\n\tz-index: 2;\n\tborder-style: solid;\n\tborder-color: red;\n\ttransition: transform 700ms ease-in-out;\n}\n\n.square.attacked.attackedTrans {\n\ttransform: rotateZ(720deg) scale(4);\n}\n\n@keyframes marcosclave {\n\tfrom {\n\t\topacity: 0.5;\n\t\ttransform: scale(1);\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttransform: scale(2);\n\t}\n}\n\n.square.lastAttacked {\n\tanimation: marcosclave 1s linear 0s infinite alternate;\n}\n\n/* Winner */\n.won {\n\tmargin-top: 2rem;\n\tcolor: rgb(255, 64, 0);\n\tfont-size: 2rem;\n\tfont-family: \"BigShouldersStencil\";\n\ttransform: scale(3);\n}\n\n@keyframes won {\n\tfrom {\n\t\t/* color: rgb(255, 64, 0); */\n\t\ttransform: scale(0.1);\n\t}\n\t30% {\n\t\ttransform: rotateZ(30deg);\n\t}\n\t70% {\n\t\ttransform: rotateZ(-30deg);\n\t}\n\tto {\n\t\t/* color: rgb(128, 0, 255); */\n\t\ttransform: scale(3);\n\t}\n}\n\n.wonAnim {\n\t/* animation: won 1s cubic-bezier(0, 1, 1, 0) 0s infinite alternate; */\n\tanimation: won 1s ease 0s infinite alternate;\n}\n\n.winPlayer {\n\tmargin-top: 3rem;\n\tfont-size: 6rem;\n\tcolor: rgb(143, 0, 143);\n}\n\n@keyframes winPlayer {\n\tfrom {\n\t\topacity: 0;\n\t}\n\tto {\n\t\topacity: 1;\n\t\ttransform: rotateZ(4turn);\n\t}\n}\n\n.winPlayerAnim {\n\tanimation: winPlayer 2s ease-in 0s 1;\n}\n\n.sunkAll {\n\tjustify-self: center;\n\tmargin-top: 2rem;\n\tcolor: orange;\n\tfont-family: 'Courier New', Courier, monospace;\n\tfont-size: 4rem;\n}\n\n@keyframes sunkAll {\n\tfrom {\n\t\topacity: 0;\n\t}\n\tto {\n\t\topacity: 1;\n\t}\n}\n\n.sunkAllAnim {\n\tanimation: sunkAll 0.3s ease 0s 7;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "@font-face {\n  font-family: \"BigShouldersStencil\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n\n@font-face {\n  font-family: \"Audiowide-Regular\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n}\n\n@media (max-width: 880px) {\n  .square {\n    height: 8vmin !important;\n    width: 8vmin !important;\n    font-size: 7vmin !important;\n  }\n}\n\nhtml {\n  margin: 0;\n  background-color: black;\n}\n\nbody {\n  margin: 0;\n  /* overflow-y: hidden; */\n}\n\nmain {\n  /* height: 100vh; */\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  font-family: Audiowide-Regular;\n  font-size: 1.5rem;\n  text-align: center;\n  /* overflow-x: hidden; */\n}\n\n.version {\n  /* flex-grow: 1; */\n  margin-top: auto;\n  color: white;\n}\n\n@keyframes marcosclave1 {\n  from {\n    opacity: 0.7;\n    /* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n  }\n  to {\n    opacity: 1;\n    text-shadow: 0 0 5rem rgb(162, 0, 255);\n  }\n}\n\nh1 {\n  text-align: center;\n  font-family: \"BigShouldersStencil\";\n  color: grey;\n  font-size: 5.5rem;\n  text-shadow: 0 0 0.5rem rgb(162, 0, 255);\n  margin-top: 1rem;\n  margin-bottom: 2rem;\n\n  /* animation: marcosclave1 1.5s linear 0s infinite alternate; */\n}\n\nh2 {\n  color: goldenrod;\n  font-size: 2rem;\n}\n\n.name {\n  font-size: 1.5rem;\n  margin-bottom: 0;\n  color: forestgreen;\n}\n\ninput {\n  margin-bottom: 1rem;\n  background-color: grey;\n  border-style: none;\n  border-radius: 0.5rem;\n  padding: 1rem;\n  font-size: 1.5rem;\n  font-weight: bold;\n  font-family: \"Courier New\", Courier, monospace;\n  text-align: center;\n  box-shadow: 0 0 0.5rem rgb(150, 150, 150);\n}\n\ninput::placeholder {\n  color: rgb(64, 64, 64);\n}\n\ninput:focus {\n  outline-style: none;\n  background-color: olivedrab;\n}\n\nbutton {\n  margin: 0.5rem;\n  padding: 0.6rem;\n  background-color: orangered;\n  border-style: none;\n  border-radius: 0.5rem;\n  font-size: 1.5rem;\n  font-weight: bold;\n  font-family: \"Courier New\", Courier, monospace;\n}\n\nbutton:hover {\n  background-color: rgb(255, 32, 0);\n  transform: scale(1.04);\n  cursor: pointer;\n}\n\nbutton.placeRandomShips {\n  width: min-content;\n  background-color: rgb(128, 0, 255);\n}\n\nbutton.placeRandomShips:hover {\n  background-color: rgb(64, 0, 255);\n}\n\n.buttonContainer {\n  flex-grow: 1;\n  flex-basis: 45%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\nbutton.toggleBoards {\n  flex-basis: 70%;\n  align-self: center;\n  font-size: 1.5rem;\n  text-align: center;\n  background-color: orangered;\n  border-radius: 1rem;\n  border-width: 1rem;\n  border-style: none;\n  padding: 1rem;\n  opacity: 0;\n}\n\nbutton.toggleBoards:hover {\n  background-color: rgb(255, 32, 0);\n  transform: scale(1.04);\n  cursor: pointer;\n}\n\nbutton.toggleBoards.afterPlacing {\n  height: 5rem;\n}\n\nbutton.battleBegins {\n  flex-basis: 70%;\n  font-size: 1.5rem;\n  text-align: center;\n  background-color: rgb(162, 0, 255);\n  border-radius: 1rem;\n  border-width: 1rem;\n  border-style: none;\n  padding: 1rem;\n  opacity: 0;\n  height: min-content;\n}\n\nbutton.showHiddenBoards {\n  margin-top: 6rem;\n  font-size: 1.5rem;\n  text-align: center;\n  background-color: orangered;\n  border-radius: 1rem;\n  border-width: 1rem;\n  border-style: none;\n  padding: 1rem;\n}\n\nbutton.fadeIn {\n  opacity: 1;\n  transition: opacity 1000ms ease-in-out;\n}\n\n.playerDiv.player1,\n.playerDiv.player2 {\n  width: 100%;\n  font-family: Audiowide-Regular;\n  font-size: 2rem;\n}\n\n.playerDiv.player1.hidden,\n.playerDiv.player2.hidden {\n  display: none;\n}\n\n.boardsContainer {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 1.5rem;\n}\n\n.verticalShipsContainer,\n.horizontalShipsContainer {\n  flex-grow: 1;\n  flex-basis: 45%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.verticalShipsContainer .gameboard {\n  gap: 0.5rem;\n}\n\n.messages {\n  font-size: 1.8rem;\n  height: 6rem;\n  text-align: center;\n  color: green;\n}\n\n.ownBoardTitle {\n  font-size: 1.8rem;\n  color: forestgreen;\n  height: 6rem;\n}\n\n.enemyBoardTitle {\n  font-size: 1.8rem;\n  color: orangered;\n  height: 6rem;\n}\n\n.gameboardContainer {\n  flex-grow: 1;\n  flex-basis: 45%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.gameboard {\n  display: flex;\n  margin: 1rem;\n  cursor: crosshair;\n}\n\n.row.empty {\n  display: none;\n}\n\n.horizontalShipsContainer .row {\n  margin-bottom: 1rem;\n}\n\n.rowDraggable {\n  display: flex;\n  justify-content: flex-start;\n  width: 100%;\n}\n\n.hidden {\n  display: none;\n}\n\n.square {\n  width: 2.2rem;\n  height: 2.2rem;\n  position: relative;\n  z-index: 1;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  aspect-ratio: 1;\n  border-style: solid;\n  border-color: rgb(0, 0, 0);\n  border-width: 0.1rem;\n  border-radius: 0.5rem;\n  font-size: 1.8rem;\n}\n\n.square:hover {\n  opacity: 0.7;\n}\n\n.notAttacked {\n  background-color: grey;\n}\n\n@keyframes water {\n  from {\n    transform: rotateZ(-20deg) rotateX(-40deg);\n    background-color: rgb(0, 0, 168);\n  }\n  to {\n    transform: rotateZ(20deg) rotateX(40deg);\n    background-color: rgb(0, 0, 255);\n  }\n}\n\n.water {\n  background-color: blue;\n}\n\n.waterAnimation {\n  position: relative;\n  z-index: 0;\n  /* animation: water 1s linear 0s infinite alternate; */\n}\n\n.square.questionTrans {\n  transform: rotateX(720deg);\n  transition: transform 1000ms ease-in-out;\n}\n\n.square.ship {\n  background-color: brown;\n}\n\n.shipTrans {\n  transform: rotateY(720deg);\n  transition: transform 1000ms ease-in-out;\n}\n\n.square.sunkenShip {\n  background-color: red;\n  transform: rotateZ(720deg);\n  transition: transform 1000ms ease-in-out;\n}\n\n.square.lastSunkenShip {\n  background-color: red;\n  transform: rotateZ(720deg) scale(5);\n  transition: transform 1000ms ease-in-out;\n}\n\n.square.attacked {\n  z-index: 2;\n  border-style: solid;\n  border-color: red;\n  transition: transform 700ms ease-in-out;\n}\n\n.square.attacked.attackedTrans {\n  transform: rotateZ(720deg) scale(4);\n}\n\n@keyframes marcosclave {\n  from {\n    transform: scale(1);\n  }\n  to {\n    transform: scale(2);\n  }\n}\n\n.square.lastAttacked {\n  animation: marcosclave 1s linear 0s infinite alternate;\n}\n\n/* Winner */\n.won {\n  margin-top: 2rem;\n  color: rgb(255, 64, 0);\n  font-size: 2rem;\n  font-family: \"BigShouldersStencil\";\n  transform: scale(3);\n}\n\n@keyframes won {\n  from {\n    /* color: rgb(255, 64, 0); */\n    transform: scale(0.1);\n  }\n  30% {\n    transform: rotateZ(30deg);\n  }\n  70% {\n    transform: rotateZ(-30deg);\n  }\n  to {\n    /* color: rgb(128, 0, 255); */\n    transform: scale(3);\n  }\n}\n\n.wonAnim {\n  /* animation: won 1s cubic-bezier(0, 1, 1, 0) 0s infinite alternate; */\n  animation: won 1s ease 0s infinite alternate;\n}\n\n.winPlayer {\n  margin-top: 3rem;\n  font-size: 6rem;\n  color: rgb(143, 0, 143);\n}\n\n@keyframes winPlayer {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n    transform: rotateZ(4turn);\n  }\n}\n\n.winPlayerAnim {\n  animation: winPlayer 2s ease-in 0s 1;\n}\n\n.sunkAll {\n  justify-self: center;\n  margin-top: 2rem;\n  color: orange;\n  font-family: \"Courier New\", Courier, monospace;\n  font-size: 4rem;\n}\n\n@keyframes sunkAll {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n\n.sunkAllAnim {\n  animation: sunkAll 0.3s ease 0s 7;\n}\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["@font-face {\n  font-family: \"BigShouldersStencil\";\n  src: url(\"./BigShouldersStencil.woff2\");\n}\n\n@font-face {\n  font-family: \"Audiowide-Regular\";\n  src: url(\"./Audiowide-Regular.ttf\");\n}\n\n@media (max-width: 880px) {\n  .square {\n    height: 8vmin !important;\n    width: 8vmin !important;\n    font-size: 7vmin !important;\n  }\n}\n\nhtml {\n  margin: 0;\n  background-color: black;\n}\n\nbody {\n  margin: 0;\n  /* overflow-y: hidden; */\n}\n\nmain {\n  /* height: 100vh; */\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  font-family: Audiowide-Regular;\n  font-size: 1.5rem;\n  text-align: center;\n  /* overflow-x: hidden; */\n}\n\n.version {\n  /* flex-grow: 1; */\n  margin-top: auto;\n  color: white;\n}\n\n@keyframes marcosclave1 {\n  from {\n    opacity: 0.7;\n    /* text-shadow: 0 0 .5rem rgb(162, 0, 255); */\n  }\n  to {\n    opacity: 1;\n    text-shadow: 0 0 5rem rgb(162, 0, 255);\n  }\n}\n\nh1 {\n  text-align: center;\n  font-family: \"BigShouldersStencil\";\n  color: grey;\n  font-size: 5.5rem;\n  text-shadow: 0 0 0.5rem rgb(162, 0, 255);\n  margin-top: 1rem;\n  margin-bottom: 2rem;\n\n  /* animation: marcosclave1 1.5s linear 0s infinite alternate; */\n}\n\nh2 {\n  color: goldenrod;\n  font-size: 2rem;\n}\n\n.name {\n  font-size: 1.5rem;\n  margin-bottom: 0;\n  color: forestgreen;\n}\n\ninput {\n  margin-bottom: 1rem;\n  background-color: grey;\n  border-style: none;\n  border-radius: 0.5rem;\n  padding: 1rem;\n  font-size: 1.5rem;\n  font-weight: bold;\n  font-family: \"Courier New\", Courier, monospace;\n  text-align: center;\n  box-shadow: 0 0 0.5rem rgb(150, 150, 150);\n}\n\ninput::placeholder {\n  color: rgb(64, 64, 64);\n}\n\ninput:focus {\n  outline-style: none;\n  background-color: olivedrab;\n}\n\nbutton {\n  margin: 0.5rem;\n  padding: 0.6rem;\n  background-color: orangered;\n  border-style: none;\n  border-radius: 0.5rem;\n  font-size: 1.5rem;\n  font-weight: bold;\n  font-family: \"Courier New\", Courier, monospace;\n}\n\nbutton:hover {\n  background-color: rgb(255, 32, 0);\n  transform: scale(1.04);\n  cursor: pointer;\n}\n\nbutton.placeRandomShips {\n  width: min-content;\n  background-color: rgb(128, 0, 255);\n}\n\nbutton.placeRandomShips:hover {\n  background-color: rgb(64, 0, 255);\n}\n\n.buttonContainer {\n  flex-grow: 1;\n  flex-basis: 45%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\nbutton.toggleBoards {\n  flex-basis: 70%;\n  align-self: center;\n  font-size: 1.5rem;\n  text-align: center;\n  background-color: orangered;\n  border-radius: 1rem;\n  border-width: 1rem;\n  border-style: none;\n  padding: 1rem;\n  opacity: 0;\n}\n\nbutton.toggleBoards:hover {\n  background-color: rgb(255, 32, 0);\n  transform: scale(1.04);\n  cursor: pointer;\n}\n\nbutton.toggleBoards.afterPlacing {\n  height: 5rem;\n}\n\nbutton.battleBegins {\n  flex-basis: 70%;\n  font-size: 1.5rem;\n  text-align: center;\n  background-color: rgb(162, 0, 255);\n  border-radius: 1rem;\n  border-width: 1rem;\n  border-style: none;\n  padding: 1rem;\n  opacity: 0;\n  height: min-content;\n}\n\nbutton.showHiddenBoards {\n  margin-top: 6rem;\n  font-size: 1.5rem;\n  text-align: center;\n  background-color: orangered;\n  border-radius: 1rem;\n  border-width: 1rem;\n  border-style: none;\n  padding: 1rem;\n}\n\nbutton.fadeIn {\n  opacity: 1;\n  transition: opacity 1000ms ease-in-out;\n}\n\n.playerDiv.player1,\n.playerDiv.player2 {\n  width: 100%;\n  font-family: Audiowide-Regular;\n  font-size: 2rem;\n}\n\n.playerDiv.player1.hidden,\n.playerDiv.player2.hidden {\n  display: none;\n}\n\n.boardsContainer {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 1.5rem;\n}\n\n.verticalShipsContainer,\n.horizontalShipsContainer {\n  flex-grow: 1;\n  flex-basis: 45%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.verticalShipsContainer .gameboard {\n  gap: 0.5rem;\n}\n\n.messages {\n  font-size: 1.8rem;\n  height: 6rem;\n  text-align: center;\n  color: green;\n}\n\n.ownBoardTitle {\n  font-size: 1.8rem;\n  color: forestgreen;\n  height: 6rem;\n}\n\n.enemyBoardTitle {\n  font-size: 1.8rem;\n  color: orangered;\n  height: 6rem;\n}\n\n.gameboardContainer {\n  flex-grow: 1;\n  flex-basis: 45%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.gameboard {\n  display: flex;\n  margin: 1rem;\n  cursor: crosshair;\n}\n\n.row.empty {\n  display: none;\n}\n\n.horizontalShipsContainer .row {\n  margin-bottom: 1rem;\n}\n\n.rowDraggable {\n  display: flex;\n  justify-content: flex-start;\n  width: 100%;\n}\n\n.hidden {\n  display: none;\n}\n\n.square {\n  width: 2.2rem;\n  height: 2.2rem;\n  position: relative;\n  z-index: 1;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  aspect-ratio: 1;\n  border-style: solid;\n  border-color: rgb(0, 0, 0);\n  border-width: 0.1rem;\n  border-radius: 0.5rem;\n  font-size: 1.8rem;\n}\n\n.square:hover {\n  opacity: 0.7;\n}\n\n.notAttacked {\n  background-color: grey;\n}\n\n@keyframes water {\n  from {\n    transform: rotateZ(-20deg) rotateX(-40deg);\n    background-color: rgb(0, 0, 168);\n  }\n  to {\n    transform: rotateZ(20deg) rotateX(40deg);\n    background-color: rgb(0, 0, 255);\n  }\n}\n\n.water {\n  background-color: blue;\n}\n\n.waterAnimation {\n  position: relative;\n  z-index: 0;\n  /* animation: water 1s linear 0s infinite alternate; */\n}\n\n.square.questionTrans {\n  transform: rotateX(720deg);\n  transition: transform 1000ms ease-in-out;\n}\n\n.square.ship {\n  background-color: brown;\n}\n\n.shipTrans {\n  transform: rotateY(720deg);\n  transition: transform 1000ms ease-in-out;\n}\n\n.square.sunkenShip {\n  background-color: red;\n  transform: rotateZ(720deg);\n  transition: transform 1000ms ease-in-out;\n}\n\n.square.lastSunkenShip {\n  background-color: red;\n  transform: rotateZ(720deg) scale(5);\n  transition: transform 1000ms ease-in-out;\n}\n\n.square.attacked {\n  z-index: 2;\n  border-style: solid;\n  border-color: red;\n  transition: transform 700ms ease-in-out;\n}\n\n.square.attacked.attackedTrans {\n  transform: rotateZ(720deg) scale(4);\n}\n\n@keyframes marcosclave {\n  from {\n    transform: scale(1);\n  }\n  to {\n    transform: scale(2);\n  }\n}\n\n.square.lastAttacked {\n  animation: marcosclave 1s linear 0s infinite alternate;\n}\n\n/* Winner */\n.won {\n  margin-top: 2rem;\n  color: rgb(255, 64, 0);\n  font-size: 2rem;\n  font-family: \"BigShouldersStencil\";\n  transform: scale(3);\n}\n\n@keyframes won {\n  from {\n    /* color: rgb(255, 64, 0); */\n    transform: scale(0.1);\n  }\n  30% {\n    transform: rotateZ(30deg);\n  }\n  70% {\n    transform: rotateZ(-30deg);\n  }\n  to {\n    /* color: rgb(128, 0, 255); */\n    transform: scale(3);\n  }\n}\n\n.wonAnim {\n  /* animation: won 1s cubic-bezier(0, 1, 1, 0) 0s infinite alternate; */\n  animation: won 1s ease 0s infinite alternate;\n}\n\n.winPlayer {\n  margin-top: 3rem;\n  font-size: 6rem;\n  color: rgb(143, 0, 143);\n}\n\n@keyframes winPlayer {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n    transform: rotateZ(4turn);\n  }\n}\n\n.winPlayerAnim {\n  animation: winPlayer 2s ease-in 0s 1;\n}\n\n.sunkAll {\n  justify-self: center;\n  margin-top: 2rem;\n  color: orange;\n  font-family: \"Courier New\", Courier, monospace;\n  font-size: 4rem;\n}\n\n@keyframes sunkAll {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n\n.sunkAllAnim {\n  animation: sunkAll 0.3s ease 0s 7;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -593,976 +593,969 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "showAttackOwnBoard": () => (/* binding */ showAttackOwnBoard),
 /* harmony export */   "showBoard": () => (/* binding */ showBoard),
 /* harmony export */   "showOtherPlayersBoardsButton": () => (/* binding */ showOtherPlayersBoardsButton),
+/* harmony export */   "showResult": () => (/* binding */ showResult),
 /* harmony export */   "showShipsToPlace": () => (/* binding */ showShipsToPlace),
 /* harmony export */   "winner": () => (/* binding */ winner)
 /* harmony export */ });
 /* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.js */ "./src/index.js");
 /* harmony import */ var _gameLogic_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gameLogic.js */ "./src/gameLogic.js");
+/* harmony import */ var _star_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./star.svg */ "./src/star.svg");
+
 
 
 
 function mainTitleAndGetNames() {
-	const battleship = document.createElement("h1");
-	chainFadeInS(null, battleship, "2s");
-	battleship.textContent = "BATALLA NAVAL";
+  const battleship = document.createElement("h1");
+  chainFadeInS(null, battleship, "2s");
+  battleship.textContent = "BATALLA NAVAL";
 
-	const who = document.createElement("h2");
-	chainFadeInS(battleship, who, "2s");
-	who.textContent = "¿Quiénes van a jugar?";
+  const who = document.createElement("h2");
+  chainFadeInS(battleship, who, "2s");
+  who.textContent = "¿Quiénes van a jugar?";
 
-	const divPlayer1 = document.createElement("div");
-	chainFadeInS(who, divPlayer1, "0.5s");
-	const name1 = document.createElement("div");
-	name1.classList.add("name");
+  const divPlayer1 = document.createElement("div");
+  chainFadeInS(who, divPlayer1, "0.5s");
+  const name1 = document.createElement("div");
+  name1.classList.add("name");
 
-	name1.textContent = "Jugador/a 1:";
-	divPlayer1.appendChild(name1);
+  name1.textContent = "Jugador/a 1:";
+  divPlayer1.appendChild(name1);
 
-	const player1input = document.createElement("input");
-	player1input.setAttribute("placeholder", "Escribí tu nombre");
-	divPlayer1.appendChild(player1input);
+  const player1input = document.createElement("input");
+  player1input.setAttribute("placeholder", "Escribí tu nombre");
+  divPlayer1.appendChild(player1input);
 
-	const divPlayer2 = document.createElement("div");
-	chainFadeInS(divPlayer1, divPlayer2, "0.5s");
-	const name2 = document.createElement("div");
-	name2.classList.add("name");
-	name2.textContent = "Jugador/a 2:";
-	divPlayer2.appendChild(name2);
+  const divPlayer2 = document.createElement("div");
+  chainFadeInS(divPlayer1, divPlayer2, "0.5s");
+  const name2 = document.createElement("div");
+  name2.classList.add("name");
+  name2.textContent = "Jugador/a 2:";
+  divPlayer2.appendChild(name2);
 
-	const player2input = document.createElement("input");
-	player2input.value = "Computadora";
-	divPlayer2.appendChild(player2input);
+  const player2input = document.createElement("input");
+  player2input.value = "Computadora";
+  divPlayer2.appendChild(player2input);
 
-	const submitNames = document.createElement("button");
-	chainFadeInS(divPlayer2, submitNames, "0.5s");
-	submitNames.classList.add("submitNames");
-	submitNames.textContent = "Listo! Posicionar Flota";
-	submitNames.addEventListener("click", () => {
-		// battleship.remove();
-		// who.remove();
-		// divPlayer1.remove();
-		// divPlayer2.remove();
-		// submitNames.remove();
-		// version.remove();
-		while (main.firstChild) {
-			main.removeChild(main.firstChild);
-		}
-		(0,_index_js__WEBPACK_IMPORTED_MODULE_0__.initializeGame)(player1input.value, player2input.value);
-	});
+  const submitNames = document.createElement("button");
+  chainFadeInS(divPlayer2, submitNames, "0.5s");
+  submitNames.classList.add("submitNames");
+  submitNames.textContent = "Listo! Posicionar Flota";
+  submitNames.addEventListener("click", () => {
+    while (main.firstChild) {
+      main.removeChild(main.firstChild);
+    }
+    (0,_index_js__WEBPACK_IMPORTED_MODULE_0__.initializeGame)(player1input.value, player2input.value);
+  });
 
-	const version = document.createElement("div");
-	chainFadeInS(submitNames, version, "1s");
-	version.classList.add("version");
-	version.textContent = "v0.1";
+  const version = document.createElement("div");
+  chainFadeInS(submitNames, version, "1s");
+  version.classList.add("version");
+  version.textContent = "v0.1";
 
-	const main = document.querySelector("main");
-	main.appendChild(battleship);
-	main.appendChild(who);
-	main.appendChild(divPlayer1);
-	main.appendChild(divPlayer2);
-	main.appendChild(submitNames);
-	main.appendChild(version);
+  const main = document.querySelector("main");
+  main.appendChild(battleship);
+  main.appendChild(who);
+  main.appendChild(divPlayer1);
+  main.appendChild(divPlayer2);
+  main.appendChild(submitNames);
+  main.appendChild(version);
+
+  window.scrollTo(0, 0);
 }
 
 function chainFadeInS(fromElement, toElementS, duration, timingFunction) {
-	let timing;
-	if (timingFunction) {
-		timing = timingFunction;
-	} else {
-		timing = "ease-in-out";
-	}
+  let timing;
+  if (timingFunction) {
+    timing = timingFunction;
+  } else {
+    timing = "ease-in-out";
+  }
 
-	if (toElementS === null || toElementS.length === 0) {
-		return;
-	} else if (toElementS.length === undefined) {
-		toElementS.style.opacity = "0";
-		if (fromElement) {
-			fromElement.addEventListener("transitionend", () => {
-				setTimeout(() => {
-					toElementS.style.opacity = "1";
-					toElementS.style.transition = `opacity ${duration} ${timing}`;
-				}, 0);
-			});
-		} else {
-			setTimeout(() => {
-				toElementS.style.opacity = "1";
-				toElementS.style.transition = `opacity ${duration} ${timing}`;
-			}, 0);
-		}
-	} else if (toElementS.length > 0) {
-		toElementS.forEach(element => {
-			if (element) {
-				element.style.opacity = "0";
-			}
-		});
-		if (fromElement) {
-			fromElement.addEventListener("transitionend", () => {
-				setTimeout(() => {
-					toElementS.forEach(element => {
-						if (element) {
-							element.style.opacity = "1";
-							element.style.transition = `opacity ${duration} ${timing}`;
-						}
-					});
-				}, 0);
-			});
-		} else {
-			setTimeout(() => {
-				toElementS.forEach(element => {
-					if (element) {
-						element.style.opacity = "1";
-						element.style.transition = `opacity ${duration} ${timing}`;
-					}
-				});
-			}, 0);
-		}
-	}
+  if (toElementS === null || toElementS.length === 0) {
+    return;
+  } else if (toElementS.length === undefined) {
+    toElementS.style.opacity = "0";
+    if (fromElement) {
+      fromElement.addEventListener("transitionend", () => {
+        setTimeout(() => {
+          toElementS.style.opacity = "1";
+          toElementS.style.transition = `opacity ${duration} ${timing}`;
+        }, 0);
+      });
+    } else {
+      setTimeout(() => {
+        toElementS.style.opacity = "1";
+        toElementS.style.transition = `opacity ${duration} ${timing}`;
+      }, 0);
+    }
+  } else if (toElementS.length > 0) {
+    toElementS.forEach(element => {
+      if (element) {
+        element.style.opacity = "0";
+      }
+    });
+    if (fromElement) {
+      fromElement.addEventListener("transitionend", () => {
+        setTimeout(() => {
+          toElementS.forEach(element => {
+            if (element) {
+              element.style.opacity = "1";
+              element.style.transition = `opacity ${duration} ${timing}`;
+            }
+          });
+        }, 0);
+      });
+    } else {
+      setTimeout(() => {
+        toElementS.forEach(element => {
+          if (element) {
+            element.style.opacity = "1";
+            element.style.transition = `opacity ${duration} ${timing}`;
+          }
+        });
+      }, 0);
+    }
+  }
 }
 
 function createPlayersDivs(player2name) {
-	playerDiv(1);
-	if (player2name !== "Computadora") {
-		playerDiv(2);
-	}
+  window.scrollTo(0, 0);
+  playerDiv(1);
+  if (player2name !== "Computadora") {
+    playerDiv(2);
+  }
 
-	function playerDiv(playerNumber) {
-		const playerDiv = document.createElement("div");
-		playerDiv.classList.add("playerDiv");
-		playerDiv.classList.add(`player${playerNumber}`);
+  function playerDiv(playerNumber) {
+    const playerDiv = document.createElement("div");
+    playerDiv.classList.add("playerDiv");
+    playerDiv.classList.add(`player${playerNumber}`);
 
-		const boardsContainer = document.createElement("div");
-		boardsContainer.classList.add("boardsContainer");
-		playerDiv.appendChild(boardsContainer);
+    const boardsContainer = document.createElement("div");
+    boardsContainer.classList.add("boardsContainer");
+    playerDiv.appendChild(boardsContainer);
 
-		const main = document.querySelector("main");
-		main.appendChild(playerDiv);
-	}
+    const main = document.querySelector("main");
+    main.appendChild(playerDiv);
+  }
 }
 
 function placeShipsMessage(
-	player1name,
-	player2name,
-	playerTurn,
-	numberOfShipsToPlace
+  player1name,
+  player2name,
+  playerTurn,
+  numberOfShipsToPlace
 ) {
-	removePlaceShipsElements();
+  removePlaceShipsElements();
 
-	let playerName;
-	let otherPlayerName;
-	if (playerTurn === "player1") {
-		playerName = player1name;
-		otherPlayerName = player2name;
-	} else if (playerTurn === "player2") {
-		playerName = player2name;
-		otherPlayerName = player1name;
-	}
+  let playerName;
+  let otherPlayerName;
+  if (playerTurn === "player1") {
+    playerName = player1name;
+    otherPlayerName = player2name;
+  } else if (playerTurn === "player2") {
+    playerName = player2name;
+    otherPlayerName = player1name;
+  }
 
-	const messagesDiv = document.createElement("div");
-	messagesDiv.classList.add("messages");
-	messagesDiv.textContent = `${playerName}, posiciona tus ${numberOfShipsToPlace} barcos sobre las aguas...`;
-	const playerDiv = document.querySelector(`.${playerTurn}`);
-	playerDiv.prepend(messagesDiv);
+  const messagesDiv = document.createElement("div");
+  messagesDiv.classList.add("messages");
+  messagesDiv.textContent = `${playerName}, posiciona tus ${numberOfShipsToPlace} barcos sobre las aguas...`;
+  const playerDiv = document.querySelector(`.${playerTurn}`);
+  playerDiv.prepend(messagesDiv);
 
-	if (otherPlayerName !== "Computadora") {
-		const messagesDiv2 = document.createElement("div");
-		messagesDiv2.classList.add("messages");
-		messagesDiv2.classList.add("messages2");
-		messagesDiv2.textContent = `¡Que ${otherPlayerName} no vea tu tablero!`;
-		messagesDiv.appendChild(messagesDiv2);
-	}
+  if (otherPlayerName !== "Computadora") {
+    const messagesDiv2 = document.createElement("div");
+    messagesDiv2.classList.add("messages");
+    messagesDiv2.classList.add("messages2");
+    messagesDiv2.textContent = `¡Que ${otherPlayerName} no vea tu tablero!`;
+    messagesDiv.appendChild(messagesDiv2);
+  }
 }
 
 function showShipsToPlace(
-	player1,
-	player2,
-	boardOfShipsToPlace,
-	numberOfShipsToPlace,
-	boardSize,
-	playerTurn,
-	typeOfBoard,
-	isHidden
+  player1,
+  player2,
+  boardOfShipsToPlace,
+  numberOfShipsToPlace,
+  boardSize,
+  playerTurn,
+  typeOfBoard,
+  isHidden
 ) {
-	// These variables will be defined by square's onColumnDragStart event callback
-	let shipID;
-	let squareDragged;
-	let shipLength;
+  // These variables will be defined by square's onColumnDragStart event callback
+  let shipID;
+  let squareDragged;
+  let shipLength;
 
-	const gameboardDiv = document.createElement("div");
-	gameboardDiv.classList.add("gameboard");
-	setTimeout(() => {
-		gameboardDiv.classList.add("fadeIn");
-	}, 0);
-	if (typeOfBoard === "horizontalShipsToPlace") {
-		gameboardDiv.style.flexDirection = "column";
-	}
-	gameboardDiv.classList.add(playerTurn);
-	gameboardDiv.classList.add(typeOfBoard);
+  const gameboardDiv = document.createElement("div");
+  gameboardDiv.classList.add("gameboard");
+  setTimeout(() => {
+    gameboardDiv.classList.add("fadeIn");
+  }, 0);
+  if (typeOfBoard === "horizontalShipsToPlace") {
+    gameboardDiv.style.flexDirection = "column";
+  }
+  gameboardDiv.classList.add(playerTurn);
+  gameboardDiv.classList.add(typeOfBoard);
 
-	let shipsNumbering = {};
+  let shipsNumbering = {};
 
-	for (let i = 0; i < boardOfShipsToPlace.length; i++) {
-		const columnDivContainer = document.createElement("div");
-		const columnDiv = document.createElement("div");
+  for (let i = 0; i < boardOfShipsToPlace.length; i++) {
+    const columnDivContainer = document.createElement("div");
+    const columnDiv = document.createElement("div");
 
-		if (typeOfBoard === "verticalShipsToPlace") {
-			columnDivContainer.classList.add("column");
-		} else if (typeOfBoard === "horizontalShipsToPlace") {
-			columnDivContainer.classList.add("row");
-			columnDiv.classList.add("rowDraggable");
-		}
+    if (typeOfBoard === "verticalShipsToPlace") {
+      columnDivContainer.classList.add("column");
+    } else if (typeOfBoard === "horizontalShipsToPlace") {
+      columnDivContainer.classList.add("row");
+      columnDiv.classList.add("rowDraggable");
+    }
 
-		// Make draggable only even columns
-		if (!((i + 2) % 2)) {
-			columnDiv.draggable = true;
-		} else {
-			columnDivContainer.classList.add("empty");
-			columnDiv.classList.add("empty");
-		}
-		columnDiv.addEventListener("dragstart", onColumnDragStart);
-		for (let j = 0; j < boardOfShipsToPlace[i].length; j++) {
-			const square = document.createElement("div");
-			square.classList.add("square");
-			if (typeOfBoard === "horizontalShipsToPlace") {
-				// square.style.width = "100%";
-			}
-			square.dataset.player = playerTurn;
-			square.dataset.x = i;
-			square.dataset.y = j;
-			if (boardOfShipsToPlace[i][j] === null) {
-				square.style.opacity = "0";
-				if (typeOfBoard === "verticalShipsToPlace") {
-					square.style.display = "none";
-				}
-			} else {
-				square.textContent = "B";
-				square.classList.add("ship");
-				square.dataset.shipId = boardOfShipsToPlace[i][j].shipID;
-				square.dataset.shipLength = boardOfShipsToPlace[i][j].length;
-				columnDiv.dataset.shipId = boardOfShipsToPlace[i][j].shipID;
+    // Make draggable only even columns
+    if (!((i + 2) % 2)) {
+      columnDiv.draggable = true;
+    } else {
+      columnDivContainer.classList.add("empty");
+      columnDiv.classList.add("empty");
+    }
+    columnDiv.addEventListener("dragstart", onColumnDragStart);
+    for (let j = 0; j < boardOfShipsToPlace[i].length; j++) {
+      const square = document.createElement("div");
+      square.classList.add("square");
+      if (typeOfBoard === "horizontalShipsToPlace") {
+        // square.style.width = "100%";
+      }
+      square.dataset.player = playerTurn;
+      square.dataset.x = i;
+      square.dataset.y = j;
+      if (boardOfShipsToPlace[i][j] === null) {
+        square.style.opacity = "0";
+        if (typeOfBoard === "verticalShipsToPlace") {
+          square.style.display = "none";
+        }
+      } else {
+        square.textContent = "B";
+        square.classList.add("ship");
+        square.dataset.shipId = boardOfShipsToPlace[i][j].shipID;
+        square.dataset.shipLength = boardOfShipsToPlace[i][j].length;
+        columnDiv.dataset.shipId = boardOfShipsToPlace[i][j].shipID;
 
-				if (
-					shipsNumbering[
-						`shipID${boardOfShipsToPlace[i][j].shipID}`
-					] === undefined
-				) {
-					shipsNumbering[
-						`shipID${boardOfShipsToPlace[i][j].shipID}`
-					] = 1;
-				}
-				square.dataset.shipSquareNumber =
-					shipsNumbering[`shipID${boardOfShipsToPlace[i][j].shipID}`];
-				shipsNumbering[`shipID${boardOfShipsToPlace[i][j].shipID}`]++;
+        if (
+          shipsNumbering[`shipID${boardOfShipsToPlace[i][j].shipID}`] ===
+          undefined
+        ) {
+          shipsNumbering[`shipID${boardOfShipsToPlace[i][j].shipID}`] = 1;
+        }
+        square.dataset.shipSquareNumber =
+          shipsNumbering[`shipID${boardOfShipsToPlace[i][j].shipID}`];
+        shipsNumbering[`shipID${boardOfShipsToPlace[i][j].shipID}`]++;
 
-				square.addEventListener("mousedown", function(event) {
-					if (event.target.dataset.shipId !== undefined) {
-						shipID = event.target.dataset.shipId;
-						squareDragged = event.target.dataset.shipSquareNumber;
-						shipLength = event.target.dataset.shipLength;
-					}
-				});
-			}
-			columnDiv.appendChild(square);
-		}
-		columnDivContainer.appendChild(columnDiv);
-		gameboardDiv.appendChild(columnDivContainer);
+        square.addEventListener("mousedown", function(event) {
+          if (event.target.dataset.shipId !== undefined) {
+            shipID = event.target.dataset.shipId;
+            squareDragged = event.target.dataset.shipSquareNumber;
+            shipLength = event.target.dataset.shipLength;
+          }
+        });
+      }
+      columnDiv.appendChild(square);
+    }
+    columnDivContainer.appendChild(columnDiv);
+    gameboardDiv.appendChild(columnDivContainer);
 
-		function onColumnDragStart(event) {
-			if (shipID === undefined) {
-				return;
-			}
-			event.dataTransfer.setData(
-				"text/plain",
-				`${shipID}${squareDragged}${shipLength}${typeOfBoard[0]}`
-			);
-			shipID = undefined;
-		}
-	}
+    function onColumnDragStart(event) {
+      if (shipID === undefined) {
+        return;
+      }
+      event.dataTransfer.setData(
+        "text/plain",
+        `${shipID}${squareDragged}${shipLength}${typeOfBoard[0]}`
+      );
+      shipID = undefined;
+    }
+  }
 
-	const placeShipsDiv = document.createElement("div");
-	if (typeOfBoard === "verticalShipsToPlace") {
-		placeShipsDiv.classList.add("verticalShipsContainer");
-	} else if (typeOfBoard === "horizontalShipsToPlace") {
-		placeShipsDiv.classList.add("horizontalShipsContainer");
-	}
-	if (isHidden) {
-		placeShipsDiv.classList.add("hidden");
-	}
-	placeShipsDiv.appendChild(gameboardDiv);
+  const placeShipsDiv = document.createElement("div");
+  if (typeOfBoard === "verticalShipsToPlace") {
+    placeShipsDiv.classList.add("verticalShipsContainer");
+  } else if (typeOfBoard === "horizontalShipsToPlace") {
+    placeShipsDiv.classList.add("horizontalShipsContainer");
+  }
+  if (isHidden) {
+    placeShipsDiv.classList.add("hidden");
+  }
+  placeShipsDiv.appendChild(gameboardDiv);
 
-	const rotateButton = document.createElement("button");
-	rotateButton.textContent = "Rotar Barcos";
-	rotateButton.addEventListener("click", rotateShips);
-	placeShipsDiv.appendChild(rotateButton);
+  const rotateButton = document.createElement("button");
+  rotateButton.textContent = "Rotar Barcos";
+  rotateButton.addEventListener("click", rotateShips);
+  placeShipsDiv.appendChild(rotateButton);
 
-	const placeRandomly = document.createElement("button");
-	placeRandomly.textContent = "Posicionar Barcos Aleatoriamente";
-	placeRandomly.classList.add("placeRandomShips");
-	placeRandomly.addEventListener("click", placeRandomShipsAndShowEm);
-	placeShipsDiv.appendChild(placeRandomly);
+  const placeRandomly = document.createElement("button");
+  placeRandomly.textContent = "Posicionar Barcos Aleatoriamente";
+  placeRandomly.classList.add("placeRandomShips");
+  placeRandomly.addEventListener("click", placeRandomShipsAndShowEm);
+  placeShipsDiv.appendChild(placeRandomly);
 
-	const boardsContainer = document.querySelector(
-		`.${playerTurn} > .boardsContainer`
-	);
-	boardsContainer.appendChild(placeShipsDiv);
+  const boardsContainer = document.querySelector(
+    `.${playerTurn} > .boardsContainer`
+  );
+  boardsContainer.appendChild(placeShipsDiv);
 
-	function rotateShips() {
-		let verticalShips = document.querySelector(".verticalShipsContainer");
-		let horizontalShips = document.querySelector(
-			".horizontalShipsContainer"
-		);
+  function rotateShips() {
+    let verticalShips = document.querySelector(".verticalShipsContainer");
+    let horizontalShips = document.querySelector(".horizontalShipsContainer");
 
-		verticalShips.classList.toggle("hidden");
-		horizontalShips.classList.toggle("hidden");
-	}
+    verticalShips.classList.toggle("hidden");
+    horizontalShips.classList.toggle("hidden");
+  }
 
-	function placeRandomShipsAndShowEm() {
-		const message = document.querySelector(".messages");
-		if (playerTurn === "player1") {
-			(0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.placeRandomShips)(player1, boardSize);
-			message.textContent = `Así queda pocisionada tu flota, ${player1.name}:`;
-		} else if (playerTurn === "player2") {
-			(0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.placeRandomShips)(player2, boardSize);
-			message.textContent = `Así queda pocisionada tu flota, ${player2.name}:`;
-		}
-		const gameboards = document.querySelectorAll(".gameboardContainer");
-		gameboards.forEach(gameboard => {
-			gameboard.remove();
-		});
+  function placeRandomShipsAndShowEm() {
+    window.scrollTo(0, 0);
+    const message = document.querySelector(".messages");
+    if (playerTurn === "player1") {
+      (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.placeRandomShips)(player1, boardSize);
+      message.textContent = `Así queda pocisionada tu flota, ${player1.name}:`;
+    } else if (playerTurn === "player2") {
+      (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.placeRandomShips)(player2, boardSize);
+      message.textContent = `Así queda pocisionada tu flota, ${player2.name}:`;
+    }
+    const gameboards = document.querySelectorAll(".gameboardContainer");
+    gameboards.forEach(gameboard => {
+      gameboard.remove();
+    });
 
-		showBoard(
-			player1,
-			player2,
-			playerTurn,
-			"ownBoard",
-			false,
-			boardSize,
-			true
-		);
+    showBoard(player1, player2, playerTurn, "ownBoard", false, boardSize, true);
 
-		afterPlacingShipsButton(
-			player1,
-			player2,
-			playerTurn,
-			numberOfShipsToPlace,
-			boardSize
-		);
-	}
+    afterPlacingShipsButton(
+      player1,
+      player2,
+      playerTurn,
+      numberOfShipsToPlace,
+      boardSize
+    );
+  }
 }
 
 function removePlaceShipsElements() {
-	const messages = document.querySelectorAll(".messages");
+  const messages = document.querySelectorAll(".messages");
 
-	const verticalShipsToPlace = document.querySelector(
-		".verticalShipsContainer"
-	);
-	const horizontalShipsToPlace = document.querySelector(
-		".horizontalShipsContainer"
-	);
-	const gameboard = document.querySelector(".gameboardContainer");
+  const verticalShipsToPlace = document.querySelector(
+    ".verticalShipsContainer"
+  );
+  const horizontalShipsToPlace = document.querySelector(
+    ".horizontalShipsContainer"
+  );
+  const gameboard = document.querySelector(".gameboardContainer");
 
-	if (messages !== null) {
-		messages.forEach(message => {
-			message.remove();
-		});
-	}
-	if (verticalShipsToPlace !== null) {
-		verticalShipsToPlace.remove();
-	}
-	if (horizontalShipsToPlace !== null) {
-		horizontalShipsToPlace.remove();
-	}
-	if (gameboard !== null) {
-		gameboard.remove();
-	}
+  if (messages !== null) {
+    messages.forEach(message => {
+      message.remove();
+    });
+  }
+  if (verticalShipsToPlace !== null) {
+    verticalShipsToPlace.remove();
+  }
+  if (horizontalShipsToPlace !== null) {
+    horizontalShipsToPlace.remove();
+  }
+  if (gameboard !== null) {
+    gameboard.remove();
+  }
 }
 
 function afterPlacingShipsButton(
-	player1,
-	player2,
-	playerTurn,
-	numberOfShipsToPlace,
-	boardSize
+  player1,
+  player2,
+  playerTurn,
+  numberOfShipsToPlace,
+  boardSize
 ) {
-	let button;
-	const buttonContainer = document.createElement("div");
-	buttonContainer.classList.add("buttonContainer");
+  let button;
+  const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("buttonContainer");
 
-	if (playerTurn === "player1" && player2.name !== "Computadora") {
-		// player2 placesShips
-		button = document.createElement("button");
-		button.classList.add("toggleBoards");
-		setTimeout(() => {
-			button.classList.add("fadeIn");
-		}, 0);
-		button.textContent = `Presioná para esconder tu tablero y dejar que ${player2.name} posicione sus barcos`;
-		button.addEventListener("click", () => {
-			buttonContainer.remove();
-			document.querySelectorAll(".messages").forEach(message => {
-				message.remove();
-			});
-			document.querySelector(".gameboardContainer").remove();
+  if (playerTurn === "player1" && player2.name !== "Computadora") {
+    // player2 placesShips
+    button = document.createElement("button");
+    button.classList.add("toggleBoards");
+    setTimeout(() => {
+      button.classList.add("fadeIn");
+    }, 0);
+    button.textContent = `Presioná para esconder tu tablero y dejar que ${player2.name} posicione sus barcos`;
+    button.addEventListener("click", () => {
+      buttonContainer.remove();
+      document.querySelectorAll(".messages").forEach(message => {
+        message.remove();
+      });
+      document.querySelector(".gameboardContainer").remove();
 
-			(0,_index_js__WEBPACK_IMPORTED_MODULE_0__.placeShips)(
-				player1,
-				player2,
-				"player2",
-				numberOfShipsToPlace,
-				(0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.Gameboard)(boardSize),
-				boardSize
-			);
-		});
-	} else if (playerTurn === "player1" && player2.name === "Computadora") {
-		button = document.createElement("button");
-		button.classList.add("battleBegins");
-		setTimeout(() => {
-			button.classList.add("fadeIn");
-		}, 0);
-		button.textContent = `¡Empieza el juego!`;
-		button.addEventListener("click", () => {
-			buttonContainer.remove();
-			(0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.placeRandomShips)(player2, boardSize);
-			(0,_index_js__WEBPACK_IMPORTED_MODULE_0__.battleBegins)(player1, player2, boardSize);
-		});
-	} else if (playerTurn === "player2") {
-		button = document.createElement("button");
-		button.classList.add("battleBegins");
-		setTimeout(() => {
-			button.classList.add("fadeIn");
-		}, 0);
-		button.textContent = `¡Ocultá tu tablero y dejá que ${player1.name} empiece el juego!`;
-		button.addEventListener("click", () => {
-			buttonContainer.remove();
-			(0,_index_js__WEBPACK_IMPORTED_MODULE_0__.battleBegins)(player1, player2, boardSize);
-		});
-	}
+      (0,_index_js__WEBPACK_IMPORTED_MODULE_0__.placeShips)(
+        player1,
+        player2,
+        "player2",
+        numberOfShipsToPlace,
+        (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.Gameboard)(boardSize),
+        boardSize
+      );
+    });
+  } else if (playerTurn === "player1" && player2.name === "Computadora") {
+    button = document.createElement("button");
+    button.classList.add("battleBegins");
+    setTimeout(() => {
+      button.classList.add("fadeIn");
+    }, 0);
+    button.textContent = `¡Empieza el juego!`;
+    button.addEventListener("click", () => {
+      buttonContainer.remove();
+      (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.placeRandomShips)(player2, boardSize);
+      (0,_index_js__WEBPACK_IMPORTED_MODULE_0__.battleBegins)(player1, player2, boardSize);
+    });
+  } else if (playerTurn === "player2") {
+    button = document.createElement("button");
+    button.classList.add("battleBegins");
+    setTimeout(() => {
+      button.classList.add("fadeIn");
+    }, 0);
+    button.textContent = `¡Ocultá tu tablero y dejá que ${player1.name} empiece el juego!`;
+    button.addEventListener("click", () => {
+      buttonContainer.remove();
+      (0,_index_js__WEBPACK_IMPORTED_MODULE_0__.battleBegins)(player1, player2, boardSize);
+    });
+  }
 
-	buttonContainer.appendChild(button);
+  buttonContainer.appendChild(button);
 
-	const verticalShips = document.querySelector(".verticalShipsContainer");
-	verticalShips.remove();
-	const horizontalShips = document.querySelector(".horizontalShipsContainer");
-	horizontalShips.remove();
+  const verticalShips = document.querySelector(".verticalShipsContainer");
+  verticalShips.remove();
+  const horizontalShips = document.querySelector(".horizontalShipsContainer");
+  horizontalShips.remove();
 
-	const boardsContainer = document.querySelector(
-		`.playerDiv.${playerTurn} > .boardsContainer`
-	);
-	boardsContainer.appendChild(buttonContainer);
+  const boardsContainer = document.querySelector(
+    `.playerDiv.${playerTurn} > .boardsContainer`
+  );
+  boardsContainer.appendChild(buttonContainer);
 }
 
 function createToggleButton(
-	player,
-	player1name,
-	player2name,
-	textContent,
-	selectorToAppendIt,
-	hide
+  player,
+  player1name,
+  player2name,
+  textContent,
+  selectorToAppendIt,
+  hide
 ) {
-	const button = document.createElement("button");
-	button.classList.add("toggleBoards");
-	setTimeout(() => {
-		button.classList.add("fadeIn");
-	});
-	if (hide) {
-		button.classList.add("hidden");
-	}
-	button.dataset.player = player;
-	button.textContent = textContent;
-	button.addEventListener("click", toggleBoards);
-	// document.querySelector(`.playerDiv.${player}`).appendChild(button);
-	document.querySelector(selectorToAppendIt).appendChild(button);
+  const button = document.createElement("button");
+  button.classList.add("toggleBoards");
+  setTimeout(() => {
+    button.classList.add("fadeIn");
+  });
+  if (hide) {
+    button.classList.add("hidden");
+  }
+  button.dataset.player = player;
+  button.textContent = textContent;
+  button.addEventListener("click", toggleBoards);
+  // document.querySelector(`.playerDiv.${player}`).appendChild(button);
+  document.querySelector(selectorToAppendIt).appendChild(button);
 
-	function toggleBoards() {
-		const player = this.dataset.player;
+  function toggleBoards() {
+    const player = this.dataset.player;
 
-		let otherPlayer;
-		let playerName;
-		let otherPlayerName;
+    let otherPlayer;
+    let playerName;
+    let otherPlayerName;
 
-		if (player === "player1") {
-			otherPlayer = "player2";
-			playerName = player1name;
-			otherPlayerName = player2name;
-		} else {
-			otherPlayer = "player1";
-			playerName = player2name;
-			otherPlayerName = player1name;
-		}
+    if (player === "player1") {
+      otherPlayer = "player2";
+      playerName = player1name;
+      otherPlayerName = player2name;
+    } else {
+      otherPlayer = "player1";
+      playerName = player2name;
+      otherPlayerName = player1name;
+    }
 
-		if (player === _index_js__WEBPACK_IMPORTED_MODULE_0__.whoPlays) {
-			showMakeYourMove(_index_js__WEBPACK_IMPORTED_MODULE_0__.whoPlays);
-			return;
-		}
+    if (player === _index_js__WEBPACK_IMPORTED_MODULE_0__.whoPlays) {
+      showMakeYourMove(_index_js__WEBPACK_IMPORTED_MODULE_0__.whoPlays);
+      return;
+    }
 
-		// Hide:
-		button.classList.add("hidden");
+    // Hide:
+    button.classList.add("hidden");
 
-		const playerDiv = document.querySelector(`.playerDiv.${player}`);
-		playerDiv.classList.add("hidden");
+    const playerDiv = document.querySelector(`.playerDiv.${player}`);
+    playerDiv.classList.add("hidden");
 
-		const lastAttacked = document.querySelector(
-			`[data-player="${player}"].lastAttacked`
-		);
-		if (lastAttacked) {
-			lastAttacked.classList.remove("lastAttacked");
-		}
+    const lastAttacked = document.querySelector(
+      `[data-player="${player}"].lastAttacked`
+    );
+    if (lastAttacked) {
+      lastAttacked.classList.remove("lastAttacked");
+    }
 
-		// Show Button:
-		const buttonContainer = document.createElement("div");
-		buttonContainer.classList.add("buttonContainer");
-		const showButton = document.createElement("button");
-		showButton.classList.add("showHiddenBoards");
-		setTimeout(() => {
-			button.classList.add("fadeIn");
-		}, 0);
-		showButton.textContent = `Mostrar tableros de ${otherPlayerName}`;
-		showButton.addEventListener("click", showHiddenBoards);
-		buttonContainer.appendChild(showButton);
-		document.querySelector("main").appendChild(buttonContainer);
+    // Show Button:
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("buttonContainer");
+    const showButton = document.createElement("button");
+    showButton.classList.add("showHiddenBoards");
+    setTimeout(() => {
+      button.classList.add("fadeIn");
+    }, 0);
+    showButton.textContent = `Mostrar tableros de ${otherPlayerName}`;
+    showButton.addEventListener("click", showHiddenBoards);
+    buttonContainer.appendChild(showButton);
+    document.querySelector("main").appendChild(buttonContainer);
 
-		function showMakeYourMove() {
-			alert(`¡Todavía no hiciste tu jugada, ${playerName}!`);
-		}
+    function showMakeYourMove() {
+      alert(`¡Todavía no hiciste tu jugada, ${playerName}!`);
+    }
 
-		function showHiddenBoards() {
-			const otherPlayerDiv = document.querySelector(
-				`.playerDiv.${otherPlayer}`
-			);
-			otherPlayerDiv.classList.remove("hidden");
-			buttonContainer.remove();
-		}
-	}
+    function showHiddenBoards() {
+      const otherPlayerDiv = document.querySelector(
+        `.playerDiv.${otherPlayer}`
+      );
+      otherPlayerDiv.classList.remove("hidden");
+      buttonContainer.remove();
+    }
+  }
 }
 
 function showOtherPlayersBoardsButton(player1, callBack) {
-	const buttonContainer = document.createElement("div");
-	buttonContainer.classList.add("buttonContainer");
-	const button = document.createElement("button");
-	button.classList.add("toggleBoards");
-	setTimeout(() => {
-		button.classList.add("fadeIn");
-	}, 0);
-	button.textContent = `Mostrar tableros de ${player1.name}`;
-	button.addEventListener("click", callBack);
-	buttonContainer.appendChild(button);
-	document.querySelector("main").appendChild(buttonContainer);
+  const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("buttonContainer");
+  const button = document.createElement("button");
+  button.classList.add("toggleBoards");
+  setTimeout(() => {
+    button.classList.add("fadeIn");
+  }, 0);
+  button.textContent = `Mostrar tableros de ${player1.name}`;
+  button.addEventListener("click", callBack);
+  buttonContainer.appendChild(button);
+  document.querySelector("main").appendChild(buttonContainer);
 }
 
 function showBoard(
-	player1,
-	player2,
-	playerTurn,
-	typeOfBoard,
-	isHidden,
-	boardSize,
-	isForPlacingShips,
-	numberOfShipsToPlace,
-	shipsToPlace
+  player1,
+  player2,
+  playerTurn,
+  typeOfBoard,
+  isHidden,
+  boardSize,
+  isForPlacingShips,
+  numberOfShipsToPlace,
+  shipsToPlace
 ) {
-	let board;
-	let playerName;
-	let otherPlayer;
-	if (playerTurn === "player1") {
-		playerName = player1.name;
-		otherPlayer = "player2";
-		if (typeOfBoard === "ownBoard") {
-			board = player1.gameboard.board;
-		} else if (typeOfBoard === "enemyBoard") {
-			board = player1.gameboard.receivedHits;
-		}
-	} else if (playerTurn === "player2") {
-		playerName = player2.name;
-		otherPlayer = "player1";
-		if (typeOfBoard === "ownBoard") {
-			board = player2.gameboard.board;
-		} else if (typeOfBoard === "enemyBoard") {
-			board = player2.gameboard.receivedHits;
-		}
-	}
+  let board;
+  let playerName;
+  let otherPlayer;
+  if (playerTurn === "player1") {
+    playerName = player1.name;
+    otherPlayer = "player2";
+    if (typeOfBoard === "ownBoard") {
+      board = player1.gameboard.board;
+    } else if (typeOfBoard === "enemyBoard") {
+      board = player1.gameboard.receivedHits;
+    }
+  } else if (playerTurn === "player2") {
+    playerName = player2.name;
+    otherPlayer = "player1";
+    if (typeOfBoard === "ownBoard") {
+      board = player2.gameboard.board;
+    } else if (typeOfBoard === "enemyBoard") {
+      board = player2.gameboard.receivedHits;
+    }
+  }
 
-	const gameboardContainer = document.createElement("div");
-	gameboardContainer.classList.add("gameboardContainer");
-	gameboardContainer.classList.add(playerTurn);
-	if (isHidden) {
-		gameboardContainer.classList.add("hidden");
-	}
+  const gameboardContainer = document.createElement("div");
+  gameboardContainer.classList.add("gameboardContainer");
+  gameboardContainer.classList.add(playerTurn);
+  if (isHidden) {
+    gameboardContainer.classList.add("hidden");
+  }
 
-	if (!isForPlacingShips) {
-		const boardTitle = document.createElement("div");
-		boardTitle.classList.add(`${typeOfBoard}Title`);
-		boardTitle.textContent = `Aguas y Flota de ${playerName}`;
-		gameboardContainer.appendChild(boardTitle);
-	}
+  if (!isForPlacingShips) {
+    const boardTitle = document.createElement("div");
+    boardTitle.classList.add(`${typeOfBoard}Title`);
+    boardTitle.textContent = `Aguas y Flota de ${playerName}`;
+    gameboardContainer.appendChild(boardTitle);
+  }
 
-	const gameboardDiv = document.createElement("div");
-	gameboardDiv.classList.add("gameboard");
-	gameboardDiv.classList.add(playerTurn);
-	gameboardDiv.classList.add(typeOfBoard);
+  const gameboardDiv = document.createElement("div");
+  gameboardDiv.classList.add("gameboard");
+  gameboardDiv.classList.add(playerTurn);
+  gameboardDiv.classList.add(typeOfBoard);
 
-	let shipsNumbering = {};
+  let shipsNumbering = {};
 
-	for (let i = 0; i < board.length; i++) {
-		const columnDiv = document.createElement("div");
-		columnDiv.classList.add("column");
-		for (let j = 0; j < board[i].length; j++) {
-			const square = document.createElement("div");
-			square.classList.add("square");
-			square.dataset.player = playerTurn;
-			square.dataset.x = i;
-			square.dataset.y = j;
-			if (board[i][j] === null) {
-				square.textContent = "A";
-				square.classList.add("water");
-				square.classList.add("waterAnimation");
+  for (let i = 0; i < board.length; i++) {
+    const columnDiv = document.createElement("div");
+    columnDiv.classList.add("column");
+    for (let j = 0; j < board[i].length; j++) {
+      const square = document.createElement("div");
+      square.classList.add("square");
+      square.dataset.player = playerTurn;
+      square.dataset.x = i;
+      square.dataset.y = j;
+      if (board[i][j] === null) {
+        square.textContent = "A";
+        square.classList.add("water");
+        square.classList.add("waterAnimation");
 
-				if (isForPlacingShips) {
-					square.addEventListener("dragenter", function(event) {
-						event.preventDefault();
-					});
-					square.addEventListener("dragover", function(event) {
-						event.preventDefault();
-					});
-					square.addEventListener("drop", onDrop);
-				}
-			} else if (board[i][j] === false) {
-				square.textContent = "?";
-				square.classList.add("notAttacked");
-				square.addEventListener("click", callAttack);
-			} else {
-				square.textContent = "B";
-				square.classList.add("ship");
-				square.dataset.shipId = board[i][j].shipID;
+        if (isForPlacingShips) {
+          square.addEventListener("dragenter", function(event) {
+            event.preventDefault();
+          });
+          square.addEventListener("dragover", function(event) {
+            event.preventDefault();
+          });
+          square.addEventListener("drop", onDrop);
+        }
+      } else if (board[i][j] === false) {
+        square.textContent = "?";
+        square.classList.add("notAttacked");
+        square.addEventListener("click", callAttack);
+      } else {
+        square.textContent = "B";
+        square.classList.add("ship");
+        square.dataset.shipId = board[i][j].shipID;
 
-				if (
-					shipsNumbering[`shipID${board[i][j].shipID}`] === undefined
-				) {
-					shipsNumbering[`shipID${board[i][j].shipID}`] = 1;
-				}
-				square.dataset.shipSquareNumber =
-					shipsNumbering[`shipID${board[i][j].shipID}`];
-				shipsNumbering[`shipID${board[i][j].shipID}`]++;
-			}
-			columnDiv.appendChild(square);
-		}
-		gameboardDiv.appendChild(columnDiv);
-	}
+        if (shipsNumbering[`shipID${board[i][j].shipID}`] === undefined) {
+          shipsNumbering[`shipID${board[i][j].shipID}`] = 1;
+        }
+        square.dataset.shipSquareNumber =
+          shipsNumbering[`shipID${board[i][j].shipID}`];
+        shipsNumbering[`shipID${board[i][j].shipID}`]++;
+      }
+      columnDiv.appendChild(square);
+    }
+    gameboardDiv.appendChild(columnDiv);
+  }
 
-	let whichPlayersDiv;
-	if (typeOfBoard === "ownBoard") {
-		whichPlayersDiv = playerTurn;
-	} else if (typeOfBoard === "enemyBoard") {
-		whichPlayersDiv = otherPlayer;
-	}
+  let whichPlayersDiv;
+  if (typeOfBoard === "ownBoard") {
+    whichPlayersDiv = playerTurn;
+  } else if (typeOfBoard === "enemyBoard") {
+    whichPlayersDiv = otherPlayer;
+  }
 
-	gameboardContainer.appendChild(gameboardDiv);
-	const boardsContainer = document.querySelector(
-		`.playerDiv.${whichPlayersDiv} > .boardsContainer`
-	);
-	boardsContainer.appendChild(gameboardContainer);
+  gameboardContainer.appendChild(gameboardDiv);
+  const boardsContainer = document.querySelector(
+    `.playerDiv.${whichPlayersDiv} > .boardsContainer`
+  );
+  boardsContainer.appendChild(gameboardContainer);
 
-	function callAttack() {
-		_index_js__WEBPACK_IMPORTED_MODULE_0__.attack.call(this, player1, player2, boardSize);
-	}
+  function callAttack() {
+    _index_js__WEBPACK_IMPORTED_MODULE_0__.attack.call(this, player1, player2, boardSize);
+  }
 
-	let numberOfPlacedShips = 0;
+  let numberOfPlacedShips = 0;
 
-	function onDrop(event) {
-		const data = event.dataTransfer.getData("text/plain");
-		if (data === "") {
-			return;
-		}
-		const shipID = parseInt(data[0], 10);
-		const squareDropped = parseInt(data[1], 10);
-		const shipLength = parseInt(data[2], 10);
-		const x = parseInt(event.target.dataset.x, 10);
-		const y = parseInt(event.target.dataset.y, 10);
+  function onDrop(event) {
+    const data = event.dataTransfer.getData("text/plain");
+    if (data === "") {
+      return;
+    }
+    const shipID = parseInt(data[0], 10);
+    const squareDropped = parseInt(data[1], 10);
+    const shipLength = parseInt(data[2], 10);
+    const x = parseInt(event.target.dataset.x, 10);
+    const y = parseInt(event.target.dataset.y, 10);
 
-		let isVertical;
-		let x0 = null;
-		let y0 = null;
+    let isVertical;
+    let x0 = null;
+    let y0 = null;
 
-		if (data[3] === "v") {
-			isVertical = true;
-			x0 = parseInt(x, 10);
-			y0 = y - squareDropped + 1;
-		} else if (data[3] === "h") {
-			isVertical = false;
-			x0 = x - squareDropped + 1;
-			y0 = parseInt(y, 10);
-		}
+    if (data[3] === "v") {
+      isVertical = true;
+      x0 = parseInt(x, 10);
+      y0 = y - squareDropped + 1;
+    } else if (data[3] === "h") {
+      isVertical = false;
+      x0 = x - squareDropped + 1;
+      y0 = parseInt(y, 10);
+    }
 
-		// placeShip & remove it from shipsToPlace
-		let fullShipCoordinates;
-		if (playerTurn === "player1") {
-			fullShipCoordinates = player1.gameboard.placeShip(
-				shipID,
-				shipLength,
-				isVertical,
-				x0,
-				y0
-			);
-		} else if (playerTurn === "player2") {
-			fullShipCoordinates = player2.gameboard.placeShip(
-				shipID,
-				shipLength,
-				isVertical,
-				x0,
-				y0
-			);
-		}
+    // placeShip & remove it from shipsToPlace
+    let fullShipCoordinates;
+    if (playerTurn === "player1") {
+      fullShipCoordinates = player1.gameboard.placeShip(
+        shipID,
+        shipLength,
+        isVertical,
+        x0,
+        y0
+      );
+    } else if (playerTurn === "player2") {
+      fullShipCoordinates = player2.gameboard.placeShip(
+        shipID,
+        shipLength,
+        isVertical,
+        x0,
+        y0
+      );
+    }
 
-		// This condition is met when the ship could not be placed
-		if (typeof fullShipCoordinates === "string") {
-			return;
-		} else {
-			const placeRandomlyButton = document.querySelectorAll(
-				".placeRandomShips"
-			);
-			if (placeRandomlyButton) {
-				placeRandomlyButton.forEach(button => {
-					button.remove();
-				});
-			}
-		}
-		shipsToPlace.removeShip(shipID);
+    // This condition is met when the ship could not be placed
+    if (typeof fullShipCoordinates === "string") {
+      return;
+    } else {
+      const placeRandomlyButton = document.querySelectorAll(
+        ".placeRandomShips"
+      );
+      if (placeRandomlyButton) {
+        placeRandomlyButton.forEach(button => {
+          button.remove();
+        });
+      }
+    }
+    shipsToPlace.removeShip(shipID);
 
-		// Show placed ship on ownBoard
-		const gameboard = document.querySelector(
-			`.gameboard.${this.dataset.player}.ownBoard`
-		);
-		for (let i = 0; i < fullShipCoordinates.length; i++) {
-			const coord = fullShipCoordinates[i];
-			const shipSquare = gameboard.querySelector(
-				`[data-x="${coord[0]}"][data-y="${coord[1]}"]`
-			);
-			shipSquare.classList.remove("water");
-			shipSquare.classList.remove("waterAnimation");
-			shipSquare.textContent = "B";
-			shipSquare.classList.add("ship");
-		}
+    // Show placed ship on ownBoard
+    const gameboard = document.querySelector(
+      `.gameboard.${this.dataset.player}.ownBoard`
+    );
+    for (let i = 0; i < fullShipCoordinates.length; i++) {
+      const coord = fullShipCoordinates[i];
+      const shipSquare = gameboard.querySelector(
+        `[data-x="${coord[0]}"][data-y="${coord[1]}"]`
+      );
+      shipSquare.classList.remove("water");
+      shipSquare.classList.remove("waterAnimation");
+      shipSquare.textContent = "B";
+      shipSquare.classList.add("ship");
+    }
 
-		// Hide placed ship on shipsToPlace and make it not draggable
-		const verticalShips = document.querySelector(".verticalShipsContainer");
-		const placedShipVertical = verticalShips.querySelectorAll(
-			`[data-ship-id="${shipID}"]`
-		);
-		for (let i = 0; i < placedShipVertical.length; i++) {
-			const square = placedShipVertical[i];
-			square.style.opacity = "0";
-			square.setAttribute.draggable = false;
-		}
+    // Hide placed ship on shipsToPlace and make it not draggable
+    const verticalShips = document.querySelector(".verticalShipsContainer");
+    const placedShipVertical = verticalShips.querySelectorAll(
+      `[data-ship-id="${shipID}"]`
+    );
+    for (let i = 0; i < placedShipVertical.length; i++) {
+      const square = placedShipVertical[i];
+      square.style.opacity = "0";
+      square.setAttribute.draggable = false;
+    }
 
-		const horizontalShips = document.querySelector(
-			".horizontalShipsContainer"
-		);
-		const placedShipHorizontal = horizontalShips.querySelectorAll(
-			`[data-ship-id="${shipID}"]`
-		);
+    const horizontalShips = document.querySelector(".horizontalShipsContainer");
+    const placedShipHorizontal = horizontalShips.querySelectorAll(
+      `[data-ship-id="${shipID}"]`
+    );
 
-		for (let i = 0; i < placedShipHorizontal.length; i++) {
-			const square = placedShipHorizontal[i];
-			square.style.opacity = "0";
-		}
+    for (let i = 0; i < placedShipHorizontal.length; i++) {
+      const square = placedShipHorizontal[i];
+      square.style.opacity = "0";
+    }
 
-		const draggableDiv = document.querySelector(
-			`[data-ship-id="${shipID}"][draggable="true"]`
-		);
-		draggableDiv.setAttribute("draggable", "false");
+    const draggableDiv = document.querySelector(
+      `[data-ship-id="${shipID}"][draggable="true"]`
+    );
+    draggableDiv.setAttribute("draggable", "false");
 
-		// Check if all ships have been placed
-		numberOfPlacedShips++;
-		if (numberOfPlacedShips === numberOfShipsToPlace) {
-			numberOfPlacedShips = 0;
-			afterPlacingShipsButton(
-				player1,
-				player2,
-				this.dataset.player,
-				numberOfShipsToPlace,
-				boardSize
-			);
-		}
-	}
+    // Check if all ships have been placed
+    numberOfPlacedShips++;
+    if (numberOfPlacedShips === numberOfShipsToPlace) {
+      numberOfPlacedShips = 0;
+      afterPlacingShipsButton(
+        player1,
+        player2,
+        this.dataset.player,
+        numberOfShipsToPlace,
+        boardSize
+      );
+    }
+  }
 }
 
 function showAttackEnemyBoard(player1, result, player2name, boardSize) {
-	if (result === "¡Agua!") {
-		this.addEventListener("transitionend", () => {
-			this.textContent = "A";
-			this.classList.remove("questionTrans");
-			this.classList.add("water");
-			this.classList.add("waterAnimation");
-			isComputerMove();
-		});
-		this.classList.add("questionTrans");
-	} else if (result === "¡Barco tocado!") {
-		this.addEventListener("transitionend", () => {
-			this.textContent = "B";
-			this.classList.remove("questionTrans");
-			this.classList.add("ship");
-			isComputerMove();
-		});
-		this.classList.add("questionTrans");
-	} else if (result === "¡Barco hundido!") {
-		function onTransitionEnd() {
-			this.textContent = "X";
-			this.classList.remove("questionTrans");
-			this.removeEventListener("transitionend", onTransitionEnd);
-			this.classList.add("sunkenShip");
-			isComputerMove();
-		}
-		this.addEventListener("transitionend", onTransitionEnd);
-		this.classList.add("questionTrans");
-	} else if (result === "¡Todos los barcos han sido hundidos!") {
-		function onTransitionEnd() {
-			this.textContent = "X";
-			this.classList.remove("questionTrans");
-			this.removeEventListener("transitionend", onTransitionEnd);
-			this.addEventListener("transitionend", () => {
-				let whoWins;
-				if (this.dataset.player === "player1") {
-					whoWins = "player2";
-				} else if (this.dataset.player === "player2") {
-					whoWins = "player1";
-				}
-				winner(player1.name, player2name, whoWins);
-			});
-			this.classList.add("lastSunkenShip");
-		}
-		this.addEventListener("transitionend", onTransitionEnd);
-		this.classList.add("questionTrans");
-	}
+  if (result === "¡Agua!") {
+    this.addEventListener("transitionend", () => {
+      this.textContent = "A";
+      this.classList.remove("questionTrans");
+      this.classList.add("water");
+      this.classList.add("waterAnimation");
+      isComputerMove();
+    });
+    this.classList.add("questionTrans");
+  } else if (result === "¡Barco tocado!") {
+    this.addEventListener("transitionend", () => {
+      this.textContent = "B";
+      this.classList.remove("questionTrans");
+      this.classList.add("ship");
+      isComputerMove();
+    });
+    this.classList.add("questionTrans");
+  } else if (result === "¡Barco hundido!") {
+    function onTransitionEnd() {
+      this.textContent = "X";
+      this.classList.remove("questionTrans");
+      this.removeEventListener("transitionend", onTransitionEnd);
+      this.classList.add("sunkenShip");
+      isComputerMove();
+    }
+    this.addEventListener("transitionend", onTransitionEnd);
+    this.classList.add("questionTrans");
+  } else if (result === "¡Todos los barcos han sido hundidos!") {
+    function onTransitionEnd() {
+      this.textContent = "X";
+      this.classList.remove("questionTrans");
+      this.removeEventListener("transitionend", onTransitionEnd);
+      this.addEventListener("transitionend", () => {
+        let whoWins;
+        if (this.dataset.player === "player1") {
+          whoWins = "player2";
+        } else if (this.dataset.player === "player2") {
+          whoWins = "player1";
+        }
+        winner(player1.name, player2name, whoWins);
+      });
+      this.classList.add("lastSunkenShip");
+    }
+    this.addEventListener("transitionend", onTransitionEnd);
+    this.classList.add("questionTrans");
+  }
 
-	function isComputerMove() {
-		if (player2name === "Computadora") {
-			const compMoveObject = (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.computerAttack)(boardSize, player1);
+  function isComputerMove() {
+    if (player2name === "Computadora") {
+      const compMoveObject = (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.computerAttack)(boardSize, player1);
 
-			// Show Computer Move:
-			const attackedSquare = document.querySelector(
-				`:not(.notAttacked)[data-player="player1"][data-x="${compMoveObject.x}"][data-y="${compMoveObject.y}"]`
-			);
-			if (compMoveObject.result === "¡Agua!") {
-				// Remove waterAnimation while attackedTrans is happening.
-				attackedSquare.classList.remove("waterAnimation");
-			}
-			attackedSquare.textContent = "\u{1F7CF}";
-			setTimeout(() => {
-				// attackedSquare.style.zIndex = "3";
-				attackedSquare.classList.add("attacked");
-				attackedSquare.classList.add("attackedTrans");
-				attackedSquare.addEventListener(
-					"transitionend",
-					transitionEndCallback
-				);
-			}, 0);
+      // Show Computer Move:
+      const attackedSquare = document.querySelector(
+        `:not(.notAttacked)[data-player="player1"][data-x="${compMoveObject.x}"][data-y="${compMoveObject.y}"]`
+      );
+      if (compMoveObject.result === "¡Agua!") {
+        // Remove waterAnimation while attackedTrans is happening.
+        attackedSquare.classList.remove("waterAnimation");
+      }
+      attackedSquare.textContent = "";
+      const starImg = document.createElement("img");
+      starImg.src = _star_svg__WEBPACK_IMPORTED_MODULE_2__;
+      attackedSquare.appendChild(starImg);
+      setTimeout(() => {
+        // attackedSquare.style.zIndex = "3";
+        attackedSquare.classList.add("attacked");
+        attackedSquare.classList.add("attackedTrans");
+        attackedSquare.addEventListener("transitionend", transitionEndCallback);
+      }, 0);
 
-			function transitionEndCallback() {
-				// This zIndex is to lower already attacked squares so that newly attacked
-				// squares remain in a higher zIndex
-				attackedSquare.addEventListener("transitionend", () => {
-					attackedSquare.style.zIndex = "1";
-				});
-				attackedSquare.classList.remove("attackedTrans");
-				if (
-					compMoveObject.result ===
-					"¡Todos los barcos han sido hundidos!"
-				) {
-					setTimeout(() => {
-						winner(player1.name, player2name, "player2");
-					}, 0);
-				}
-				attackedSquare.removeEventListener(
-					"transitionend",
-					transitionEndCallback
-				);
-				if (compMoveObject.result === "¡Agua!") {
-					attackedSquare.addEventListener("transitionend", () => {
-						attackedSquare.classList.add("waterAnimation");
-					});
-				}
-			}
-		} else {
-			// Show toggle button after the attack
-			let whoseButton;
-			if (_index_js__WEBPACK_IMPORTED_MODULE_0__.whoPlays === "player1") {
-				whoseButton = "player2";
-			} else if (_index_js__WEBPACK_IMPORTED_MODULE_0__.whoPlays === "player2") {
-				whoseButton = "player1";
-			}
+      function transitionEndCallback() {
+        // This zIndex is to lower already attacked squares so that newly attacked
+        // squares remain in a higher zIndex
+        attackedSquare.addEventListener("transitionend", () => {
+          attackedSquare.style.zIndex = "1";
+        });
+        attackedSquare.classList.remove("attackedTrans");
+        if (compMoveObject.result === "¡Todos los barcos han sido hundidos!") {
+          setTimeout(() => {
+            winner(player1.name, player2name, "player2");
+          }, 0);
+        }
+        attackedSquare.removeEventListener(
+          "transitionend",
+          transitionEndCallback
+        );
+        if (compMoveObject.result === "¡Agua!") {
+          attackedSquare.addEventListener("transitionend", () => {
+            attackedSquare.classList.add("waterAnimation");
+          });
+        }
+      }
+    } else {
+      // Show toggle button after the attack
+      let whoseButton;
+      if (_index_js__WEBPACK_IMPORTED_MODULE_0__.whoPlays === "player1") {
+        whoseButton = "player2";
+      } else if (_index_js__WEBPACK_IMPORTED_MODULE_0__.whoPlays === "player2") {
+        whoseButton = "player1";
+      }
 
-			const toggleButton = document.querySelector(
-				`button[data-player="${whoseButton}"]`
-			);
-			setTimeout(() => {
-				toggleButton.classList.remove("hidden");
-			}, 0);
-		}
-	}
+      const toggleButton = document.querySelector(
+        `button[data-player="${whoseButton}"]`
+      );
+      setTimeout(() => {
+        toggleButton.classList.remove("hidden");
+      }, 0);
+    }
+  }
 }
 
 function showAttackOwnBoard() {
-	const attackedSquare = document.querySelector(
-		`:not(.notAttacked)[data-player="${this.dataset.player}"][data-x="${this.dataset.x}"][data-y="${this.dataset.y}"]`
-	);
-	if (attackedSquare !== null) {
-		attackedSquare.textContent = "\u{1F7CF}";
-		attackedSquare.classList.add("attacked");
-		attackedSquare.classList.add("lastAttacked");
-	}
+  const attackedSquare = document.querySelector(
+    `:not(.notAttacked)[data-player="${this.dataset.player}"][data-x="${this.dataset.x}"][data-y="${this.dataset.y}"]`
+  );
+  if (attackedSquare !== null) {
+    attackedSquare.textContent = "";
+    const starImg = document.createElement("img");
+    starImg.src = _star_svg__WEBPACK_IMPORTED_MODULE_2__;
+    attackedSquare.appendChild(starImg);
+    attackedSquare.classList.add("attacked");
+    attackedSquare.classList.add("lastAttacked");
+  }
+}
+
+function showResult(result, player) {
+  const resultMessage = document.createElement("div");
+  resultMessage.textContent = result;
+  const boardsContainer = document.querySelector(
+    `.${player} > div.boardsContainer`
+  );
+  boardsContainer.appendChild(resultMessage);
 }
 
 function winner(player1name, player2name, playerTurn) {
-	let whoWins;
-	if (playerTurn === "player1") {
-		whoWins = player1name;
-	} else if (playerTurn === "player2") {
-		whoWins = player2name;
-	}
+  let whoWins;
+  if (playerTurn === "player1") {
+    whoWins = player1name;
+  } else if (playerTurn === "player2") {
+    whoWins = player2name;
+  }
 
-	const main = document.querySelector("main");
-	while (main.firstChild) {
-		main.removeChild(main.firstChild);
-	}
+  const main = document.querySelector("main");
+  while (main.firstChild) {
+    main.removeChild(main.firstChild);
+  }
 
-	main.style.justifyContent = "space-around";
+  main.style.justifyContent = "space-around";
 
-	const won = document.createElement("div");
-	won.textContent = "GANÓ";
-	won.classList.add("won");
-	won.classList.add("wonAnim");
+  const won = document.createElement("div");
+  won.textContent = "GANÓ";
+  won.classList.add("won");
+  won.classList.add("wonAnim");
 
-	let count = 0;
-	won.addEventListener("animationiteration", () => {
-		count += 1;
-		if (count === 3) {
-			won.textContent += ".";
-			won.classList.remove("wonAnim");
-			winPlayer.classList.add("winPlayerAnim");
-			return;
-		}
-		won.textContent += ".";
-	});
+  let count = 0;
+  won.addEventListener("animationiteration", () => {
+    count += 1;
+    if (count === 3) {
+      won.textContent += ".";
+      won.classList.remove("wonAnim");
+      winPlayer.classList.add("winPlayerAnim");
+      return;
+    }
+    won.textContent += ".";
+  });
 
-	const winPlayer = document.createElement("div");
-	winPlayer.textContent = `${whoWins}`;
-	winPlayer.classList.add("winPlayer");
-	winPlayer.style.opacity = "0";
-	winPlayer.addEventListener("animationend", () => {
-		winPlayer.style.opacity = "1";
-		sunkAll.classList.add("sunkAllAnim");
-	});
+  const winPlayer = document.createElement("div");
+  winPlayer.textContent = `${whoWins}`;
+  winPlayer.classList.add("winPlayer");
+  winPlayer.style.opacity = "0";
+  winPlayer.addEventListener("animationend", () => {
+    winPlayer.style.opacity = "1";
+    sunkAll.classList.add("sunkAllAnim");
+  });
 
-	const sunkAll = document.createElement("div");
-	sunkAll.textContent = "¡Hundió todos los barcos!";
-	sunkAll.classList.add("sunkAll");
-	sunkAll.style.opacity = "0";
-	sunkAll.addEventListener("animationend", () => {
-		sunkAll.style.opacity = "1";
-	});
+  const sunkAll = document.createElement("div");
+  sunkAll.textContent = "¡Hundió todos los barcos!";
+  sunkAll.classList.add("sunkAll");
+  sunkAll.style.opacity = "0";
+  sunkAll.addEventListener("animationend", () => {
+    sunkAll.style.opacity = "1";
+  });
 
-	main.appendChild(won);
-	main.appendChild(winPlayer);
-	main.appendChild(sunkAll);
+  main.appendChild(won);
+  main.appendChild(winPlayer);
+  main.appendChild(sunkAll);
 
-	// alert(`Ganó ${whoWins}.  ¡Hundió todos los barcos!`);
+  // alert(`Ganó ${whoWins}.  ¡Hundió todos los barcos!`);
 }
 
 
@@ -1802,7 +1795,7 @@ function computerAttack(boardSize, player) {
 		) {
 			fromAttackObj.x = fromAttackObj.x + nextAttackDir.x;
 		} else {
-			console.log("Handle Out of Board Case");
+			// Handle Out of Board Case
 			fromAttackObj = randomAttack();
 			iA = false;
 			axisFound = false;
@@ -1815,7 +1808,7 @@ function computerAttack(boardSize, player) {
 		) {
 			fromAttackObj.y = fromAttackObj.y + nextAttackDir.y;
 		} else {
-			console.log("Handle Out of Board Case");
+			// // Handle Out of Board Case
 			fromAttackObj = randomAttack();
 			iA = false;
 			axisFound = false;
@@ -2014,179 +2007,144 @@ let whoPlays = "player1";
 (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.mainTitleAndGetNames)();
 
 function initializeGame(player1name, player2name, boardSize = 10) {
-	const player1 = (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.Player)(player1name, (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.Gameboard)(boardSize));
-	const player2 = (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.Player)(player2name, (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.Gameboard)(boardSize));
+  const player1 = (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.Player)(player1name, (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.Gameboard)(boardSize));
+  const player2 = (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.Player)(player2name, (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.Gameboard)(boardSize));
 
-	(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.createPlayersDivs)(player2name);
+  (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.createPlayersDivs)(player2name);
 
-	placeShips(player1, player2, "player1", 5, (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.Gameboard)(boardSize), boardSize);
+  placeShips(player1, player2, "player1", 5, (0,_gameLogic_js__WEBPACK_IMPORTED_MODULE_1__.Gameboard)(boardSize), boardSize);
 }
 
 function placeShips(
-	player1,
-	player2,
-	playerTurn,
-	numberOfShipsToPlace,
-	shipsToPlace,
-	boardSize
+  player1,
+  player2,
+  playerTurn,
+  numberOfShipsToPlace,
+  shipsToPlace,
+  boardSize
 ) {
-	(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.placeShipsMessage)(
-		player1.name,
-		player2.name,
-		playerTurn,
-		numberOfShipsToPlace
-	);
+  (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.placeShipsMessage)(
+    player1.name,
+    player2.name,
+    playerTurn,
+    numberOfShipsToPlace
+  );
 
-	shipsToPlace.placeShip(1, 5, true, 0, 0);
-	shipsToPlace.placeShip(2, 4, true, 2, 0);
-	shipsToPlace.placeShip(3, 3, true, 4, 0);
-	shipsToPlace.placeShip(4, 2, true, 6, 0);
-	shipsToPlace.placeShip(5, 1, true, 8, 0);
+  shipsToPlace.placeShip(1, 5, true, 0, 0);
+  shipsToPlace.placeShip(2, 4, true, 2, 0);
+  shipsToPlace.placeShip(3, 3, true, 4, 0);
+  shipsToPlace.placeShip(4, 2, true, 6, 0);
+  shipsToPlace.placeShip(5, 1, true, 8, 0);
 
-	(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(
-		player1,
-		player2,
-		playerTurn,
-		"ownBoard",
-		false,
-		boardSize,
-		true,
-		numberOfShipsToPlace,
-		shipsToPlace,
-		player2.name
-	);
+  (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(
+    player1,
+    player2,
+    playerTurn,
+    "ownBoard",
+    false,
+    boardSize,
+    true,
+    numberOfShipsToPlace,
+    shipsToPlace,
+    player2.name
+  );
 
-	(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showShipsToPlace)(
-		player1,
-		player2,
-		shipsToPlace.board,
-		numberOfShipsToPlace,
-		boardSize,
-		playerTurn,
-		"verticalShipsToPlace",
-		false
-	);
+  (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showShipsToPlace)(
+    player1,
+    player2,
+    shipsToPlace.board,
+    numberOfShipsToPlace,
+    boardSize,
+    playerTurn,
+    "verticalShipsToPlace",
+    false
+  );
 
-	(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showShipsToPlace)(
-		player1,
-		player2,
-		shipsToPlace.board,
-		numberOfShipsToPlace,
-		boardSize,
-		playerTurn,
-		"horizontalShipsToPlace",
-		true
-	);
+  (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showShipsToPlace)(
+    player1,
+    player2,
+    shipsToPlace.board,
+    numberOfShipsToPlace,
+    boardSize,
+    playerTurn,
+    "horizontalShipsToPlace",
+    true
+  );
 
-	const messages = document.querySelector(".messages");
-	const shipsContainer = document.querySelector(".verticalShipsToPlace");
+  const messages = document.querySelector(".messages");
+  const shipsContainer = document.querySelector(".verticalShipsToPlace");
 
-	(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.chainFadeInS)(null, [messages, shipsContainer], "2s");
+  (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.chainFadeInS)(null, [messages, shipsContainer], "2s");
 
-	const messages2 = document.querySelector(".messages2");
-	const gameboardContainer = document.querySelector(".gameboardContainer");
-	(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.chainFadeInS)(messages, [messages2, gameboardContainer], "2s");
+  const messages2 = document.querySelector(".messages2");
+  const gameboardContainer = document.querySelector(".gameboardContainer");
+  (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.chainFadeInS)(messages, [messages2, gameboardContainer], "2s");
 
-	const buttons = document.querySelectorAll(".verticalShipsContainer button");
-	(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.chainFadeInS)(gameboardContainer, buttons, "2s");
+  const buttons = document.querySelectorAll(".verticalShipsContainer button");
+  (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.chainFadeInS)(gameboardContainer, buttons, "2s");
 }
 
 function battleBegins(player1, player2, boardSize) {
-	(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.removePlaceShipsElements)();
-	if (player2.name !== "Computadora") {
-		const player2Div = document.querySelector(".playerDiv.player2");
-		player2Div.classList.add("hidden");
+  (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.removePlaceShipsElements)();
+  if (player2.name !== "Computadora") {
+    const player2Div = document.querySelector(".playerDiv.player2");
+    player2Div.classList.add("hidden");
 
-		(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showOtherPlayersBoardsButton)(player1, showPlayersBoards);
+    (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showOtherPlayersBoardsButton)(player1, showPlayersBoards);
 
-		function showPlayersBoards() {
-			document.querySelector(".buttonContainer").remove();
-			(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(
-				player1,
-				player2,
-				"player1",
-				"ownBoard",
-				false,
-				boardSize
-			);
-			(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(
-				player1,
-				player2,
-				"player2",
-				"enemyBoard",
-				false,
-				boardSize
-			);
+    function showPlayersBoards() {
+      document.querySelector(".buttonContainer").remove();
+      (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(player1, player2, "player1", "ownBoard", false, boardSize);
+      (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(player1, player2, "player2", "enemyBoard", false, boardSize);
 
-			(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.createToggleButton)(
-				"player1",
-				player1.name,
-				player2.name,
-				"Esconder tableros y cambiar turno",
-				".playerDiv.player1",
-				"hide"
-			);
+      (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.createToggleButton)(
+        "player1",
+        player1.name,
+        player2.name,
+        "Esconder tableros y cambiar turno",
+        ".playerDiv.player1",
+        "hide"
+      );
 
-			(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(
-				player1,
-				player2,
-				"player2",
-				"ownBoard",
-				false,
-				boardSize
-			);
-			(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(
-				player1,
-				player2,
-				"player1",
-				"enemyBoard",
-				false,
-				boardSize
-			);
-			(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.createToggleButton)(
-				"player2",
-				player1.name,
-				player2.name,
-				"Esconder tableros y cambiar turno",
-				".playerDiv.player2",
-				"hide"
-			);
-		}
-	} else {
-		(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(player1, player2, "player1", "ownBoard", false, boardSize);
-		(0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(player1, player2, "player2", "enemyBoard", false, boardSize);
-	}
+      (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(player1, player2, "player2", "ownBoard", false, boardSize);
+      (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(player1, player2, "player1", "enemyBoard", false, boardSize);
+      (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.createToggleButton)(
+        "player2",
+        player1.name,
+        player2.name,
+        "Esconder tableros y cambiar turno",
+        ".playerDiv.player2",
+        "hide"
+      );
+    }
+  } else {
+    (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(player1, player2, "player1", "ownBoard", false, boardSize);
+    (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showBoard)(player1, player2, "player2", "enemyBoard", false, boardSize);
+  }
 }
 
 function attack(player1, player2, boardSize) {
-	if (this.dataset.player === whoPlays) {
-		return;
-	}
+  if (this.dataset.player === whoPlays) {
+    return;
+  }
 
-	let result;
-	if (this.dataset.player === "player2") {
-		result = player2.gameboard.receiveAttack(
-			this.dataset.x,
-			this.dataset.y
-		);
-		console.log(result);
-	} else if (this.dataset.player === "player1") {
-		result = player1.gameboard.receiveAttack(
-			this.dataset.x,
-			this.dataset.y
-		);
-		console.log(result);
-	}
+  let result;
+  if (this.dataset.player === "player2") {
+    result = player2.gameboard.receiveAttack(this.dataset.x, this.dataset.y);
+  } else if (this.dataset.player === "player1") {
+    result = player1.gameboard.receiveAttack(this.dataset.x, this.dataset.y);
+  }
 
-	if (player2.name !== "Computadora") {
-		if (whoPlays === "player1") {
-			whoPlays = "player2";
-		} else if (whoPlays === "player2") {
-			whoPlays = "player1";
-		}
-	}
-	_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showAttackEnemyBoard.call(this, player1, result, player2.name, boardSize);
-	_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showAttackOwnBoard.call(this, result);
+  if (player2.name !== "Computadora") {
+    if (whoPlays === "player1") {
+      whoPlays = "player2";
+    } else if (whoPlays === "player2") {
+      whoPlays = "player1";
+    }
+  }
+  _domModule_js__WEBPACK_IMPORTED_MODULE_2__.showAttackEnemyBoard.call(this, player1, result, player2.name, boardSize);
+  _domModule_js__WEBPACK_IMPORTED_MODULE_2__.showAttackOwnBoard.call(this, result);
+  (0,_domModule_js__WEBPACK_IMPORTED_MODULE_2__.showResult)(result, this.dataset.player);
 }
 
 
@@ -2211,6 +2169,16 @@ module.exports = __webpack_require__.p + "2017bdb174a62d0daa3e.ttf";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "f92bc1dc712a26714f64.woff2";
+
+/***/ }),
+
+/***/ "./src/star.svg":
+/*!**********************!*\
+  !*** ./src/star.svg ***!
+  \**********************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "8a338523097a10678697.svg";
 
 /***/ })
 

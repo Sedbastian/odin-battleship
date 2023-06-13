@@ -212,7 +212,7 @@ function computerAttack(boardSize, player) {
 		) {
 			fromAttackObj.x = fromAttackObj.x + nextAttackDir.x;
 		} else {
-			console.log("Handle Out of Board Case");
+			// Handle Out of Board Case
 			fromAttackObj = randomAttack();
 			iA = false;
 			axisFound = false;
@@ -225,7 +225,7 @@ function computerAttack(boardSize, player) {
 		) {
 			fromAttackObj.y = fromAttackObj.y + nextAttackDir.y;
 		} else {
-			console.log("Handle Out of Board Case");
+			// // Handle Out of Board Case
 			fromAttackObj = randomAttack();
 			iA = false;
 			axisFound = false;

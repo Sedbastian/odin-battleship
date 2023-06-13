@@ -1,1 +1,2 @@
-computerAttack inteligence
+Add star.svg instead of unicode font
+Add favicon.svg using HtmlWebpackPlugin

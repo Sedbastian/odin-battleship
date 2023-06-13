@@ -1,422 +1,435 @@
 @font-face {
-	font-family: "BigShouldersStencil";
-	src: url("./BigShouldersStencil.woff2");
+  font-family: "BigShouldersStencil";
+  src: url("./BigShouldersStencil.woff2");
 }
 
 @font-face {
-	font-family: "Audiowide-Regular";
-	src: url("./Audiowide-Regular.ttf");
+  font-family: "Audiowide-Regular";
+  src: url("./Audiowide-Regular.ttf");
+}
+
+@media (max-width: 880px) {
+  .square {
+    height: 8vmin !important;
+    width: 8vmin !important;
+    font-size: 7vmin !important;
+  }
 }
 
 html {
-	background-color: black;
+  margin: 0;
+  background-color: black;
+}
+
+body {
+  margin: 0;
+  /* overflow-y: hidden; */
 }
 
 main {
-	height: 95vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	font-family: Audiowide-Regular;
-	font-size: 1.5rem;
-	text-align: center;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Audiowide-Regular;
+  font-size: 1.5rem;
+  text-align: center;
+  /* overflow-x: hidden; */
 }
 
 .version {
-	/* flex-grow: 1; */
-	margin-top: auto;
-	color: white;
+  /* flex-grow: 1; */
+  margin-top: auto;
+  color: white;
 }
 
 @keyframes marcosclave1 {
-	from {
-		opacity: 0.7;
-		/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */
-	}
-	to {
-		opacity: 1;
-		text-shadow: 0 0 5rem rgb(162, 0, 255);
-	}
+  from {
+    opacity: 0.7;
+    /* text-shadow: 0 0 .5rem rgb(162, 0, 255); */
+  }
+  to {
+    opacity: 1;
+    text-shadow: 0 0 5rem rgb(162, 0, 255);
+  }
 }
 
 h1 {
-	text-align: center;
-	font-family: "BigShouldersStencil";
-	color: grey;
-	font-size: 7rem;
-	/* text-shadow: 0 0 .5rem rgb(162, 0, 255); */
-	margin-top: 1rem;
-	margin-bottom: 2rem;
+  text-align: center;
+  font-family: "BigShouldersStencil";
+  color: grey;
+  font-size: 5.5rem;
+  text-shadow: 0 0 0.5rem rgb(162, 0, 255);
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 
-	/* animation: marcosclave1 1.5s linear 0s infinite alternate; */
+  /* animation: marcosclave1 1.5s linear 0s infinite alternate; */
 }
 
 h2 {
-	color: goldenrod;
-	font-size: 2rem;
+  color: goldenrod;
+  font-size: 2rem;
 }
 
 .name {
-	font-size: 1.5rem;
-	margin-bottom: 0;
-	color: forestgreen;
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  color: forestgreen;
 }
 
 input {
-	margin-bottom: 1rem;
-	background-color: grey;
-	border-style: none;
-	border-radius: 0.5rem;
-	padding: 1rem;
-	font-size: 1.5rem;
-	font-weight: bold;
-	font-family: "Courier New", Courier, monospace;
-	text-align: center;
-	box-shadow: 0 0 0.5rem rgb(150, 150, 150);
+  margin-bottom: 1rem;
+  background-color: grey;
+  border-style: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  box-shadow: 0 0 0.5rem rgb(150, 150, 150);
 }
 
 input::placeholder {
-	color: rgb(64, 64, 64);
+  color: rgb(64, 64, 64);
 }
 
 input:focus {
-	outline-style: none;
-	background-color: olivedrab;
+  outline-style: none;
+  background-color: olivedrab;
 }
 
 button {
-	margin: 0.3rem;
-	padding: 0.6rem;
-	background-color: orangered;
-	border-style: none;
-	border-radius: 0.5rem;
-	font-size: 1.5rem;
-	font-weight: bold;
-	font-family: "Courier New", Courier, monospace;
+  margin: 0.5rem;
+  padding: 0.6rem;
+  background-color: orangered;
+  border-style: none;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
 }
 
 button:hover {
-	background-color: rgb(255, 32, 0);
-	transform: scale(1.04);
-	cursor: pointer;
+  background-color: rgb(255, 32, 0);
+  transform: scale(1.04);
+  cursor: pointer;
 }
 
 button.placeRandomShips {
-	width: min-content;
-	background-color: rgb(128, 0, 255);
+  width: min-content;
+  background-color: rgb(128, 0, 255);
 }
 
 button.placeRandomShips:hover {
-	background-color: rgb(64, 0, 255);
+  background-color: rgb(64, 0, 255);
 }
 
 .buttonContainer {
-	flex-grow: 1;
-	flex-basis: 45%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  flex-grow: 1;
+  flex-basis: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button.toggleBoards {
-	flex-basis: 70%;
-	align-self: center;
-	font-size: 1.5rem;
-	text-align: center;
-	background-color: orangered;
-	border-radius: 1rem;
-	border-width: 1rem;
-	border-style: none;
-	padding: 1rem;
-	opacity: 0;
+  flex-basis: 70%;
+  align-self: center;
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: orangered;
+  border-radius: 1rem;
+  border-width: 1rem;
+  border-style: none;
+  padding: 1rem;
+  opacity: 0;
 }
 
 button.toggleBoards:hover {
-	background-color: rgb(255, 32, 0);
-	transform: scale(1.04);
-	cursor: pointer;
+  background-color: rgb(255, 32, 0);
+  transform: scale(1.04);
+  cursor: pointer;
 }
 
 button.toggleBoards.afterPlacing {
-	height: 5rem;
+  height: 5rem;
 }
 
 button.battleBegins {
-	flex-basis: 70%;
-	font-size: 1.5rem;
-	text-align: center;
-	background-color: rgb(162, 0, 255);
-	border-radius: 1rem;
-	border-width: 1rem;
-	border-style: none;
-	padding: 1rem;
-	opacity: 0;
-	height: min-content;
+  flex-basis: 70%;
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: rgb(162, 0, 255);
+  border-radius: 1rem;
+  border-width: 1rem;
+  border-style: none;
+  padding: 1rem;
+  opacity: 0;
+  height: min-content;
 }
 
 button.showHiddenBoards {
-	margin-top: 6rem;
-	font-size: 1.5rem;
-	text-align: center;
-	background-color: orangered;
-	border-radius: 1rem;
-	border-width: 1rem;
-	border-style: none;
-	padding: 1rem;
+  margin-top: 6rem;
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: orangered;
+  border-radius: 1rem;
+  border-width: 1rem;
+  border-style: none;
+  padding: 1rem;
 }
 
 button.fadeIn {
-	opacity: 1;
-	transition: opacity 1000ms ease-in-out;
+  opacity: 1;
+  transition: opacity 1000ms ease-in-out;
 }
 
 .playerDiv.player1,
 .playerDiv.player2 {
-	width: 100%;
-	font-family: Audiowide-Regular;
-	font-size: 2rem;
+  width: 100%;
+  font-family: Audiowide-Regular;
+  font-size: 2rem;
 }
 
 .playerDiv.player1.hidden,
 .playerDiv.player2.hidden {
-	display: none;
+  display: none;
 }
 
 .boardsContainer {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
 .verticalShipsContainer,
 .horizontalShipsContainer {
-	flex-grow: 1;
-	flex-basis: 45%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  flex-grow: 1;
+  flex-basis: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .verticalShipsContainer .gameboard {
-	gap: 0.5rem;
+  gap: 0.5rem;
 }
 
 .messages {
-	font-size: 1.8rem;
-	height: 6rem;
-	text-align: center;
-	color: green;
+  font-size: 1.8rem;
+  height: 6rem;
+  text-align: center;
+  color: green;
 }
 
 .ownBoardTitle {
-	font-size: 1.8rem;
-	color: forestgreen;
-	height: 6rem;
+  font-size: 1.8rem;
+  color: forestgreen;
+  height: 6rem;
 }
 
 .enemyBoardTitle {
-	font-size: 1.8rem;
-	color: orangered;
-	height: 6rem;
+  font-size: 1.8rem;
+  color: orangered;
+  height: 6rem;
 }
 
 .gameboardContainer {
-	flex-grow: 1;
-	flex-basis: 45%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  flex-grow: 1;
+  flex-basis: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .gameboard {
-	display: flex;
-	margin: 1rem;
-	cursor: crosshair;
+  display: flex;
+  margin: 1rem;
+  cursor: crosshair;
 }
 
 .row.empty {
-	display: none;
+  display: none;
 }
 
 .horizontalShipsContainer .row {
-	margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .rowDraggable {
-	display: flex;
-	justify-content: flex-start;
-	width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .hidden {
-	display: none;
+  display: none;
 }
 
 .square {
-	width: 2.2rem;
-	height: 2.2rem;
-	position: relative;
-	z-index: 1;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	aspect-ratio: 1;
-	border-style: solid;
-	border-color: rgb(0, 0, 0);
-	border-width: 0.1rem;
-	border-radius: 0.5rem;
-	font-size: 1.8rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  border-width: 0.1rem;
+  border-radius: 0.5rem;
+  font-size: 1.8rem;
 }
 
 .square:hover {
-	opacity: 0.7;
+  opacity: 0.7;
 }
 
 .notAttacked {
-	background-color: grey;
+  background-color: grey;
 }
 
 @keyframes water {
-	from {
-		transform: rotateZ(-20deg) rotateX(-40deg);
-		background-color: rgb(0, 0, 168);
-	}
-	to {
-		transform: rotateZ(20deg) rotateX(40deg);
-		background-color: rgb(0, 0, 255);
-	}
+  from {
+    transform: rotateZ(-20deg) rotateX(-40deg);
+    background-color: rgb(0, 0, 168);
+  }
+  to {
+    transform: rotateZ(20deg) rotateX(40deg);
+    background-color: rgb(0, 0, 255);
+  }
 }
 
 .water {
-	background-color: blue;
+  background-color: blue;
 }
 
 .waterAnimation {
-	position: relative;
-	z-index: 0;
-	animation: water 1s linear 0s infinite alternate;
+  position: relative;
+  z-index: 0;
+  /* animation: water 1s linear 0s infinite alternate; */
 }
 
 .square.questionTrans {
-	transform: rotateX(720deg);
-	transition: transform 1000ms ease-in-out;
+  transform: rotateX(720deg);
+  transition: transform 1000ms ease-in-out;
 }
 
 .square.ship {
-	background-color: brown;
+  background-color: brown;
 }
 
 .shipTrans {
-	transform: rotateY(720deg);
-	transition: transform 1000ms ease-in-out;
+  transform: rotateY(720deg);
+  transition: transform 1000ms ease-in-out;
 }
 
 .square.sunkenShip {
-	background-color: red;
-	transform: rotateZ(720deg);
-	transition: transform 1000ms ease-in-out;
+  background-color: red;
+  transform: rotateZ(720deg);
+  transition: transform 1000ms ease-in-out;
 }
 
 .square.lastSunkenShip {
-	background-color: red;
-	transform: rotateZ(720deg) scale(5);
-	transition: transform 1000ms ease-in-out;
+  background-color: red;
+  transform: rotateZ(720deg) scale(5);
+  transition: transform 1000ms ease-in-out;
 }
 
 .square.attacked {
-	z-index: 2;
-	border-style: solid;
-	border-color: red;
-	transition: transform 700ms ease-in-out;
+  z-index: 2;
+  border-style: solid;
+  border-color: red;
+  transition: transform 700ms ease-in-out;
 }
 
 .square.attacked.attackedTrans {
-	transform: rotateZ(720deg) scale(4);
+  transform: rotateZ(720deg) scale(4);
 }
 
 @keyframes marcosclave {
-	from {
-		opacity: 0.5;
-		transform: scale(1);
-	}
-	to {
-		opacity: 1;
-		transform: scale(2);
-	}
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(2);
+  }
 }
 
 .square.lastAttacked {
-	animation: marcosclave 1s linear 0s infinite alternate;
+  animation: marcosclave 1s linear 0s infinite alternate;
 }
 
 /* Winner */
 .won {
-	margin-top: 2rem;
-	color: rgb(255, 64, 0);
-	font-size: 2rem;
-	font-family: "BigShouldersStencil";
-	transform: scale(3);
+  margin-top: 2rem;
+  color: rgb(255, 64, 0);
+  font-size: 2rem;
+  font-family: "BigShouldersStencil";
+  transform: scale(3);
 }
 
 @keyframes won {
-	from {
-		/* color: rgb(255, 64, 0); */
-		transform: scale(0.1);
-	}
-	30% {
-		transform: rotateZ(30deg);
-	}
-	70% {
-		transform: rotateZ(-30deg);
-	}
-	to {
-		/* color: rgb(128, 0, 255); */
-		transform: scale(3);
-	}
+  from {
+    /* color: rgb(255, 64, 0); */
+    transform: scale(0.1);
+  }
+  30% {
+    transform: rotateZ(30deg);
+  }
+  70% {
+    transform: rotateZ(-30deg);
+  }
+  to {
+    /* color: rgb(128, 0, 255); */
+    transform: scale(3);
+  }
 }
 
 .wonAnim {
-	/* animation: won 1s cubic-bezier(0, 1, 1, 0) 0s infinite alternate; */
-	animation: won 1s ease 0s infinite alternate;
+  /* animation: won 1s cubic-bezier(0, 1, 1, 0) 0s infinite alternate; */
+  animation: won 1s ease 0s infinite alternate;
 }
 
 .winPlayer {
-	margin-top: 3rem;
-	font-size: 6rem;
-	color: rgb(143, 0, 143);
+  margin-top: 3rem;
+  font-size: 6rem;
+  color: rgb(143, 0, 143);
 }
 
 @keyframes winPlayer {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-		transform: rotateZ(4turn);
-	}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: rotateZ(4turn);
+  }
 }
 
 .winPlayerAnim {
-	animation: winPlayer 2s ease-in 0s 1;
+  animation: winPlayer 2s ease-in 0s 1;
 }
 
 .sunkAll {
-	justify-self: center;
-	margin-top: 2rem;
-	color: orange;
-	font-family: 'Courier New', Courier, monospace;
-	font-size: 4rem;
+  justify-self: center;
+  margin-top: 2rem;
+  color: orange;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 4rem;
 }
 
 @keyframes sunkAll {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .sunkAllAnim {
-	animation: sunkAll 0.3s ease 0s 7;
+  animation: sunkAll 0.3s ease 0s 7;
 }
