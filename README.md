@@ -1,5 +1,7 @@
 # Batalla Naval
 
+Live Demo: https://sedbastian.github.io/odin-battleship/
+
 - Juego de Batalla Naval para un jugador contra la computadora o dos jugadores en el mismo dispositivo.
 - Escrito en Vanilla Javascript.
 - Ejercicio para el curso de Javascript de The Odin Project:

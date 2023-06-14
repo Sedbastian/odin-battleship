@@ -226,13 +226,13 @@ Sometimes you want to have a subdirectory on the master branch be the root direc
 Primero ejecutar:
 
 ```bash
-$ npx webpack
+npx webpack
 ```
 
 y luego:
 
 ```bash
-$ git subtree push --prefix dist origin gh-pages
+git subtree push --prefix dist origin gh-pages
 ```
 
 - ### favicon
