@@ -59,6 +59,7 @@ h1 {
   font-family: "BigShouldersStencil";
   color: grey;
   font-size: 5.5rem;
+  font-weight: 900;
   text-shadow: 0 0 0.5rem rgb(162, 0, 255);
   margin-top: 1rem;
   margin-bottom: 2rem;
